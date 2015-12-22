@@ -43,12 +43,13 @@
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <?php echo showSideBarMenu("categories","", "Categories"); ?>
-                        <?php echo showSideBarMenu("article","", "Article", "fa-file"); ?>
+                        <?php echo showSideBarMenu("articles","", "Articles", "fa-file"); ?>
                         <?php echo showSideBarMenu("videos","", "Videos", "fa-film"); ?>
                     </ul>
                 </li> 
 
                 <?php echo showSideBarMenu("modules","", "Modules"); ?>
+                <?php echo showSideBarMenu("themes","", "Themes"); ?>
                 <?php
                 if ($user->isSuperAdmin()) {
                 ?>

@@ -56,6 +56,8 @@ class ManagerController extends BackEndController {
                 }
             }
             YiiMessage::raseSuccess("Successfully saved changes extention for allowall: $type");
+        }else if($task == "delete"){
+            $this->deleteExt();
         }
  
         $obj_ext = YiiExtensions::getInstance();
@@ -78,5 +80,34 @@ class ManagerController extends BackEndController {
         $obj_tblExt = $obj_ext->loadExt($cid);
         $obj_tblExt->$name = $value;
         $obj_tblExt->store();
+    }
+    
+    function deleteExt()
+    {
+        global $mainframe, $user;
+        if (!$user->isSuperAdmin()) {
+            YiiMessage::raseNotice("Your account not have permission to modify extension");
+            $this->redirect(Router::buildLink("cpanel"));
+        }
+        $cid = Request::getVar('cid');
+        //$cid = 1;
+        $obj_ext = YiiExtensions::getInstance();
+        $obj_tblExt = $obj_ext->loadExt($cid);
+        if($obj_tblExt->required == 1){
+            YiiMessage::raseNotice("System is require extention: $obj_tblExt->name");
+            $this->redirect(Router::buildLink("installer", array('view'=>'manager')));
+        }
+        
+        //neu ma app: kiem tra menu co dang su dung ext nay khong thi unpublish di
+        if($obj_tblExt->type == "app"){
+            Yii::app()->db->createCommand()->update(TBL_MENU_ITEM, array('status'=>0),  'app = \''. $obj_tblExt->folder.'\'');
+        }
+        //neu ma module: kiem tra co module nao duoc tao ra khong thi unpublish di
+        if($obj_tblExt->type == "module"){
+//            $obj_module = YiiModule::getInstance();
+//            $items = $obj_module->loadItems(null, 'module = \''. $obj_tblExt->folder.'\'');
+            Yii::app()->db->createCommand()->update(TBL_MODULES, array('status'=>0),  'module = \''. $obj_tblExt->folder.'\'');
+        }        
+        //neu ma theme: thi kiem tra xem co dang la theme default khong
     }
 }
