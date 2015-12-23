@@ -45,6 +45,7 @@
                         <?php echo showSideBarMenu("categories","", "Categories"); ?>
                         <?php echo showSideBarMenu("articles","", "Articles", "fa-file"); ?>
                         <?php echo showSideBarMenu("videos","", "Videos", "fa-film"); ?>
+                        <?php echo showSideBarMenu("gamesport","", "Gamesport", "fa-folder"); ?>
                     </ul>
                 </li> 
 
