@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2015 at 10:22 AM
+-- Generation Time: Dec 23, 2015 at 03:05 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -573,6 +573,299 @@ INSERT INTO `tbl_extensions` (`id`, `title`, `name`, `alias`, `author`, `version
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_gs_groups`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_gs_groups` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `table` tinyint(4) NOT NULL COMMENT 'kiểu bảng 1A 2B 3C 4D',
+  `teamID` int(10) unsigned NOT NULL,
+  `tourID` int(10) unsigned NOT NULL,
+  `rank` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  KEY `table` (`table`),
+  KEY `teamID` (`teamID`),
+  KEY `tourID` (`tourID`),
+  KEY `rank` (`rank`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_gs_locations`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_gs_locations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `alias` varchar(45) NOT NULL,
+  `parentID` int(10) unsigned NOT NULL,
+  `thumbnail` varchar(100) NOT NULL,
+  `longitude` varchar(100) NOT NULL,
+  `latitude` varchar(100) NOT NULL,
+  `cdate` datetime NOT NULL,
+  `mdate` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  KEY `name` (`name`),
+  KEY `alias` (`alias`),
+  KEY `parentID` (`parentID`),
+  KEY `longitude` (`longitude`),
+  KEY `cdate` (`cdate`),
+  KEY `latitude` (`latitude`),
+  KEY `cdate_2` (`cdate`),
+  KEY `thumbnail` (`thumbnail`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_gs_matches`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_gs_matches` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `alias` varchar(45) NOT NULL,
+  `thumbnail` varchar(100) NOT NULL,
+  `tourID` int(10) unsigned NOT NULL,
+  `teamaID` int(10) unsigned NOT NULL,
+  `teambID` int(10) unsigned NOT NULL,
+  `round` int(11) NOT NULL COMMENT 'biết đang ở  vòng nào: vòng bảng, vòng 1/32, vòng chung kết',
+  `group` int(11) NOT NULL COMMENT 'cho biết ở vòng bảng thì thuộc bảng nào(A,B,C,D)',
+  `subround` int(11) NOT NULL COMMENT 'mỗi vòng có chia thành các vòng con: round 1, round 2, round 3',
+  `goal_a` int(11) NOT NULL,
+  `goal_b` int(11) NOT NULL,
+  `introtext` varchar(250) DEFAULT NULL,
+  `fulltext` text,
+  `address` varchar(250) DEFAULT NULL,
+  `starttime` datetime DEFAULT NULL,
+  `endtime` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `modified_by` datetime DEFAULT NULL,
+  `cdate` datetime DEFAULT NULL,
+  `mdate` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `metakey` varchar(70) DEFAULT NULL,
+  `metadesc` varchar(70) DEFAULT NULL,
+  `featured` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  KEY `name` (`name`),
+  KEY `alias` (`alias`),
+  KEY `thumbnail` (`thumbnail`),
+  KEY `tourID` (`tourID`),
+  KEY `teamaID` (`teamaID`),
+  KEY `teambID` (`teambID`),
+  KEY `round` (`round`),
+  KEY `group` (`group`),
+  KEY `subround` (`subround`),
+  KEY `goal_a` (`goal_a`),
+  KEY `goal_b` (`goal_b`),
+  KEY `introtext` (`introtext`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_gs_matche_detail`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_gs_matche_detail` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `matcheID` int(10) unsigned NOT NULL,
+  `starttime` datetime NOT NULL,
+  `endtime` datetime NOT NULL,
+  `num_set` int(11) NOT NULL,
+  `num_match` int(11) NOT NULL,
+  `thumbnail` varchar(100) DEFAULT NULL,
+  `video_url` varchar(250) DEFAULT NULL,
+  `video_code` varchar(250) DEFAULT NULL,
+  `duration` varchar(255) DEFAULT NULL,
+  `num_view` int(11) DEFAULT NULL,
+  `num_like` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `featured` int(11) DEFAULT NULL,
+  `metakey` varchar(70) DEFAULT NULL,
+  `metadesc` varchar(70) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  KEY `matcheID` (`matcheID`),
+  KEY `starttime` (`starttime`),
+  KEY `endtime` (`endtime`),
+  KEY `num_set` (`num_set`),
+  KEY `num_match` (`num_match`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_gs_players`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_gs_players` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `alias` varchar(45) NOT NULL,
+  `thumbnail` varchar(100) NOT NULL,
+  `birthday` datetime NOT NULL,
+  `idCard` varchar(45) NOT NULL,
+  `address` varchar(250) DEFAULT NULL,
+  `mobile` varchar(20) DEFAULT NULL,
+  `rank` int(11) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `modified_by` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `featured` int(11) DEFAULT NULL,
+  `odering` int(11) DEFAULT NULL,
+  `metakey` varchar(70) DEFAULT NULL,
+  `metadesc` varchar(70) DEFAULT NULL,
+  `mdate` datetime DEFAULT NULL,
+  `cdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  KEY `name` (`name`),
+  KEY `alias` (`alias`),
+  KEY `thumbnail` (`thumbnail`),
+  KEY `birthday` (`birthday`),
+  KEY `idCard` (`idCard`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_gs_player_register_team`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_gs_player_register_team` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `playerID` int(10) unsigned NOT NULL,
+  `tourID` int(10) unsigned NOT NULL,
+  `teamID` int(10) unsigned NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `modified_by` datetime DEFAULT NULL,
+  `cdate` datetime DEFAULT NULL,
+  `mdate` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  KEY `playerID` (`playerID`),
+  KEY `tourID` (`tourID`),
+  KEY `teamID` (`teamID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_gs_ranks`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_gs_ranks` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `cdate` datetime DEFAULT NULL,
+  `mdate` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `modified_by` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  KEY `name` (`name`),
+  KEY `description` (`description`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_gs_teams`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_gs_teams` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `alias` varchar(45) NOT NULL,
+  `thumbnail` varchar(100) NOT NULL,
+  `birthday` datetime NOT NULL,
+  `rankID` int(10) unsigned NOT NULL,
+  `address` varchar(250) NOT NULL,
+  `locationID` int(10) unsigned NOT NULL,
+  `mobile` varchar(20) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `featured` int(11) DEFAULT NULL,
+  `ordering` int(11) DEFAULT NULL,
+  `metakey` varchar(70) DEFAULT NULL,
+  `metadesc` varchar(70) DEFAULT NULL,
+  `cdate` datetime DEFAULT NULL,
+  `mdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  KEY `name` (`name`),
+  KEY `alias` (`alias`),
+  KEY `thumbnail` (`thumbnail`),
+  KEY `birthday` (`birthday`),
+  KEY `address` (`address`),
+  KEY `mobile` (`mobile`),
+  KEY `created_by` (`created_by`),
+  KEY `rankID` (`rankID`),
+  KEY `locationID` (`locationID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_gs_team_register_tour`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_gs_team_register_tour` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `teamID` int(10) unsigned NOT NULL,
+  `tourID` int(10) unsigned NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` datetime NOT NULL,
+  `cdate` datetime DEFAULT NULL,
+  `mdate` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  KEY `teamID` (`teamID`),
+  KEY `created_by` (`created_by`),
+  KEY `tourID` (`tourID`),
+  KEY `modified_by` (`modified_by`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_gs_tournamemants`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_gs_tournamemants` (
+  `int` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `alias` varchar(45) NOT NULL,
+  `parentID` int(10) unsigned NOT NULL,
+  `startDate` datetime NOT NULL,
+  `endDate` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `metakey` varchar(70) DEFAULT NULL,
+  `metadesc` varchar(70) DEFAULT NULL,
+  `cdate` datetime DEFAULT NULL,
+  `mdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`int`),
+  KEY `int` (`int`),
+  KEY `name` (`name`),
+  KEY `alias` (`alias`),
+  KEY `parentID` (`parentID`),
+  KEY `startDate` (`startDate`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_locations`
 --
 
@@ -992,7 +1285,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `username`, `password`, `email`, `groupID`, `leader`, `mobile`, `home_phone`, `first_name`, `last_name`, `address`, `city`, `province_state`, `zip_code`, `country`, `suppliers`, `cdate`, `mdate`, `template_id`, `status`, `lastvisit`, `isBlock`, `activeCode`, `params`) VALUES
-(28, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ducdm87@gmail.com', 2, 1, '0979390590', '', 'dam manh', 'duc', 'trung kinh', 'bhmedia', '', '', 0, '', '0000-00-00 00:00:00', '2015-11-13 20:38:16', 0, 1, '2015-12-22 15:18:13', 0, '', ''),
+(28, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ducdm87@gmail.com', 2, 1, '0979390590', '', 'dam manh', 'duc', 'trung kinh', 'bhmedia', '', '', 0, '', '0000-00-00 00:00:00', '2015-11-13 20:38:16', 0, 1, '2015-12-23 09:00:41', 0, '', ''),
 (31, 'giamdoc', '23db8f175879817eedc5b488d7b9113b', 'giamdoctrungtam@gmail.com', 39, 1, '0979390590', '', 'giamdoc', 'giamdoc', 'ad', '', '', '', 0, '', '2015-11-13 20:39:30', '2015-11-23 22:04:13', 0, 1, '2015-12-05 23:30:35', 0, '', ''),
 (32, 'phogiamdoc', '23db8f175879817eedc5b488d7b9113b', 'phogiamdoc@gmail.com', 39, 0, '', '', 'pho giamdoc', 'pho giamdoc', '', '', '', '', 0, '', '2015-11-13 20:40:08', '2015-11-13 20:40:11', 0, 1, '0000-00-00 00:00:00', 0, '', ''),
 (33, 'leader1', '2b1e3590458a6e6014c0141b8cd13fe4', 'leader1@gmail.com', 31, 1, '', '', 'leader1', 'leader1', '', '', '', '', 0, '', '2015-11-13 20:41:34', '2015-11-13 20:41:34', 0, 1, '0000-00-00 00:00:00', 0, '', ''),
@@ -1140,6 +1433,7 @@ INSERT INTO `tbl_yiisession` (`id`, `expire`, `data`) VALUES
 ('c8n2km0td4p7fobouk8j57q9i1', 1453357639, ''),
 ('eui11o0siplb7qmt3hu9jn2p60', 1452870461, ''),
 ('ivjocvqgdsi77tl08ueum15me2', 1452062677, ''),
+('jsvrnnissjntteo81hoqed14o1', 1453428042, ''),
 ('k7agkgnll9p5eb30fh8jk32456', 1453364293, ''),
 ('lqcu623es9h9vfihgh27ukois3', 1453258403, ''),
 ('q3hbchsm7fvgm7ha5mstv65647', 1452056657, ''),
