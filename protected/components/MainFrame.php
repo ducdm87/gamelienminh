@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,10 +10,12 @@ class MainFrame {
     protected $db;
     protected $user;
     protected $site;
+    protected $subMenuBar = array();
 
     function __construct($db, $user, $site = "backend") {
         $this->db = $db;
-        if(is_array($user)) $user = (object)$user;
+        if (is_array($user))
+            $user = (object) $user;
         $this->user = $user;
         $this->site = $site;
     }
@@ -36,7 +37,7 @@ class MainFrame {
         return $this->user;
     }
 
-    function getUserID() {        
+    function getUserID() {
         return $this->user ? $this->user->id : 0;
     }
 
@@ -49,7 +50,7 @@ class MainFrame {
     }
 
     function isAdmin() {
-        
+
         return $this->user ? ($this->user->backend == 1 ? true : false) : false;
     }
 
@@ -76,7 +77,7 @@ class MainFrame {
         }
         return $toArray;
     }
-    
+
     function convertalias($string) {
         $alias = $string;
 
@@ -149,15 +150,18 @@ class MainFrame {
         }
     }
 
-    public static function sendMail($from, $to, $subject, $content, $reply_to="", $arr_file_attach = array(), $cc = '', $bcc = '') {
-        if (!$from) return false;
+    public static function sendMail($from, $to, $subject, $content, $reply_to = "", $arr_file_attach = array(), $cc = '', $bcc = '') {
+        if (!$from)
+            return false;
         $rn = "\r\n";
         $boundary = md5(rand());
-        $boundary_content = md5(rand());        
+        $boundary_content = md5(rand());
 // Headers        
         $headers = "From: Resume builder <$from>" . $rn;
-        if($reply_to) $headers .= "Reply-To: $from" . $rn;
-        else $headers .= "Reply-To: $reply_to" . $rn;
+        if ($reply_to)
+            $headers .= "Reply-To: $from" . $rn;
+        else
+            $headers .= "Reply-To: $reply_to" . $rn;
         $headers .= 'Mime-Version: 1.0' . $rn;
         $headers .= 'Content-Type: multipart/related;boundary=' . $boundary . $rn;
 
@@ -190,7 +194,8 @@ class MainFrame {
 //if attachement
         if (count($arr_file_attach)) {
             foreach ($arr_file_attach as $key => $file) {
-                echo $key; echo '<hr />';
+                echo $key;
+                echo '<hr />';
                 if ($file != '' && file_exists($file)) {
                     $conAttached = self::prepareAttachment($file);
                     if ($conAttached !== false) {
@@ -205,46 +210,62 @@ class MainFrame {
 // Function mail()
         mail($to, $subject, $msg, $headers);
     }
-    
-    function stdMoney($strin = "", $numberDot = 3)
-    {
+
+    function stdMoney($strin = "", $numberDot = 3) {
         $strin = trim($strin);
-        try{
-            if(strpos($strin, ".") !== false){
-                $strout = number_format($strin,$numberDot);
-            }else if($strin == "" || $strin == "-"){
+        try {
+            if (strpos($strin, ".") !== false) {
+                $strout = number_format($strin, $numberDot);
+            } else if ($strin == "" || $strin == "-") {
                 $strout = $strin;
-            }else{
+            } else {
                 $strout = number_format($strin);
             }
-        }  catch (Exception $e) { 
-            var_dump($strin); die;
-            
+        } catch (Exception $e) {
+            var_dump($strin);
+            die;
         }
         return $strout;
     }
 
-    public static function changState($value = 0, $i, $canChange = true, $prefix = "archive.", $title_prefix = "day")
-    {
+    public static function changState($value = 0, $i, $canChange = true, $prefix = "archive.", $title_prefix = "day") {
         // Array of image, task, title, action
-        $states	= array(
-                0	=> array('unfeatured',	$prefix.'on', 'Toggle to change '.$title_prefix.' to on \' '),
-                1	=> array('featured',	$prefix.'off', 'Toggle to change '.$title_prefix.' to off '),
+        $states = array(
+            0 => array('unfeatured', $prefix . 'on', 'Toggle to change ' . $title_prefix . ' to on \' '),
+            1 => array('featured', $prefix . 'off', 'Toggle to change ' . $title_prefix . ' to off '),
         );
-        $state	= isset($states[$value])?$states[$value]:$states[1];
-        $icon	= $state[0];
+        $state = isset($states[$value]) ? $states[$value] : $states[1];
+        $icon = $state[0];
 
-        if ($canChange)
-        {
-                $html	= '<a href="#" onclick="return listItemTask(\'cb' . $i . '\',\'' . $state[1] . '\')" class="btn btn-micro hasTooltip' . ($value == 1 ? ' active' : '') . '" title="' . $state[2] . '"><i class="icon-'
-                                . $icon . '"></i></a>';
-        }
-        else
-        {
-                $html	= '<a class="btn btn-micro hasTooltip disabled' . ($value == 1 ? ' active' : '') . '" title="' . $state[2] . '"><i class="icon-'
-                                . $icon . '"></i></a>';
+        if ($canChange) {
+            $html = '<a href="#" onclick="return listItemTask(\'cb' . $i . '\',\'' . $state[1] . '\')" class="btn btn-micro hasTooltip' . ($value == 1 ? ' active' : '') . '" title="' . $state[2] . '"><i class="icon-'
+                    . $icon . '"></i></a>';
+        } else {
+            $html = '<a class="btn btn-micro hasTooltip disabled' . ($value == 1 ? ' active' : '') . '" title="' . $state[2] . '"><i class="icon-'
+                    . $icon . '"></i></a>';
         }
 
         return $html;
     }
+
+    function addIconSubMenu($title, $link, $active = false) {
+        if ($active == true)
+            $this->subMenuBar[] = '<a class="btn btn-success active" href="' . $link . '">' . $title . '</a>';
+        else
+            $this->subMenuBar[] = '<a class="btn btn-primary" href="' . $link . '">' . $title . '</a>';
+    }
+
+    function showSubMenu() {
+        if (count($this->subMenuBar)) {
+            ?>
+            <div id="submenu" class="submenu btn-group" style="margin: 5px 0">
+                <?php
+                foreach ($this->subMenuBar as $menu)
+                    echo $menu;
+                ?>
+            </div>
+            <?php
+        }
+    }
+
 }

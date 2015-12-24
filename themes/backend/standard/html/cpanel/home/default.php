@@ -11,70 +11,40 @@
     </div>
 </div><!-- /.row -->
 
+<?php 
+
+function showPanelBox($app = "users", $title = "users", $badget = 12){
+    ?>
+    <div class="col-lg-3 col-xs-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <i class="fa fa-comments fa-5x"></i>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <p class="announcement-heading">
+                            <?php
+                            if($app != null)
+                              echo '<a href="'.Router::buildLink($app).'">'.$title.'</a>';
+                            else echo $title;
+                            ?>
+                        </p>
+                        <p class="announcement-text"><?php echo $badget; ?></p>
+                    </div>
+                </div>
+            </div>              
+        </div>
+    </div>
+    <?php
+}?>
+
 <div class="row">
-    <div class="col-lg-3">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <i class="fa fa-comments fa-5x"></i>
-                    </div>
-                    <div class="col-xs-6 text-right">
-                        <p class="announcement-heading"><a href="<?php echo $this->createUrl('users/'); ?>">Users</a></p>
-                        <p class="announcement-text">12</p>
-                    </div>
-                </div>
-            </div>              
-        </div>
+    <div classs="col-lg-12 col-sm-12">
+        <?php showPanelBox("users","Users",12); ?>
+        <?php showPanelBox("resumes","Resumes manager",56); ?>
+        <?php showPanelBox(null, "Comment",180); ?>
     </div>
-
-    <div class="col-lg-3">
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <i class="fa fa-comments fa-5x"></i>
-                    </div>
-                    <div class="col-xs-6 text-right">
-                        <p class="announcement-heading"><a href="<?php echo $this->createUrl('resumes/'); ?>">Resumes manager</a></p>                        
-                        <p class="announcement-text">56</p>
-                    </div>
-                </div>
-            </div>              
-        </div>
-    </div>
-
-    <div class="col-lg-3">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <i class="fa fa-comments fa-5x"></i>
-                    </div>
-                    <div class="col-xs-6 text-right">
-                        <p class="announcement-heading">Comment</p>
-                        <p class="announcement-text">180</p>
-                    </div>
-                </div>
-            </div>              
-        </div>
-    </div>
-
-    <div class="col-lg-3">
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <i class="fa fa-comments fa-5x"></i>
-                    </div>
-                    <div class="col-xs-6 text-right">
-                        <p class="announcement-heading">Config</p>                    
-                    </div>
-                </div>
-            </div>              
-        </div>
-    </div>
-
 </div><!-- /.row -->
 
 <div class="row">

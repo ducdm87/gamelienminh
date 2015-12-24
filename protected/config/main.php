@@ -11,9 +11,20 @@ define("TBL_SESSION", "{{session}}");
 define("TBL_USERS", "{{users}}");
 define("TBL_USERS_GROUP", "{{users_group}}");
 define("TBL_VIDEOS", "{{videos}}");
+define("TBL_LOCATIONS", "{{locations}}");
 define("TBL_MODULE_POSITION", "{{module_position}}");
 define("TBL_RSM_RESOURCES", "{{rsm_resources}}");
 define("TBL_RSM_RESOURCE_XREF", "{{rsm_resource_xref}}");
+
+define("TBL_GS_GROUPS", "{{gs_groups}}");
+define("TBL_GS_MATCHES", "{{gs_matches}}");
+define("TBL_GS_MATCHE_DETAIL", "{{gs_matche_detail}}");
+define("TBL_GS_PLAYERS", "{{gs_players}}");
+define("TBL_GS_PLAYER_REGISTER_TEAM", "{{gs_player_register_team}}");
+define("TBL_GS_RANKS", "{{gs_ranks}}");
+define("TBL_GS_TEAMS", "{{gs_teams}}");
+define("TBL_GS_TEAM_REGISTER_TOUR", "{{gs_team_register_tour}}");
+define("TBL_GS_TOURNAMEMANTS", "{{gs_tournamemants}}");
 
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',

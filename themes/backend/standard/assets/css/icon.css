@@ -37,10 +37,13 @@ and open the template in the editor.
 .icon-16-themes 		{ background-image: url(/images/jassets/menu/icon-16-themes.png); }
 .icon-16-trash 		{ background-image: url(/images/jassets/menu/icon-16-trash.png); }
 .icon-16-users 			{ background-image: url(/images/jassets/menu/icon-16-user.png); }
-.icon-16-user 			{ background-image: url(/images/icons/userss-16.png); }
+.icon-16-user 			{ background-image: url(/images/icons/users-16.png); }
+.icon-16-teams,
 .icon-16-group 			{ background-image: url(/images/icons/groups-16.png); }
 .icon-16-allow-shield		{ background-image: url(/images/icons/allow-shield-16.png); }
 .icon-16-deny-shield		{ background-image: url(/images/icons/deny-shield-16.png); }
+.icon-16-tournaments		{ background-image: url(/images/icons/tournaments-16.png); }
+.icon-16-locations		{ background-image: url(/images/icons/locations-16.png); }
 
 
 /** toolbar icons **/
@@ -71,9 +74,12 @@ and open the template in the editor.
 .icon-32-preview 		{ background-image: url(/images/jassets/toolbar/icon-32-preview.png); }
 .icon-32-default 		{ background-image: url(/images/jassets/toolbar/icon-32-default.png); }
 .icon-32-user                   { background-image: url(/images/icons/users-32.png); }
+.icon-32-teams,
 .icon-32-group  		{ background-image: url(/images/icons/groups-32.png); }
 .icon-32-allow-shield		{ background-image: url(/images/icons/allow-shield-32.png); }
 .icon-32-deny-shield		{ background-image: url(/images/icons/deny-shield-32.png); }
+.icon-32-tournaments		{ background-image: url(/images/icons/tournaments-32.png); }
+.icon-32-locations		{ background-image: url(/images/icons/locations-32.png); }
 
 /** header icons **/
 .icon-48-generic 		{ background-image: url(/images/jassets/header/icon-48-generic.png); }
@@ -107,6 +113,9 @@ and open the template in the editor.
 .icon-48-systeminfo 	{ background-image: url(/images/jassets/header/icon-48-info.png); }
 .icon-48-massemail 	{ background-image: url(/images/jassets/header/icon-48-massmail.png); }
 .icon-48-user                   { background-image: url(/images/icons/users-48.png); }
+.icon-48-teams,
 .icon-48-group  		{ background-image: url(/images/icons/groups-48.png); }
 .icon-48-allow-shield		{ background-image: url(/images/icons/allow-shield-48.png); }
 .icon-48-deny-shield		{ background-image: url(/images/icons/deny-shield-48.png); }
+.icon-48-tournaments		{ background-image: url(/images/icons/tournaments-48.png); }
+.icon-48-locations		{ background-image: url(/images/icons/locations-48.png); }

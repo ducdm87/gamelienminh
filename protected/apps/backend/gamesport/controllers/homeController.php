@@ -18,6 +18,7 @@ class HomeController extends BackEndController {
     public function actionDisplay() {
         global $mainframe, $user;        
          $this->addBarTitle("Game sport <small>[manager]</small>", "user"); 
+//         setSysConfig("sidebar.display", 0);
         $this->render('default');
     } 
     

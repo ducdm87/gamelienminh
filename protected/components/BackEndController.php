@@ -8,7 +8,7 @@ class BackEndController extends CController {
     public $breadcrumbs = array();
     public static $permission;
     protected $user;
-    protected $iconToolbar = array();
+    protected $iconToolbar = array();    
     protected $barTitle = "";
     protected $classIcon = "";
     public $db = null;
@@ -179,7 +179,7 @@ class BackEndController extends CController {
         }
         Yii::app()->getRequest()->redirect($url, $terminate, $statusCode);
     }
-
+     
     function addIconToolbar($title, $task, $class, $type = 1, $checkForm = 0, $alert = "Please select a item from the list to edit") {
 
         $script = 'submitbutton(\'' . $task . '\',\'' . $type . '\')';
@@ -239,7 +239,7 @@ class BackEndController extends CController {
     function showBarTitle() {
         if ($this->barTitle != "")
             echo '<div class="header icon-48-' . $this->classIcon . '"> ' . $this->barTitle . ' </div>';
-    }
+    } 
 
     function showToolbar() {
         if (count($this->iconToolbar) || $this->barTitle != "") {

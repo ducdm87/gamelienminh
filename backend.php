@@ -15,6 +15,7 @@ defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL', 3);
 require_once($yii);
 $yiiapp = Yii::createWebApplication($config);
 require_once dirname(__FILE__).'/protected/backrouter.php';
+require_once dirname(__FILE__).'/protected/backfunctions.php';
 
 $params = Router::parseLink($_SERVER['REQUEST_URI']);
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php global $hideMenu; ?>
+<?php global $hideMenu, $mainframe; ?>
 <html lang="en">
     <?php echo $this->renderPartial('/block/header'); ?>
     <body>
@@ -9,8 +9,9 @@
             <!-- Sidebar -->
             <?php echo $this->renderPartial('/block/sidebar'); ?>
             <?php YiiMessage::showMessage(); ?>
-            <div id="page-wrapper">
+            <div id="page-wrapper">                
                 <?php $this->showToolbar(); ?>
+                <?php $mainframe->showSubMenu(); ?>
                 <?php echo $content; ?>
             </div><!-- /#page-wrapper -->
 
