@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>wapsite - trang tổng hợp video, tin tức mới nhất</title>
+                <meta name="description" content="wapsite - trang tổng hợp video, tin tức mới nhất" />
+        <meta name="keywords" content="wapsite, tổng hợp video, tin tức mới nhất" />
+        
+        <link rel="stylesheet" type="text/css" href="/themes/wapsite/assets/css/bootstrap.min.css" /> 
+        <link rel="stylesheet" type="text/css" href="/themes/wapsite/assets/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" type="text/css" href="/themes/wapsite/assets/css/color.css" />
+        <link rel="stylesheet" type="text/css" href="/themes/wapsite/assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="/themes/wapsite/assets/css/mobile.css" />
+        <link rel="stylesheet" type="text/css" href="/themes/wapsite/assets/growl/jquery.growl.css" />
+        <link rel="stylesheet" type="text/css" href="/themes/wapsite/assets/gvalidator/css/bootstrapValidator.css" />
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="/themes/wapsite/assets/js/jquery-1.11.1.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="/themes/wapsite/assets/js/bootstrap.min.js"></script>
+        <script src="/themes/wapsite/assets/js/jquery.growl.js"></script>
+        <script src="/themes/wapsite/assets/js/local-script.js"></script>
+        <script src="/themes/wapsite/assets/validator/js/bootstrapValidator.js"></script>
+        <script src="/themes/wapsite/assets/js/form-validator.js"></script>
+        
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          
+        <![endif]-->
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.4";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+        <header>
+            <div class="header-top">
+                <div class="container-fluid">
+                    <ul class="pull-right list-inline">
+                                                    <li><a href="/dang-ky.html">Đăng Kí</a> <span class="span-header-top"> | </span></li>
+                            <li><a href="/dang-ky.html">Đăng Nhập</a> <span class="span-header-top"> </span></li>                            
+                                            </ul>
+                </div>
+            </div>
+            <div class="header">
+                <div class="header-selction">
+                    <div class="container-fluid mobile-container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-mobile" aria-expanded="false">
+                                <span class="lg-social"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                                <img src="/images/icons/logo.png" class="hidden-xs hiden-sm"/>
+                                <div class="text-center ">
+                                    <img src="/images/app/mobile-logo.png" class="hidden-lg hiden-md"/>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="search-container">
+                            <form method="get" action="/app/users/search/search.html">
+                                <div class="search">
+                                    <input type="text" name="q" class="form-control input-sm" maxlength="64" value="" placeholder="Tìm kiếm..." />
+                                    <button type="submit" class="btn btn-warning btn-sm"><i class="fa fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+                                                   
+            <div class="hidden-lg hidden-md">
+                 <div class="collapse navbar-collapse " id="navbar-collapse-mobile">
+                    <div id="nav"> 
+<div class="mod-menu mod-sdf -aasd">
+        <div class="mod-body">
+        <ul class="nav navbar-nav">
+        <li><a class="" href="/">Trang chủ</a></li><li><a class="" href="/tin-tuc">Tin tức</a><ul class="children level-2"><li><a class="" href="/tin-tuc/tin-lam-dep">Tin Làm đẹp</a></li><li><a class="" href="/tin-tuc/tin-tuc-sao-viet">Tin tức - sao việt</a></li></ul></li><li><a class="" href="/hai-huoc">Hài hước</a></li>        </ul>
+    </div>
+</div>
+
+ 
+ 
+</div>
+                </div>
+            </div>
+            <div class="nav-main hidden-sm hidden-xs">
+                <div class="container-nav">
+                    <nav class="navbar navbar-static-top">
+                        <div id="nav"> 
+<div class="mod-menu mod-sdf -aasd">
+        <div class="mod-body">
+        <ul class="nav navbar-nav">
+        <li><a class="" href="/">Trang chủ</a></li><li><a class="" href="/tin-tuc">Tin tức</a><ul class="children level-2"><li><a class="" href="/tin-tuc/tin-lam-dep">Tin Làm đẹp</a></li><li><a class="" href="/tin-tuc/tin-tuc-sao-viet">Tin tức - sao việt</a></li></ul></li><li><a class="" href="/hai-huoc">Hài hước</a></li>        </ul>
+    </div>
+</div>
+
+ 
+ 
+</div>
+                    </nav>
+                </div>
+            </div>  
+            <div class="nav-main hidden-lg hidden-md">
+                <div class="container-nav">
+                    <nav class="navbar navbar-static-top show-mobile">
+                        <ul class="show-nav-main-mobile">
+                            <li><a href="/">TRANG CHỦ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>  
+            <!--</div>-->
+        </header>
+        <div id="wrapper">
+            <div class="section">                 
+                                    <div class="banner hidden-xs hidden-sm"> 
+                        <img src="/images/app/banner.png" alt="Banner" class="img-responsive"/>
+                    </div>
+                                    <div class="dialog-message">
+                        <div class="alert alert-warning alert-dismissible text-center" role="alert">
+                            <p>Qúy khách vui lòng đăng nhập <strong><a href="/app/users/user/login.html">Tại đây</a></strong> hoặc vui lòng chuyển sang truy cập GPRS/3G/DEGE
+                            </p>
+                        </div>
+                    </div>
+                                                <div class="page-content">
+                    <div class="page-home">
+                    <div class="entry-container">
+                <div class="entry-header">
+                    <div class="container-fluid">
+                        <div class="entry-title">
+                            <div class="box-bg-left">
+                                <div class="box-bg-right">
+                                    <div class="box-bg-center">                                
+                                        <a href="/videos/vui-nhon.html">Vui nhộn</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right entry-all">
+                            <a href="/videos/vui-nhon.html">Xem tất cả <i class="fa fa-caret-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="entry-body">                    
+                        <div class="container-fluid">
+                            <div class="col-md-4 no-padding-md">  
+                                    <div href="/videos/vui-nhon/63-mot-khi-anh-da-cung-thi-phai-cung-nhu-the-nay.html" class="thumbnail">
+                                        <div class="img-border-white">
+                                            <img src="" alt="Một khi anh đã cứng thì phải cứng như thế này">
+                                                                                            <a href="/videos/vui-nhon/63-mot-khi-anh-da-cung-thi-phai-cung-nhu-the-nay.html" class="icon-play"></a>
+                                                                                        <div class="caption">
+                                                <a href="/videos/vui-nhon/63-mot-khi-anh-da-cung-thi-phai-cung-nhu-the-nay.html">Một khi anh đã cứng thì phải cứng như thế này</a>
+                                            </div>
+                                        </div> 
+                                    </div>
+                            </div>
+                            <div class="col-md-8 no-padding-md">
+                                <div class="well">
+                                    <div class="row">
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/videos/vui-nhon/62-quy-trinh-ky-xao-dien-anh-trong-cac-phim-noi-tieng.html">
+                                                            <img class="media-object" src="/uploads/images/21/10/2015/duong-ve-nha.jpg" alt="Video Quy trình Kỹ xảo điện ảnh trong các phim nổi tiếng">
+                                                                                                                            <span class="entry_time">3:17</span>
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/videos/vui-nhon/62-quy-trinh-ky-xao-dien-anh-trong-cac-phim-noi-tieng.html">Quy trình Kỹ xảo điện ảnh trong các phim nổi tiếng</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 2</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/videos/vui-nhon/62-quy-trinh-ky-xao-dien-anh-trong-cac-phim-noi-tieng.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/videos/vui-nhon/57-tin-dien-anh-truong-quynh-anh-duoc-tim-tang-xe-hop-sau-khi-lam-lanh.html">
+                                                            <img class="media-object" src="" alt="Video Tin điện ảnh| Trương Quỳnh Anh được Tim tặng xế hộp sau khi làm lành">
+                                                                                                                            <span class="entry_time">1:22</span>
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/videos/vui-nhon/57-tin-dien-anh-truong-quynh-anh-duoc-tim-tang-xe-hop-sau-khi-lam-lanh.html">Tin điện ảnh| Trương Quỳnh Anh được Tim tặng xế hộp sau khi làm lành</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 0</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/videos/vui-nhon/57-tin-dien-anh-truong-quynh-anh-duoc-tim-tang-xe-hop-sau-khi-lam-lanh.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/videos/vui-nhon/54-phim-hai-cac-em-ay-khoe-lam-mai-tho-quang-teo-trung-hieu.html">
+                                                            <img class="media-object" src="" alt="Video [Phim Hài] Các Em Ấy Khỏe Lắm - Mai Thỏ, Quang Tèo, Trung Hiếu">
+                                                                                                                            <span class="entry_time"></span>
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/videos/vui-nhon/54-phim-hai-cac-em-ay-khoe-lam-mai-tho-quang-teo-trung-hieu.html">[Phim Hài] Các Em Ấy Khỏe Lắm - Mai Thỏ, Quang Tèo, Trung Hiếu</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 0</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/videos/vui-nhon/54-phim-hai-cac-em-ay-khoe-lam-mai-tho-quang-teo-trung-hieu.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/videos/vui-nhon/53-phim-hai-ngan-hay-nhat-tuyen-dung-gai-mat-xa.html">
+                                                            <img class="media-object" src="" alt="Video Phim Hài Ngắn Hay Nhất | Tuyển Dụng Gái Mát Xa">
+                                                                                                                            <span class="entry_time">23:55</span>
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/videos/vui-nhon/53-phim-hai-ngan-hay-nhat-tuyen-dung-gai-mat-xa.html">Phim Hài Ngắn Hay Nhất | Tuyển Dụng Gái Mát Xa</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 2</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/videos/vui-nhon/53-phim-hai-ngan-hay-nhat-tuyen-dung-gai-mat-xa.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+                        <div class="entry-container">
+                <div class="entry-header">
+                    <div class="container-fluid">
+                        <div class="entry-title">
+                            <div class="box-bg-left">
+                                <div class="box-bg-right">
+                                    <div class="box-bg-center">                                
+                                        <a href="/videos/phim-con-heo.html">Phim Con Heo</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right entry-all">
+                            <a href="/videos/phim-con-heo.html">Xem tất cả <i class="fa fa-caret-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="entry-body">                    
+                        <div class="container-fluid">
+                            <div class="col-md-4 no-padding-md">  
+                                    <div href="/videos/phim-con-heo/37-ke-o-mien-xa-dan-nguyen.html" class="thumbnail">
+                                        <div class="img-border-white">
+                                            <img src="/uploads/images/26/08/2015/1440468146-1440467967-1%5B1%5D.jpg" alt="Ke O Mien Xa - Dan Nguyen">
+                                                                                            <a href="/videos/phim-con-heo/37-ke-o-mien-xa-dan-nguyen.html" class="icon-play"></a>
+                                                                                        <div class="caption">
+                                                <a href="/videos/phim-con-heo/37-ke-o-mien-xa-dan-nguyen.html">Ke O Mien Xa - Dan Nguyen</a>
+                                            </div>
+                                        </div> 
+                                    </div>
+                            </div>
+                            <div class="col-md-8 no-padding-md">
+                                <div class="well">
+                                    <div class="row">
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/videos/phim-con-heo/36-answer-for-get-month-name-from-date-using-javascript.html">
+                                                            <img class="media-object" src="/uploads/images/26/08/2015/1440302798-1439290851-trang-diem-dv1%5B1%5D.jpg" alt="Video Answer for "Get month name from Date using JavaScript"">
+                                                                                                                            <span class="entry_time">3</span>
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/videos/phim-con-heo/36-answer-for-get-month-name-from-date-using-javascript.html">Answer for "Get month name from Date using JavaScript"</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 3</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/videos/phim-con-heo/36-answer-for-get-month-name-from-date-using-javascript.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+                        <div class="entry-container">
+                <div class="entry-header">
+                    <div class="container-fluid">
+                        <div class="entry-title">
+                            <div class="box-bg-left">
+                                <div class="box-bg-right">
+                                    <div class="box-bg-center">                                
+                                        <a href="/hai-huoc.html">Hài Hước</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right entry-all">
+                            <a href="/hai-huoc.html">Xem tất cả <i class="fa fa-caret-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="entry-body">                    
+                        <div class="container-fluid">
+                            <div class="col-md-4 no-padding-md">  
+                                    <div href="/hai-huoc/61-asia-77-lien-khuc-nhac-vang-hay-nhat-dong-nhac-anh-bang-lam-phuong-disc-1.html" class="thumbnail">
+                                        <div class="img-border-white">
+                                            <img src="" alt="Asia 77 - Liên Khúc Nhạc Vàng Hay Nhất | Dòng Nhạc Anh Bằng - Lam Phương - Disc 1">
+                                                                                            <a href="/hai-huoc/61-asia-77-lien-khuc-nhac-vang-hay-nhat-dong-nhac-anh-bang-lam-phuong-disc-1.html" class="icon-play"></a>
+                                                                                        <div class="caption">
+                                                <a href="/hai-huoc/61-asia-77-lien-khuc-nhac-vang-hay-nhat-dong-nhac-anh-bang-lam-phuong-disc-1.html">Asia 77 - Liên Khúc Nhạc Vàng Hay Nhất | Dòng Nhạc Anh Bằng - Lam Phương - Disc 1</a>
+                                            </div>
+                                        </div> 
+                                    </div>
+                            </div>
+                            <div class="col-md-8 no-padding-md">
+                                <div class="well">
+                                    <div class="row">
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/hai-huoc/60-thuy-nga-115-paris-by-night-116-hay-nhat-2015.html">
+                                                            <img class="media-object" src="" alt="Video Thúy Nga 115 Paris by night 116 - HAY NHẤT 2015">
+                                                                                                                            <span class="entry_time"></span>
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/hai-huoc/60-thuy-nga-115-paris-by-night-116-hay-nhat-2015.html">Thúy Nga 115 Paris by night 116 - HAY NHẤT 2015</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 1</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/hai-huoc/60-thuy-nga-115-paris-by-night-116-hay-nhat-2015.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/hai-huoc/50-hai-mien-bac-mc-lang-anh-quan-quoc-tri.html">
+                                                            <img class="media-object" src="" alt="Video Hài miền Bắc: MC làng, Anh Quân, Quốc Trị">
+                                                                                                                            <span class="entry_time"></span>
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/hai-huoc/50-hai-mien-bac-mc-lang-anh-quan-quoc-tri.html">Hài miền Bắc: MC làng, Anh Quân, Quốc Trị</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 1</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/hai-huoc/50-hai-mien-bac-mc-lang-anh-quan-quoc-tri.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/hai-huoc/40-troubleshooting.html">
+                                                            <img class="media-object" src="/uploads/images/27/08/2015/Big_Buck_Bunny_Trailer_480x270.png" alt="Video Troubleshooting">
+                                                                                                                            <span class="entry_time">3</span>
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/hai-huoc/40-troubleshooting.html">Troubleshooting</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 0</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/hai-huoc/40-troubleshooting.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+                        <div class="entry-container">
+                <div class="entry-header">
+                    <div class="container-fluid">
+                        <div class="entry-title">
+                            <div class="box-bg-left">
+                                <div class="box-bg-right">
+                                    <div class="box-bg-center">                                
+                                        <a href="/videos/the-thao.html">Thể Thao</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right entry-all">
+                            <a href="/videos/the-thao.html">Xem tất cả <i class="fa fa-caret-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="entry-body">                    
+                        <div class="container-fluid">
+                            <div class="col-md-4 no-padding-md">  
+                                    <div href="/videos/the-thao/59-nhung-cap-doi-sao-viet-tai-hop-sau-on-ao-do-vo.html" class="thumbnail">
+                                        <div class="img-border-white">
+                                            <img src="" alt="Những cặp đôi sao Việt tái hợp sau ồn ào đổ vỡ">
+                                                                                            <a href="/videos/the-thao/59-nhung-cap-doi-sao-viet-tai-hop-sau-on-ao-do-vo.html" class="icon-play"></a>
+                                                                                        <div class="caption">
+                                                <a href="/videos/the-thao/59-nhung-cap-doi-sao-viet-tai-hop-sau-on-ao-do-vo.html">Những cặp đôi sao Việt tái hợp sau ồn ào đổ vỡ</a>
+                                            </div>
+                                        </div> 
+                                    </div>
+                            </div>
+                            <div class="col-md-8 no-padding-md">
+                                <div class="well">
+                                    <div class="row">
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/videos/the-thao/58-tin-hot-nhat-trong-ngay-truong-quynh-anh-khoe-chan-dai-sexy-than-mat-ben-pham-van-mach.html">
+                                                            <img class="media-object" src="" alt="Video Tin hot nhất trong ngày - Trương Quỳnh Anh khoe chân dài sexy, thân mật bên Phạm Văn Mách">
+                                                                                                                            <span class="entry_time">1:40</span>
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/videos/the-thao/58-tin-hot-nhat-trong-ngay-truong-quynh-anh-khoe-chan-dai-sexy-than-mat-ben-pham-van-mach.html">Tin hot nhất trong ngày - Trương Quỳnh Anh khoe chân dài sexy, thân mật bên Phạm Văn Mách</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 0</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/videos/the-thao/58-tin-hot-nhat-trong-ngay-truong-quynh-anh-khoe-chan-dai-sexy-than-mat-ben-pham-van-mach.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/videos/the-thao/56-the-thao-24h-thuy-dien-2-3-bo-dao-nha-tong-2-4-luot-ve-play-off-vong-loai-world-cup-2014.html">
+                                                            <img class="media-object" src="" alt="Video [Thể Thao 24h] - Thụy Điển 2 - 3 Bồ Đào Nha Tổng 2 - 4, Lượt về play off vòng loại World Cup 2014">
+                                                                                                                            <span class="entry_time">2:27</span>
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/videos/the-thao/56-the-thao-24h-thuy-dien-2-3-bo-dao-nha-tong-2-4-luot-ve-play-off-vong-loai-world-cup-2014.html">[Thể Thao 24h] - Thụy Điển 2 - 3 Bồ Đào Nha Tổng 2 - 4, Lượt về play off vòng loại World Cup 2014</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 1</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/videos/the-thao/56-the-thao-24h-thuy-dien-2-3-bo-dao-nha-tong-2-4-luot-ve-play-off-vong-loai-world-cup-2014.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/videos/the-thao/55-mon-the-thao-bua-nhat-trong-lich-su.html">
+                                                            <img class="media-object" src="" alt="Video Môn thể thao bựa nhất trong lịch sử =))">
+                                                                                                                            <span class="entry_time"></span>
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/videos/the-thao/55-mon-the-thao-bua-nhat-trong-lich-su.html">Môn thể thao bựa nhất trong lịch sử =))</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 0</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/videos/the-thao/55-mon-the-thao-bua-nhat-trong-lich-su.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/videos/the-thao/45-ronaldinho-messi-the-movie-two-legends-one-story-hd.html">
+                                                            <img class="media-object" src="/uploads/images/28/08/2015/tag-reuters-1-5897-1440697725-7716-8563-1440716111.jpg" alt="Video Ronaldinho & Messi ● THE MOVIE ● Two Legends - One Story || HD">
+                                                                                                                            <span class="entry_time"></span>
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/videos/the-thao/45-ronaldinho-messi-the-movie-two-legends-one-story-hd.html">Ronaldinho & Messi ● THE MOVIE ● Two Legends - One Story || HD</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 4</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/videos/the-thao/45-ronaldinho-messi-the-movie-two-legends-one-story-hd.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+                    <div class="entry-container">
+                <div class="entry-header">
+                    <div class="container-fluid">
+                        <div class="entry-title">
+                            <div class="box-bg-left">
+                                <div class="box-bg-right">
+                                    <div class="box-bg-center">                                
+                                        <a href="/app/articles.html">Tin tức</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right entry-all">
+                            <a href="/app/articles.html">Xem tất cả <i class="fa fa-caret-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="entry-body">                    
+                        <div class="container-fluid">
+                            <div class="col-md-4 no-padding-md">  
+                                    <div href="/tin-tuc/vui-nhon/7-thu-thuat-trang-diem-dep-tu-nhien-cho-nang-ban-ron-a.html" class="thumbnail">
+                                        <div class="img-border-white">
+                                            <img src="/uploads/images/27/10/2015/images.jpg" alt="Thủ thuật trang điểm đẹp tự nhiên cho nàng bận rộn a">
+                                                                                        <div class="caption">
+                                                <a href="/tin-tuc/vui-nhon/7-thu-thuat-trang-diem-dep-tu-nhien-cho-nang-ban-ron-a.html">Thủ thuật trang điểm đẹp tự nhiên cho nàng bận rộn a</a>
+                                            </div>
+                                        </div> 
+                                    </div>
+                            </div>
+                            <div class="col-md-8 no-padding-md">
+                                <div class="well">
+                                    <div class="row">
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/tin-tuc/tin-tuc-sao-viet/11-100-nam-phat-trien-noi-y-duoc-tai-hien-trong-video-3-phut.html">
+                                                            <img class="media-object" src="http://c1.img.video.giaitri.vnecdn.net/web/2015/09/07/hanh-trinh-100-nam-bien-doi-cua-do-lot-1441614622_490x294.jpg" alt="Video 100 năm phát triển nội y được tái hiện trong video 3 phút">
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/tin-tuc/tin-tuc-sao-viet/11-100-nam-phat-trien-noi-y-duoc-tai-hien-trong-video-3-phut.html">100 năm phát triển nội y được tái hiện trong video 3 phút</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 0</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/tin-tuc/tin-tuc-sao-viet/11-100-nam-phat-trien-noi-y-duoc-tai-hien-trong-video-3-phut.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/tin-tuc/tin-lam-dep/10-kinh-hang-hieu-co-chat-luong-the-nao-so-voi-do-binh-dan.html">
+                                                            <img class="media-object" src="http://c1.f9.img.vnecdn.net/2015/09/07/1-3243-1441597147.jpg" alt="Video Kính hàng hiệu có chất lượng thế nào so với đồ bình dân">
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/tin-tuc/tin-lam-dep/10-kinh-hang-hieu-co-chat-luong-the-nao-so-voi-do-binh-dan.html">Kính hàng hiệu có chất lượng thế nào so với đồ bình dân</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 0</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/tin-tuc/tin-lam-dep/10-kinh-hang-hieu-co-chat-luong-the-nao-so-voi-do-binh-dan.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/tin-tuc/tin-tuc-sao-viet/9-ly-nha-ky-moi-hoa-si-15-tuoi-ve-tranh-cho-show-thoi-trang.html">
+                                                            <img class="media-object" src="http://img.f9.giaitri.vnecdn.net/2015/10/28/DAIN7458-3324-1445997123.jpg" alt="Video  Lý Nhã Kỳ mời họa sĩ 15 tuổi vẽ tranh cho show thời trang">
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/tin-tuc/tin-tuc-sao-viet/9-ly-nha-ky-moi-hoa-si-15-tuoi-ve-tranh-cho-show-thoi-trang.html"> Lý Nhã Kỳ mời họa sĩ 15 tuổi vẽ tranh cho show thời trang</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 0</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/tin-tuc/tin-tuc-sao-viet/9-ly-nha-ky-moi-hoa-si-15-tuoi-ve-tranh-cho-show-thoi-trang.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                                    <div class="col-md-6 row-box">
+                                                <div class="media item">
+                                                    <div class="media-left entry-thunb">
+                                                        <a href="/tin-tuc/tin-lam-dep/4-9x-co-vong-ba-101-cm-gay-chu-y-tai-hoa-hau-hoan-vu-vn.html">
+                                                            <img class="media-object" src="/uploads/images/26/08/2015/1440562941-1440562471-1378353774-ts%5B1%5D.jpg" alt="Video 9x có vòng ba 101 cm gây chú ý tại Hoa hậu Hoàn vũ VN">
+                                                                                                                    </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <span class="media-heading"><a href="/tin-tuc/tin-lam-dep/4-9x-co-vong-ba-101-cm-gay-chu-y-tai-hoa-hau-hoan-vu-vn.html">9x có vòng ba 101 cm gây chú ý tại Hoa hậu Hoàn vũ VN</a></span>
+                                                        <span class="entry-control">
+                                                            <span><i class="fa fa-thumbs-o-up"></i> 0</span>
+                                                            <span><i class="fa fa-play-circle-o"></i> 0</span>
+                                                        </span>
+                                                        <div class="entry-social hidden-lg hidden-md">
+                                                            <div class="fb-like" data-href="/tin-tuc/tin-lam-dep/4-9x-co-vong-ba-101-cm-gay-chu-y-tai-hoa-hau-hoan-vu-vn.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             
+                                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+    </div>
+       
+                     
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container">
+                <div class="footer-bellow text-center">
+                    <span>Công ty cổ phần Bạch Minh (Vega Corporation)</span>
+                    <br/>
+                    <span>Phòng 804 tầng 8 Tòa nhà V.E.T số 98 Hoàng Quốc Việt, Nghĩa Đô, Cầu Giấy, Hà Nội</span>
+                    <br/>
+                    <span>DKKD số 0101380911 do SKHDT Hà Nội cấp 20/6/2003</span>
+                    <br/>
+                    <span>Email: info@vega.com.vn Tel: 04.37554190.</span>
+                    <br/>
+                    <span>Người chịu trách nhiệm nội dung: Bà Nguyễn Thu Dung</span>
+                </div>
+            </div>
+        </footer>        
+    </body>
+</html>

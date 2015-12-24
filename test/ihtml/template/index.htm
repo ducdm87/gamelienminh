@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Menu manager</title>
+    <!-- Bootstrap core CSS -->
+    <link href="styles/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="styles/main.css" rel="stylesheet">
+    <link href="styles/icon.css" rel="stylesheet">
+    <link href="styles/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/font-awesome.css">
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/imagePreview.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery_002.js"></script>
+
+    <script src="js/ckfinder.js" type="text/javascript"></script>
+
+    <script src="js/sb-admin.js"></script>
+
+    <!-- Page Specific Plugins -->    
+    <script src="js/jquery.js"></script>
+    <script src="js/tables.js"></script>
+</head>    
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://dev.gamesport.com/backend/">Back end</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="dropdown ">
+                        <a href="http://dev.gamesport.com/backend/" class="dropdown-toggle parent" data-toggle="dropdown">
+                            <i class="fa fa-dashboard"></i> System<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="">
+                                <a href="http://dev.gamesport.com/backend/?app=cpanel"> <i class="fa fa-folder"></i> Dashboard</a>
+                            </li>                         <li class="">
+                                <a href="http://dev.gamesport.com/backend/?app=cpanel&amp;view=sysconfig"> <i class="fa fa-folder"></i> Config</a>
+                            </li>                     </ul>
+                    </li> 
+
+                    <li class="">
+                        <a href="http://dev.gamesport.com/backend/?app=users"> <i class="fa fa-folder"></i> Users</a>
+                    </li>  
+                    <li class="active current">
+                        <a href="http://dev.gamesport.com/backend/?app=menus&amp;view=menutype"> <i class="fa fa-file fa-spin"></i> Menus</a>
+                    </li>                  
+
+                    <li class="dropdown ">
+                        <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
+                            <i class="fa fa-caret-square-o-down"></i> Applications 
+                            <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="">
+                                <a href="http://dev.gamesport.com/backend/?app=categories"> <i class="fa fa-folder"></i> Categories</a>
+                            </li>                         <li class="">
+                                <a href="http://dev.gamesport.com/backend/?app=articles"> <i class="fa fa-file"></i> Articles</a>
+                            </li>                         <li class="">
+                                <a href="http://dev.gamesport.com/backend/?app=videos"> <i class="fa fa-film"></i> Videos</a>
+                            </li>                     </ul>
+                    </li> 
+
+                    <li class="">
+                        <a href="http://dev.gamesport.com/backend/?app=modules"> <i class="fa fa-folder"></i> Modules</a>
+                    </li>                 <li class="">
+                        <a href="http://dev.gamesport.com/backend/?app=themes"> <i class="fa fa-folder"></i> Themes</a>
+                    </li>                                     <li class="dropdown ">            
+                        <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
+                            <i class="fa fa-caret-square-o-down"></i> Installer 
+                            <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="">
+                                <a href="http://dev.gamesport.com/backend/?app=installer"> <i class="fa fa-folder"></i> Install</a>
+                            </li>                                 <li class="">
+                                <a href="http://dev.gamesport.com/backend/?app=installer&amp;view=manager"> <i class="fa fa-folder"></i> Manager</a>
+                            </li>                             </ul> 
+                    </li>                    
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                    <li>
+                        <a href="http://dev.gamesport.com/" class="dropdown-toggle" target="_blank"> Time server: 03:00:41 23/12/2015 </a>
+                    </li>
+                    <li>
+                        <a href="http://dev.gamesport.com/" class="dropdown-toggle" target="_blank"> Visit site</a>
+                    </li>
+                    <li class="dropdown messages-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">7</span> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">7 New Messages</li>
+                            <li class="message-preview">
+                                <a href="#">
+                                    <span class="avatar"><img src="images/50x50.htm"></span>
+                                    <span class="name">John Smith:</span>
+                                    <span class="message">Hey there, I wanted to ask you something...</span>
+                                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                                </a>
+                            </li>                               
+                            <li class="divider"></li>
+                            <li><a href="#">View Inbox <span class="badge">7</span></a></li>
+                        </ul>                
+                    </li>
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> admin <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://dev.gamesport.com/backend/?app=users&amp;view=user&amp;layout=progile"><i class="fa fa-user"></i> Profile</a></li>                
+                            <li class="divider"></li>                    
+                            <li><a href="http://dev.gamesport.com/backend/?app=users&amp;view=user&amp;layout=logout"> <i class="fa fa-power-off"></i> Logout</a></li>                
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div id="toolbar-box">
+                <div class="t"><div class="t"><div class="t"></div></div> </div>
+                <div class="m">
+                    <div id="toolbar" class="toolbar">
+                        <table class="toolbar"><tbody>
+                                <tr>
+                                    <td id="toolbar-new" class="button">
+                                        <a class="toolbar" onclick="javascript:submitbutton('/backend/?app=menus&amp;view=menutype&amp;layout=new', '1')" href="#">
+                                            <span title="Creat" class="icon-32-new">
+                                            </span>
+                                            Creat
+                                        </a>
+                                    </td> <td id="toolbar-edit" class="button">
+                                        <a class="toolbar" onclick="javascript:if (document.adminForm.boxchecked.value == 0) {
+                                                    alert('Please select a item from the list to edit');
+                                                } else {
+                                                    submitbutton('/backend/?app=menus&amp;view=menutype&amp;layout=edit', '1')
+                                                }" href="#">
+                                            <span title="Edit" class="icon-32-edit">
+                                            </span>
+                                            Edit
+                                        </a>
+                                    </td> <td id="toolbar-publish" class="button">
+                                        <a class="toolbar" onclick="javascript:submitbutton('/backend/?app=menus&amp;view=menutype&amp;layout=publish', '1')" href="#">
+                                            <span title="Publish" class="icon-32-publish">
+                                            </span>
+                                            Publish
+                                        </a>
+                                    </td> <td id="toolbar-unpublish" class="button">
+                                        <a class="toolbar" onclick="javascript:submitbutton('/backend/?app=menus&amp;view=menutype&amp;layout=unpublish', '1')" href="#">
+                                            <span title="Unpublish" class="icon-32-unpublish">
+                                            </span>
+                                            Unpublish
+                                        </a>
+                                    </td> <td id="toolbar-trash" class="button">
+                                        <a class="toolbar" onclick="javascript:if (document.adminForm.boxchecked.value == 0) {
+                                                    alert('Please select a item from the list to Remove');
+                                                } else {
+                                                    submitbutton('/backend/?app=menus&amp;view=menutype&amp;layout=remove', '1')
+                                                }" href="#">
+                                            <span title="Delete" class="icon-32-trash">
+                                            </span>
+                                            Delete
+                                        </a>
+                                    </td>                        </tr>
+                            </tbody></table>
+                    </div>
+                    <div class="header icon-48-user"> Menu type <small>[manager]</small> </div>                    <div class="clr"></div>
+                </div>
+                <div class="b"><div class="b"> <div class="b"></div> </div> </div>
+            </div>
+            <form action="/backend/?app=menus&amp;view=menutype" method="post" name="adminForm">
+
+                <div class="row">
+                    <div class="panel">            
+                        <div class="panel-body">
+                            <div class="row">  
+                                <div class="col-lg-7">
+                                    <input name="filter_search" type="text"> 
+                                    <button type="submit" class="btn btn-primary btn-xs">Go</button>
+                                    <button type="reset" class="btn btn-primary btn-xs">Reset</button>
+                                </div>
+                                <div class="col-lg-5">
+
+                                </div>
+                            </div>
+                            <br>            
+                            <table class="table table-bordered table-hover table-striped table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th class="header" width="2%"># </th>
+                                        <th class="header" width="3%">
+                                            <input name="toggle" value="" onclick="checkAll(3);" type="checkbox"> 
+                                        </th>
+                                        <th class="header" width="40%">Name</th>
+                                        <th class="header" width="5%">Items</th>
+                                        <th class="header" align="center" width="5%">Status</th>
+                                        <th class="header" width="30%">Description</th>
+                                        <th class="header" width="15%">Modified</th>
+                                        <th class="header" width="5%">ID</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>1</td>                                        
+                                        <td>
+                                            <input id="cb0" name="cid[]" value="6" onclick="isChecked(this.checked);" type="checkbox">                                            
+                                        </td>
+                                        <td>
+                                            <a href="http://dev.gamesport.com/backend/?app=menus&amp;view=menutype&amp;layout=edit&amp;cid=6">hidden menu</a>
+                                        </td>
+                                        <td>        <span class="editlinktip hasTip">
+                                                <a href="http://dev.gamesport.com/backend/?app=menus&amp;view=menuitem&amp;menu=6">
+                                                    <img alt="Items" src="js/mainmenu.png" border="0" height="16" width="16">
+                                                </a>
+                                            </span>
+                                        </td>                                        
+                                        <td align="center">        <span class="editlinktip hasTip"><a onclick="return listItemTask('cb0', 'hidden')" href="javascript:void(0);">
+                                                    <img alt="Publish" src="js/publish_g.png" border="0" height="16" width="16"></a></span>
+                                        </td>
+                                        <td>menu </td>
+                                        <td>2015-11-13 03:33:21</td>
+                                        <td>6</td>
+                                    </tr>                                    
+                                    <tr>
+                                        <td>2</td>                                        
+                                        <td>
+                                            <input id="cb1" name="cid[]" value="3" onclick="isChecked(this.checked);" type="checkbox">                                            
+                                        </td>
+                                        <td>
+                                            <a href="http://dev.gamesport.com/backend/?app=menus&amp;view=menutype&amp;layout=edit&amp;cid=3">User menu</a>
+                                        </td>
+                                        <td>        <span class="editlinktip hasTip">
+                                                <a href="http://dev.gamesport.com/backend/?app=menus&amp;view=menuitem&amp;menu=3">
+                                                    <img alt="Items" src="js/mainmenu.png" border="0" height="16" width="16">
+                                                </a>
+                                            </span>
+                                        </td>                                        
+                                        <td align="center">        <span class="editlinktip hasTip"><a onclick="return listItemTask('cb1', 'hidden')" href="javascript:void(0);">
+                                                    <img alt="Publish" src="js/publish_g.png" border="0" height="16" width="16"></a></span>
+                                        </td>
+                                        <td></td>
+                                        <td>2015-10-12 09:36:00</td>
+                                        <td>3</td>
+                                    </tr>                                    
+                                    <tr>
+                                        <td>3</td>                                        
+                                        <td>
+                                            <input id="cb2" name="cid[]" value="1" onclick="isChecked(this.checked);" type="checkbox">                                            
+                                        </td>
+                                        <td>
+                                            <a href="http://dev.gamesport.com/backend/?app=menus&amp;view=menutype&amp;layout=edit&amp;cid=1">main menu</a>
+                                        </td>
+                                        <td>        <span class="editlinktip hasTip">
+                                                <a href="http://dev.gamesport.com/backend/?app=menus&amp;view=menuitem&amp;menu=1">
+                                                    <img alt="Items" src="js/mainmenu.png" border="0" height="16" width="16">
+                                                </a>
+                                            </span>
+                                        </td>                                        
+                                        <td align="center">        <span class="editlinktip hasTip"><a onclick="return listItemTask('cb2', 'hidden')" href="javascript:void(0);">
+                                                    <img alt="Publish" src="js/publish_g.png" border="0" height="16" width="16"></a></span>
+                                        </td>
+                                        <td>trang chu</td>
+                                        <td>2015-10-12 09:23:01</td>
+                                        <td>1</td>
+                                    </tr>                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <input name="boxchecked" value="0" type="hidden">
+                    <input name="filter_order" value="" type="hidden">
+                    <input name="limitstart" value="" type="hidden">
+                    <input name="task" value="" type="hidden">
+                    <input name="filter_order_Dir" value="" type="hidden">
+                </div></form><!-- /#page-wrapper -->
+        </div><!-- /#wrapper -->
+        <div id="sbox-overlay" style="z-index: 65555; display: none; position: fixed; top: 0px; left: 0px; visibility: visible; opacity: 0.7; width: 100%; height: 100%;" class=""></div>
+        <div id="sbox-window" style="display: none; height: 600px; left: 50%;  margin-left: -500px;  margin-top: -300px;     position: fixed;     top: 50%;     width: 1070px;     z-index: 65557;">    
+            <a id="sbox-btn-close" href="#"></a>    
+            <div id="sbox-content"></div>
+            <div id="control-slide">
+                <div class="buttun control-back" style="left: -66px; z-index: 9999;">&nbsp;</div>
+                <div class="buttun control-next" style="right: -66px; z-index: 9999;">&nbsp;</div>
+            </div>
+        </div>
+    </div><!--end wapper-->
+</body></html>
