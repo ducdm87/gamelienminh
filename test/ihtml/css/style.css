@@ -39,21 +39,16 @@
 .td-boder-lk .end-item-tem{margin-left: -12px;padding-top: 26px;width: 0;}
 .td-boder-lk .end-item-tem .boder-gom{border-bottom: 1px solid #fff;border-right: 1px solid #fff;border-top: 1px solid #fff;margin-left: -20px;padding: 34px 0;}
 .td-boder-lk .ke-ngang-end{border-top: 1px solid #fff;margin: -36px -6px 6px -13px;}
-.table-round-3 tr{}
+
 .table-round-3 .main-item{margin: 103px 0 34px -22px;}
 .table-round-3 .head-item-team{margin: 102px 0 106px;}
-
 .td-boder-lk-3 .end-item-tem{padding-top: 59px;}
 .td-boder-lk-3 .end-item-tem .boder-gom{padding: 67px 0;}
 .td-boder-lk-3 .ke-ngang-end{margin: -67px -6px 6px -13px;}
 
-.table-round-4 tr{}
 .table-round-4 .main-item{margin: 234px 0 34px -22px;}
 .table-round-4 .head-item-team{margin: 233px 0 106px;}
-
 .td-boder-lk-4 .end-item-tem{padding-top: 128px;}
 .td-boder-lk-4 .end-item-tem .boder-gom{padding: 132px  0;}
 .td-boder-lk-4 .ke-ngang-end{margin: -134px -6px 6px -13px;}
-
-
-
+.caret{ border-top: 4px solid #888888; }
