@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2015 at 08:36 AM
+-- Generation Time: Dec 25, 2015 at 03:35 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -786,7 +786,14 @@ CREATE TABLE IF NOT EXISTS `tbl_gs_teams` (
   KEY `created_by` (`created_by`),
   KEY `rankID` (`rankID`),
   KEY `locationID` (`locationID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `tbl_gs_teams`
+--
+
+INSERT INTO `tbl_gs_teams` (`id`, `name`, `alias`, `thumbnail`, `birthday`, `rankID`, `address`, `locationID`, `mobile`, `created_by`, `modified_by`, `status`, `introtext`, `fulltext`, `featured`, `ordering`, `metakey`, `metadesc`, `cdate`, `mdate`) VALUES
+(1, 'ha noi', 'ha-noi', '/uploads/images/gamesport/thumbnails/teams/map-location-hi.png', '0000-00-00 00:00:00', 0, '', 4, '', 0, '0000-00-00 00:00:00', 0, '', '', 0, 0, '', '', '2015-12-24 11:03:44', '2015-12-24 11:03:44');
 
 -- --------------------------------------------------------
 
@@ -809,7 +816,14 @@ CREATE TABLE IF NOT EXISTS `tbl_gs_team_register_tour` (
   KEY `created_by` (`created_by`),
   KEY `tourID` (`tourID`),
   KEY `modified_by` (`modified_by`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `tbl_gs_team_register_tour`
+--
+
+INSERT INTO `tbl_gs_team_register_tour` (`id`, `teamID`, `tourID`, `created_by`, `modified_by`, `cdate`, `mdate`, `status`) VALUES
+(1, 1, 3, 0, '0000-00-00 00:00:00', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -832,6 +846,7 @@ CREATE TABLE IF NOT EXISTS `tbl_gs_tournamemants` (
   `introtext` text NOT NULL,
   `fulltext` mediumtext NOT NULL,
   `status` int(11) DEFAULT NULL,
+  `state` tinyint(4) NOT NULL,
   `metakey` varchar(70) DEFAULT NULL,
   `metadesc` varchar(70) DEFAULT NULL,
   `cdate` datetime DEFAULT NULL,
@@ -848,11 +863,11 @@ CREATE TABLE IF NOT EXISTS `tbl_gs_tournamemants` (
 -- Dumping data for table `tbl_gs_tournamemants`
 --
 
-INSERT INTO `tbl_gs_tournamemants` (`id`, `name`, `alias`, `parentID`, `ordering`, `lft`, `rgt`, `level`, `thumbnail`, `startDate`, `endDate`, `introtext`, `fulltext`, `status`, `metakey`, `metadesc`, `cdate`, `mdate`) VALUES
-(1, 'ROOT', '', 0, 0, 1, 8, 0, '', '0000-00-00 00:00:00', NULL, '', '', 1, NULL, NULL, NULL, NULL),
-(2, 'Giải AOE việt trung', 'giai-aoe-viet-trung', 1, 2, 2, 7, 1, '', '2015-10-28 05:18:13', '2016-01-28 05:18:13', 'aoe thường niên việt nam trung quốc', '<p>\r\n	mỗi năm 1 lần ...</p>\r\n', 1, 'aoe, việt nam, trung quốc', 'aoe thường niên việt nam trung quốc', '2015-12-23 09:43:58', '2015-12-23 09:47:58'),
-(3, 'Giải AOE việt trung 2015', 'giai-aoe-viet-trung-2015', 2, 3, 3, 4, 2, '', '2015-07-28 05:18:13', '2015-08-28 05:18:13', 'Giải AOE việt trung 2015', '<p>\r\n	&nbsp;</p>\r\n<p>\r\n	Giải AOE việt trung 2015</p>\r\n<p>\r\n	Giải AOE việt trung 2015</p>\r\n<p>\r\n	Giải AOE việt trung 2015</p>\r\n<p>\r\n	Giải AOE việt trung 2015</p>\r\n<p>\r\n	Giải AOE việt trung 2015</p>\r\n<p>\r\n	&nbsp;</p>\r\n', 1, 'AOE việt trung, AOE việt trung 2015', 'Giải AOE việt trung 2015', '2015-07-28 05:18:13', '2015-12-23 09:50:29'),
-(4, 'Giải AOE việt trung 2016', 'giai-aoe-viet-trung-2016', 2, 4, 5, 6, 2, '', '2016-07-28 05:18:13', '2016-08-28 05:18:13', 'Giải AOE việt trung 2016', '<p>\r\n	&nbsp;</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	Giải AOE việt trung 2016</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	Giải AOE việt trung 2016</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	Giải AOE việt trung 2016</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	Giải AOE việt trung 2016</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	Giải AOE việt trung 2016</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	&nbsp;</p>\r\n', 1, 'AOE việt trung, AOE việt trung 2016', 'Giải AOE việt trung 2016', '2016-12-23 09:50:47', '2015-12-23 09:51:15');
+INSERT INTO `tbl_gs_tournamemants` (`id`, `name`, `alias`, `parentID`, `ordering`, `lft`, `rgt`, `level`, `thumbnail`, `startDate`, `endDate`, `introtext`, `fulltext`, `status`, `state`, `metakey`, `metadesc`, `cdate`, `mdate`) VALUES
+(1, 'ROOT', '', 0, 0, 1, 8, 0, '', '0000-00-00 00:00:00', NULL, '', '', 1, 0, NULL, NULL, NULL, NULL),
+(2, 'Giải AOE việt trung', 'giai-aoe-viet-trung', 1, 2, 2, 7, 1, '', '2015-10-28 05:18:13', '2016-01-28 05:18:13', 'aoe thường niên việt nam trung quốc', '<p>\r\n	mỗi năm 1 lần ...</p>\r\n', 1, 0, 'aoe, việt nam, trung quốc', 'aoe thường niên việt nam trung quốc', '2015-12-23 09:43:58', '2015-12-23 09:47:58'),
+(3, 'Giải AOE việt trung 2015', 'giai-aoe-viet-trung-2015', 2, 3, 3, 4, 2, '/uploads/images/gamesport/thumbnails/tournaments/aoe-vn-trung.jpg', '2015-07-28 05:18:13', '2015-08-28 05:18:13', 'Giải AOE việt trung 2015', '<p>\r\n	&nbsp;</p>\r\n<p>\r\n	Giải AOE việt trung 2015</p>\r\n<p>\r\n	Giải AOE việt trung 2015</p>\r\n<p>\r\n	Giải AOE việt trung 2015</p>\r\n<p>\r\n	Giải AOE việt trung 2015</p>\r\n<p>\r\n	Giải AOE việt trung 2015</p>\r\n<p>\r\n	&nbsp;</p>\r\n', 1, 0, 'AOE việt trung, AOE việt trung 2015', 'Giải AOE việt trung 2015', '2015-07-28 05:18:13', '2015-12-24 11:00:39'),
+(4, 'Giải AOE việt trung 2016', 'giai-aoe-viet-trung-2016', 2, 4, 5, 6, 2, '', '2016-07-28 05:18:13', '2016-08-28 05:18:13', 'Giải AOE việt trung 2016', '<p>\r\n	&nbsp;</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	Giải AOE việt trung 2016</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	Giải AOE việt trung 2016</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	Giải AOE việt trung 2016</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	Giải AOE việt trung 2016</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	Giải AOE việt trung 2016</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	&nbsp;</p>\r\n', 1, 0, 'AOE việt trung, AOE việt trung 2016', 'Giải AOE việt trung 2016', '2016-12-23 09:50:47', '2015-12-23 09:51:15');
 
 -- --------------------------------------------------------
 
@@ -863,7 +878,7 @@ INSERT INTO `tbl_gs_tournamemants` (`id`, `name`, `alias`, `parentID`, `ordering
 CREATE TABLE IF NOT EXISTS `tbl_locations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `parentID` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
   `ordering` int(11) NOT NULL,
   `lft` int(11) NOT NULL,
@@ -884,7 +899,7 @@ CREATE TABLE IF NOT EXISTS `tbl_locations` (
 -- Dumping data for table `tbl_locations`
 --
 
-INSERT INTO `tbl_locations` (`id`, `parentID`, `title`, `alias`, `ordering`, `lft`, `rgt`, `level`, `latitude`, `longitude`, `spn`, `type`, `cdate`, `mdate`, `status`) VALUES
+INSERT INTO `tbl_locations` (`id`, `parentID`, `name`, `alias`, `ordering`, `lft`, `rgt`, `level`, `latitude`, `longitude`, `spn`, `type`, `cdate`, `mdate`, `status`) VALUES
 (21, 1, 'Hồ Chí Minh', 'ho-chi-minh', 22, 6, 7, 1, 10.79955, 106.679951, '0.124133,0.152393', 1, '2015-07-07 16:31:14', '2015-12-23 07:14:49', 1),
 (22, 1, 'Hà Nội', 'ha-noi', 21, 2, 5, 1, 21.021899, 105.837747, '0.181734,0.338173', 1, '2015-07-07 16:31:13', '2015-12-23 07:14:55', 1),
 (23, 5, 'Đà nẵng', 'da-nang', 3, 113, 114, 2, 16.051748, 108.201991, '0.075798,0.048266', 1, '2015-07-07 16:31:13', '2015-07-15 08:20:36', 1),
@@ -1389,7 +1404,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `username`, `password`, `email`, `groupID`, `leader`, `mobile`, `home_phone`, `first_name`, `last_name`, `address`, `city`, `province_state`, `zip_code`, `country`, `suppliers`, `cdate`, `mdate`, `template_id`, `status`, `lastvisit`, `isBlock`, `activeCode`, `params`) VALUES
-(28, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ducdm87@gmail.com', 2, 1, '0979390590', '', 'dam manh', 'duc', 'trung kinh', 'bhmedia', '', '', 0, '', '0000-00-00 00:00:00', '2015-11-13 20:38:16', 0, 1, '2015-12-24 14:31:22', 0, '', ''),
+(28, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ducdm87@gmail.com', 2, 1, '0979390590', '', 'dam manh', 'duc', 'trung kinh', 'bhmedia', '', '', 0, '', '0000-00-00 00:00:00', '2015-11-13 20:38:16', 0, 1, '2015-12-25 09:33:38', 0, '', ''),
 (31, 'giamdoc', '23db8f175879817eedc5b488d7b9113b', 'giamdoctrungtam@gmail.com', 39, 1, '0979390590', '', 'giamdoc', 'giamdoc', 'ad', '', '', '', 0, '', '2015-11-13 20:39:30', '2015-11-23 22:04:13', 0, 1, '2015-12-05 23:30:35', 0, '', ''),
 (32, 'phogiamdoc', '23db8f175879817eedc5b488d7b9113b', 'phogiamdoc@gmail.com', 39, 0, '', '', 'pho giamdoc', 'pho giamdoc', '', '', '', '', 0, '', '2015-11-13 20:40:08', '2015-11-13 20:40:11', 0, 1, '0000-00-00 00:00:00', 0, '', ''),
 (33, 'leader1', '2b1e3590458a6e6014c0141b8cd13fe4', 'leader1@gmail.com', 31, 1, '', '', 'leader1', 'leader1', '', '', '', '', 0, '', '2015-11-13 20:41:34', '2015-11-13 20:41:34', 0, 1, '0000-00-00 00:00:00', 0, '', ''),
@@ -1537,7 +1552,10 @@ INSERT INTO `tbl_yiisession` (`id`, `expire`, `data`) VALUES
 ('0rbr21eertaj04dtgfg16s2910', 1452877658, 0x5969692e4343617074636861416374696f6e2e61353763633635382e686f6d652e636170746368617c733a363a227269636a7a69223b5969692e4343617074636861416374696f6e2e61353763633635382e686f6d652e63617074636861636f756e747c693a313b),
 ('2dosh7kcub0bl3hpg310huv9m5', 1453440417, ''),
 ('2smjvcers9il3cplutfbcnos21', 1453453538, ''),
-('44ihsepr5a6kngh7kvdgj3eb12', 1453534282, ''),
+('39vgesobrrr9smt07lu6j4dtd7', 1453542397, ''),
+('44ihsepr5a6kngh7kvdgj3eb12', 1453535594, ''),
+('a1e588qcm3tkhjlul00gggmfh2', 1453535600, ''),
+('b0i5458584fubpai835gdlbbl1', 1453602818, ''),
 ('c3vcil8e981sad9gm9omvvhbs2', 1453438336, ''),
 ('c6jvllnm84oe1kbivr9d5bdp32', 1452868350, ''),
 ('c8n2km0td4p7fobouk8j57q9i1', 1453357639, ''),
@@ -1550,6 +1568,7 @@ INSERT INTO `tbl_yiisession` (`id`, `expire`, `data`) VALUES
 ('rh9s62sn8q4v1e6dko2ogg82j2', 1452068221, ''),
 ('rpvh3s61kv1prsm47i9va5map0', 1453443262, ''),
 ('t32lcgjeu1hifvjv6206fde914', 1453440871, ''),
+('tsjcv701v4gjb781h8u1k737e2', 1453543424, ''),
 ('vtpcue37gqr8h0uqs6dt6crhr2', 1452049600, '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
