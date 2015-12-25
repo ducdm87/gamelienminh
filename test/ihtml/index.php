@@ -131,6 +131,12 @@
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav><!--Sidebar top left-->
+        
+        
+
+        
+
+        
         <div id="page-wrapper">
             <div id="toolbar-box">
                 <div class="t"><div class="t"><div class="t"></div></div> </div>
@@ -287,7 +293,7 @@
                                                                                                                     </a>
                                                                                                                     <ul class="dropdown-menu">
                                                                                                                         <li>
-                                                                                                                        <a href="#" data-toggle="modal" data-href="#">Match Details</a>
+                                                                                                                        <a href="#" data-toggle="modal" data-target="#myModal1">Match Details</a>
                                                                                                                         </li>
                                                                                                                     </ul>
                                                                                                                 </div>
@@ -341,7 +347,7 @@
                                                                                                                     </a>
                                                                                                                     <ul class="dropdown-menu enabled">
                                                                                                                         <li>
-                                                                                                                        <a href="#" data-toggle="modal" data-href="#">Match Details</a>
+                                                                                                                        <a href="#" data-toggle="modal" data-target="#myModal1">Match Details</a>
                                                                                                                         </li>
                                                                                                                     </ul>
                                                                                                                 </div>
@@ -391,7 +397,7 @@
                                                                                                                     </a>
                                                                                                                     <ul class="dropdown-menu enabled">
                                                                                                                         <li>
-                                                                                                                        <a href="#" data-toggle="modal" data-href="#">Match Details</a>
+                                                                                                                        <a href="#" data-toggle="modal" data-target="#myModal1">Match Details</a>
                                                                                                                         </li>
                                                                                                                     </ul>
                                                                                                                 </div>
@@ -439,7 +445,7 @@
                                                                                                                     </a>
                                                                                                                     <ul class="dropdown-menu enabled">
                                                                                                                         <li>
-                                                                                                                        <a href="#" data-toggle="modal" data-href="#">Match Details</a>
+                                                                                                                        <a href="#" data-toggle="modal" data-target="#myModal1">Match Details</a>
                                                                                                                         </li>
                                                                                                                     </ul>
                                                                                                                 </div>
@@ -501,6 +507,51 @@
                         </div>
                     </div>
                 </div>
+                
+                <!--hien thi model-->
+                <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content detail-matches">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Match Details</h4>
+                        </div>
+                        <div class="modal-body">
+                          <div class="matchup">
+                            <div class="participant">
+                                <div class="contents">
+                                    <img class="portrait" width="52" height="52" src="//kxcdn.challonge.com/assets/gravatar-abc23b5a7783ffd0211076b4f0146082.png" alt="">
+                                    <div class="name"> team 1 </div>
+                                </div>
+                                <div class="footer-team"><span>-</span></div>
+                            </div>
+                            <div class="versus"> vs </div>
+                            <div class="participant">
+                                <div class="contents">
+                                    <img class="portrait" width="52" height="52" src="//kxcdn.challonge.com/assets/gravatar-abc23b5a7783ffd0211076b4f0146082.png" alt="">
+                                    <div class="name"> team 1 </div>
+                                </div>
+                                <div class="footer-team"><span>-</span></div>
+                            </div>
+                        </div>
+                        </div><div class="clearfix"></div>
+                        <div class="modal-footer">
+                          <div class="overall-score-set">
+                                <div class="score">
+                                    <div class="divider"><h6>Thông tin trận đấu: </h6></div><div class="clearfix"></div>
+                                    <div class="match-details-end"> 
+                                        <ul>
+                                            <li>Thời gian: </li>
+                                            <li>Địa điểm: </li>
+                                            <li>Thành viên: </li>
+                                        </ul>
+                                    </div>
+                                </div><div class="clearfix"></div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div><!--end show model-->
             </div><!--main-content-CBV-->
             
             

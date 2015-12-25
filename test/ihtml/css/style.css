@@ -1,3 +1,4 @@
+#page-wrapper{color: #FF0000}
 #main-content-backend{background: #444;height: 450px; width: 100%;}
 .main-tab{}
 .main-tab ul{list-style: none; margin: 0; padding: 0; background: #3E3E3E; height: 30px;}
@@ -46,9 +47,25 @@
 .td-boder-lk-3 .end-item-tem .boder-gom{padding: 67px 0;}
 .td-boder-lk-3 .ke-ngang-end{margin: -67px -6px 6px -13px;}
 
-.table-round-4 .main-item{margin: 234px 0 34px -22px;}
-.table-round-4 .head-item-team{margin: 233px 0 106px;}
+.table-round-4 .main-item{margin: 235px 0 34px -22px;}
+.table-round-4 .head-item-team{margin: 235px 0 106px;}
 .td-boder-lk-4 .end-item-tem{padding-top: 128px;}
-.td-boder-lk-4 .end-item-tem .boder-gom{padding: 132px  0;}
+.td-boder-lk-4 .end-item-tem .boder-gom{padding: 133px  0;}
 .td-boder-lk-4 .ke-ngang-end{margin: -134px -6px 6px -13px;}
 .caret{ border-top: 4px solid #888888; }
+
+.detail-matches{width: 600px; height: auto; z-index: 1000; background: #444444; border-radius: 10px; margin: 0 auto; margin-top: 100px;}
+.detail-matches h4{line-height: 40px; font-size: 20px;padding: 20px 0 0 30px ; color: #fff; font-weight: bold; display: block; margin: 0;}
+.matchup{text-align: center; margin-top: -30px;}
+.matchup .versus{float: left; width: 20%; bottom: 0; color: #999999; margin-top: 69px; font-weight: bold}
+.matchup .participant {float: left; width: 40%; background: #404040; height: 150px; border: 1px solid #383838;position: relative}
+.participant .contents{margin: 20px 0 0}
+.participant .contents .name{color: #747474; font-style: italic;}
+.footer-team{width: 100%; background: #505050; height: 0; height: 25px; position: absolute; bottom: 0;}
+.footer-team span{font-weight: bold; color: #fff; font-size: 14px;}
+.overall-score-set .score{width: 100%;color: #fff;}
+.overall-score-set .score .divider h6{float: left; font-weight: bold;font-size: 14px; margin: -11px 0 7px;}
+.overall-score-set .match-details-end{float: left; margin-left: 15px; text-align: left;}
+.modal-header{border-bottom: none;}
+.modal-footer {border-top: 1px solid #383838;}
+.modal-footer ul li{font-size: 14px;}
