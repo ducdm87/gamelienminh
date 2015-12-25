@@ -31,7 +31,8 @@
                     <div class="panel-heading">
                         <span><b>More info</b></span>
                     </div>      
-                    <div class="panel-body">                                    
+                    <div class="panel-body">
+                        <?php echo buildHtml::renderField("label", "ID", $item->id, "ID", null, "", 3, 9); ?>                        
                         <div class="form-group row">
                             <label class="control-label left col-md-3">Status</label>
                             <div class="col-md-9"><?php echo buildHtml::choseStatus("status", $item->status); ?></div>
@@ -42,7 +43,33 @@
                         <?php echo buildHtml::renderField("calander", "mdate", $item->mdate, "Modified", null, "", 3, 9); ?>
                     </div>
                </div>
-                            
+                     
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <span><b>Image</b></span>
+                        <div class="caption pull-right">
+                            <a href="javascript:void(0)" class="label label-success" role="button" onclick="BrowseServer();">Add Thumbnail</a>
+                        </div>
+                    </div>
+                    <div class="panel-body"> 
+                        <div class="form-group row">
+                            <input type="text" name="thumbnail" id="image_hiden" class="form-control" value="<?php echo $item->thumbnail ?>"/>
+
+                        </div>
+                        <div class="form-group row">
+                            <div class="drapzon">
+                                <div class="col-md-6 row container-thumbnail">
+                                    <div class="thumbnail" style="height: 200px;">
+                                        <a target="_blank" href="<?php echo $item->thumbnail ?>" alt="">
+                                            <img src="<?php echo $item->thumbnail ?>" alt="" id="image_src" style="height:190px;">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <span><b>Seo info</b></span>

@@ -34,7 +34,7 @@
                         if (isset($items) && $items) {
                             foreach ($items as $i => $item) {
                                 $link_edit = Router::buildLink("locations", array('layout' => 'edit', "cid" => $item['id']));
-                                $item['title'] = str_repeat("&nbsp; &nbsp; &nbsp; &nbsp; ", $item['level'] -  1 ) . " - " . $item['title'];
+                                $item['name'] = str_repeat("&nbsp; &nbsp; &nbsp; &nbsp; ", $item['level'] -  1 ) . " - " . $item['name'];
                                 $link_items = Router::buildLink('locations', array('filter_cid'=>$item['id'])); 
                                 ?>
                                 <tr>
@@ -45,9 +45,9 @@
                                     <td>
                                         <?php
                                         if ($item['level'] == 0)
-                                            echo $item['title'];
+                                            echo $item['name'];
                                         else
-                                            echo '<a href="' . $link_edit . '">' . $item['title'] . '</a>';
+                                            echo '<a href="' . $link_edit . '">' . $item['name'] . '</a>';
                                         ?>
                                     </td>
                                     <td><?php echo buildHtml::showBtnIcon("Items", $link_items,"mainmenu.png"); ?></td>  

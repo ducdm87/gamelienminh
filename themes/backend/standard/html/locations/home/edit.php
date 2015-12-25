@@ -6,7 +6,7 @@
                 <div class="col-md-12">
                     <div class="panel">                         
                         <div class="panel-body">
-                            <?php echo buildHtml::renderField("text", "title", $item->title, "Title", "form-control title-generate"); ?>
+                            <?php echo buildHtml::renderField("text", "name", $item->name, "Name", "form-control title-generate"); ?>
                             <?php echo buildHtml::renderField("text", "alias", $item->alias, "Alias", "form-control alias-generate", "Auto-generate from title"); ?>
                             <div class="form-group row">
                                 <label class="control-label left col-md-2">Status</label>
