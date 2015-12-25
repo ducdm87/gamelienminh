@@ -94,8 +94,22 @@ class Teams extends CFormModel {
         $cid = Request::getVar("cid", 0);
         $lists = array();
 
-        $items = array(); 
-
+        $db = Yii::app()->db;
+        $command = $db->createCommand()->select("A.id, A.name")
+                ->from(TBL_GS_TOURNAMEMANTS . " A")
+                ->rightJoin(TBL_GS_TEAM_REGISTER_TOUR . ' B', 'A.id = B.tourID')
+                ->order('A.startDate DESC');
+        $lists['tournaments'] = $command->queryAll();
+        
+        $obj_tblLocation = YiiTables::getInstance(TBL_LOCATIONS);
+        $locations = $obj_tblLocation->loads("*", 'parentID != 0 ', "lft ASC", null, 0);
+        
+        $arr_new = array();
+        foreach($locations as $loc){
+            $arr_new[$loc['id']] = $loc;
+        }
+        $lists['locations'] = $arr_new;
+        
         return $lists;
     }
  

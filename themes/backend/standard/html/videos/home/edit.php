@@ -39,7 +39,7 @@
                         <div class="col-md-9">
                             <input name="videourl" id="videourl" type="text" value="<?php echo $item->videourl; ?>" class="form-control" placeholder="Link to file video" />
                             Link trực tiếp đến video
-                             <a href="javascript:void(0)" class="label label-primary" role="button" onclick="BrowseServerVideo();">Add video</a>
+                             <a href="javascript:void(0)" class="label label-success" role="button" onclick="BrowseServerVideo();">Add video</a>
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                 <div class="panel-heading">
                     <span><b>Image</b></span>
                     <div class="caption pull-right">
-                        <a href="javascript:void(0)" class="label label-primary" role="button" onclick="BrowseServer();">Add Media</a>
+                        <a href="javascript:void(0)" class="label label-success" role="button" onclick="BrowseServer();">Add Media</a>
                     </div>
                 </div>
                 <div class="panel-body">

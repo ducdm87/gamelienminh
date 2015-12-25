@@ -13,9 +13,9 @@
                     <?php echo buildHtml::renderField('textarea',"introtext", $item->introtext, "Description"); ?>
                     <?php echo buildHtml::renderField('editor',"fulltext", $item->fulltext, "Content"); ?>
                 </div>
-            </div>
-             
+            </div>             
         </div>
+        
         <div class="col-md-4">
             <div class="panel">
                 <div class="panel-heading">
@@ -34,7 +34,7 @@
                 <div class="panel-heading">
                     <span><b>Image</b></span>
                     <div class="caption pull-right">
-                        <a href="javascript:void(0)" class="label label-primary" role="button" onclick="BrowseServer();">Add Media</a>
+                        <a href="javascript:void(0)" class="label label-success" role="button" onclick="BrowseServer();">Add Media</a>
                     </div>
                 </div>
                 <div class="panel-body"> 

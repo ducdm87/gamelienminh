@@ -9,7 +9,7 @@
                 if ($user->isSuperAdmin()){
                 ?>
                 <div class="caption pull-right">
-                    <a href="javascript:void(0)" class="label label-primary" role="button" data-toggle="modal" data-target="#changePermission">Permission</a>
+                    <a href="javascript:void(0)" class="label label-success" role="button" data-toggle="modal" data-target="#changePermission">Permission</a>
                 </div>
                 <?php } ?>
             </div>

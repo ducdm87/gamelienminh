@@ -31,9 +31,9 @@
                         $k = 0;
                         if (isset($items) && $items) {
                             foreach ($items as $i => $item) {
-                                $link_edit = Router::buildLink("gamesport", array('view'=>'tournaments', 'layout' => 'edit', "cid" => $item['id']));
-                                $item['name'] = str_repeat("&nbsp; &nbsp; &nbsp; &nbsp; ", $item['level'] -  1 ) . " - " . $item['name'];
-                                $link_items = Router::buildLink('gamesport', array('view'=>'tournaments','filter_cid'=>$item['id'])); 
+                                $link_edit = Router::buildLink("gamesport", array('view'=>'teams', 'layout' => 'edit', "cid" => $item['id']));
+                             //   $item['name'] = str_repeat("&nbsp; &nbsp; &nbsp; &nbsp; ", $item['level'] -  1 ) . " - " . $item['name'];
+                                $link_items = Router::buildLink('gamesport', array('view'=>'teams','filter_cid'=>$item['id'])); 
                                 ?>
                                 <tr>
                                     <td><?php echo $k + 1; ?></td>                                        
@@ -42,15 +42,10 @@
                                     </td>
                                     <td>
                                         <?php
-                                        if ($item['level'] == 0)
-                                            echo $item['name'];
-                                        else
                                             echo '<a href="' . $link_edit . '">' . $item['name'] . '</a>';
                                         ?>
                                     </td>
-                                    <td><?php echo buildHtml::showBtnIcon("Items", $link_items,"mainmenu.png"); ?></td>  
-                                    <td align="center"><?php echo $item['level']; ?></td>
-                                     
+                                    <td><?php echo buildHtml::status($i, $item['status']); ?></td>
                                     <td><?php echo $item['mdate']; ?></td>
                                     <td><?php echo $item['id']; ?></td>
                                 </tr>                                    

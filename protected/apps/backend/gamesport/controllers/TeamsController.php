@@ -118,10 +118,7 @@ class TeamsController extends BackEndController {
         $id = Request::getVar("id", 0);
 
         $obj_tblTeam = YiiTables::getInstance(TBL_GS_TEAMS);
-        $obj_tblTeam->load($id);
-        $obj_tblTeam->_ordering = isset($post['ordering']) ? $post['ordering'] : null;
-        $obj_tblTeam->_old_parent = $obj_tblTeam->parentID;
-
+        $obj_tblTeam->load($id); 
         $obj_tblTeam->bind($post);
         $obj_tblTeam->store();
 

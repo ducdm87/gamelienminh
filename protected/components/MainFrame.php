@@ -250,9 +250,9 @@ class MainFrame {
 
     function addIconSubMenu($title, $link, $active = false) {
         if ($active == true)
-            $this->subMenuBar[] = '<a class="btn btn-success active" href="' . $link . '">' . $title . '</a>';
+            $this->subMenuBar[] = '<a class="btn btn-success active btn-sm" href="' . $link . '">' . $title . '</a>';
         else
-            $this->subMenuBar[] = '<a class="btn btn-primary" href="' . $link . '">' . $title . '</a>';
+            $this->subMenuBar[] = '<a class="btn btn-primary btn-sm" href="' . $link . '">' . $title . '</a>';
     }
 
     function showSubMenu() {

@@ -34,7 +34,6 @@ class TournamentsController extends BackEndController {
 
         $this->addIconToolbar("Edit", Router::buildLink("gamesport", array("view"=>"tournaments", "layout" => "edit")), "edit", 1, 1, "Please select a item from the list to edit");
         $this->addIconToolbar("New", Router::buildLink("gamesport", array("view"=>"tournaments", "layout" => "new")), "new");
-//        $this->addIconToolbarDelete();
         $this->addIconToolbar("Delete", Router::buildLink("gamesport", array("view"=>"tournaments", "layout" => "remove")), "trash", 1, 1, "Please select a item from the list to Remove");
         $this->addBarTitle("Tournaments <small>[manager]</small>", "tournaments"); 
         addSubMenuGameSport('tournaments');
