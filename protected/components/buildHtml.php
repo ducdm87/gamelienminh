@@ -284,8 +284,12 @@ class buildHtml {
                 $html .= buildHtml::editors($name, $value, $width, $height);
             else if ($type == "label")
                 $html .= $value;
-            else if ($type == "calander")
-                $html .= '<input placeholder="' . $placeholder . '" type="text" name="' . $name . '" class="' . $class . ' datepicker" value="' . $value . '">';
+            else if ($type == "calander"){
+                $html .= ' <div class="input-group date"> '
+                            . '<input placeholder="' . $placeholder . '" type="text" name="' . $name . '" class="' . $class . ' datepicker" value="' . $value . '"> '
+                            .' <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span> '
+                        . '</div>';
+            }
             $html .= '</div>';
             $html .= '</div>';
 
