@@ -1,6 +1,6 @@
 <form action="<?php echo Router::buildLink("locations"); ?>" method="post" name="adminForm" >
     <div class="row">
-        <div class="panel">            
+    <div class="panel">  
             <div class="panel-body">
                 <div class="row">  
                     <div class="col-lg-7">

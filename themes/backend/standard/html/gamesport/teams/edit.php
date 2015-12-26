@@ -38,7 +38,7 @@
                         <div class="form-group row">
                             <label class="control-label col-md-3">Location</label>
                             <div class="col-md-9">
-                                <span id="location-name"><?php echo $lists['locations'][$item->locationID]['name']; ?></span>
+                                <span id="location-name"><?php echo isset($lists['locations'][$item->locationID])?$lists['locations'][$item->locationID]['name']:""; ?></span>
                                 <div class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal-change-location">Change Location</div>
                                 <input type="hidden" name="locationID" id="location-id" value="<?php echo $item->locationID; ?>" />
                             </div>
@@ -98,7 +98,7 @@
 
     <input type="hidden" name="id" value="<?php echo $item->id; ?>">    
     <input type="hidden" name="cid[]" value="<?php echo $item->id; ?>">    
-</form>
+
 
 <div id="myModal-joined-tour" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -127,8 +127,34 @@
         <h4 class="modal-title">Change location</h4>
       </div>
       <div class="modal-body">
+          <div class="panel">  
+            <div class="panel-body">          
+                <ul style="list-style: none;">
+                    <?php
+                    $items=$lists['locations'];
+                    if (isset($items) && $items) {
+                        foreach ($items as $i => $item) {
+                            $link_edit = Router::buildLink("locations", array('layout' => 'edit', "cid" => $item['id']));
+                            $item['_name'] = str_repeat("&nbsp; &nbsp; &nbsp; &nbsp; ", $item['level'] -  1 ) . " - " . $item['name'];
+                            $link_items = Router::buildLink('locations', array('filter_cid'=>$item['id'])); 
+                            ?>
+                             <li>
+                                <?php
+                                if ($item['level'] == 0)
+                                    echo $item['_name'];
+                                else
+                                    echo '<a onClick="teamChangeLocation('.$item['id'].',\''.$item['name'].'\')">' . $item['_name'] . '</a>';
+                                ?>
+                            </li>                                 
+                            <?php
+                        };
+                    } ?>
+                </ul>
+            </div>
+        </div>
+    </div>
             <?php
-            var_dump($lists['locations']);
+            //var_dump($lists['locations']);
             ?>
       </div>
       <div class="modal-footer">
@@ -137,3 +163,4 @@
     </div>
   </div>      
 </div>
+</form>
