@@ -9,8 +9,12 @@
                     </div>
                     <div class="panel-body">
                         <div class="col-md-12">
-                            <?php echo buildHtml::renderField("text", "name", $item->name, "name", "form-control title-generate"); ?>
+                            <?php echo buildHtml::renderField("text", "name", $item->name, "Name", "form-control title-generate"); ?>
                             <?php echo buildHtml::renderField("text", "alias", $item->alias, "Alias", "form-control alias-generate", "Auto-generate from title"); ?>
+                            <?php echo buildHtml::renderField("text", "mobile", $item->mobile, "Mobile", "form-control"); ?>
+                            <?php echo buildHtml::renderField("calander", "birthday", $item->birthday, "Birthday"); ?>
+                                  
+                            <?php echo buildHtml::renderField("text", "address", $item->address, "Address", "form-control"); ?>
                             <?php echo buildHtml::renderField('textarea', "introtext", $item->introtext, "Description"); ?>
                             <?php echo buildHtml::renderField('editor', "fulltext", $item->fulltext, "Content"); ?>
                         </div> 
