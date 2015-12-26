@@ -1,3 +1,4 @@
+<?php global $_list_tour_state; ?>
 <form action="<?php echo Router::buildLink("gamesport", array('view'=>'tournaments')); ?>" method="post" name="adminForm" >
     <div class="row">
         <div class="panel">            
@@ -20,10 +21,12 @@
                             <th width="2%">
                                 <input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo $items ? count($items) : 0; ?>);"> 
                             </th>
-                            <th width="50%">Name</th> 
-                            <th width="2%">Items</th>   
+                            <th width="">Name</th> 
+                            <th width="2%">Items</th>
+                            <th width="5%" align="center">Detail</th>
                             <th width="2%">level</th>
-                            <th width="5%" align="center">Status</th>
+                            <th width="5%" align="center">Status</th>                            
+                            <th width="15%" align="center">State</th>
                             <th width="15%">Modified</th>
                             <th width="2%">ID</th>
                         </tr>
@@ -36,6 +39,7 @@
                                 $link_edit = Router::buildLink("gamesport", array('view'=>'tournaments', 'layout' => 'edit', "cid" => $item['id']));
                                 $item['name'] = str_repeat("&nbsp; &nbsp; &nbsp; &nbsp; ", $item['level'] -  1 ) . " - " . $item['name'];
                                 $link_items = Router::buildLink('gamesport', array('view'=>'tournaments','filter_cid'=>$item['id'])); 
+                                $link_detail = Router::buildLink('gamesport', array('view'=>'tournament', "tourID" => $item['id'])); 
                                 ?>
                                 <tr>
                                     <td><?php echo $k + 1; ?></td>                                        
@@ -50,7 +54,8 @@
                                             echo '<a href="' . $link_edit . '">' . $item['name'] . '</a>';
                                         ?>
                                     </td>
-                                    <td><?php echo buildHtml::showBtnIcon("Items", $link_items,"mainmenu.png"); ?></td>  
+                                    <td align="center"><?php echo buildHtml::showBtnIcon("Items", $link_items); ?></td>
+                                    <td align="center"><a href="<?php echo $link_detail; ?>"><i class="fa fa-folder"></i></a></td>
                                     <td align="center"><?php echo $item['level']; ?></td>
                                     <td align="center">
                                         <?php
@@ -58,7 +63,8 @@
                                             echo buildHtml::status($i, $item['status']);
                                         }
                                         ?>
-                                    </td>
+                                    </td>                                    
+                                    <td><?php echo $_list_tour_state[$item['state']]; ?></td>
                                     <td><?php echo $item['mdate']; ?></td>
                                     <td><?php echo $item['id']; ?></td>
                                 </tr>                                    

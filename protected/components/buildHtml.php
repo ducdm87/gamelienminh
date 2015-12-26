@@ -44,9 +44,10 @@ class buildHtml {
         return $return;
     }
 
-    static function showBtnIcon($title, $link, $icon) {
+    static function showBtnIcon($title, $link, $icon = '') {
         $img_name = $icon;
         ob_start();
+        if($img_name != ""){
         ?>
         <span class="editlinktip hasTip">
             <a href="<?php echo $link; ?>">
@@ -54,6 +55,11 @@ class buildHtml {
             </a>
         </span>
         <?php
+        }else {
+            ?>
+            <a href="<?php echo $link; ?>"><i class="fa fa-sitemap"></i></a>
+            <?php
+        }
         $return = ob_get_contents();
         ob_end_clean();
         return $return;

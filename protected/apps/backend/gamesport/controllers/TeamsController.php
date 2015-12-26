@@ -30,7 +30,7 @@ class TeamsController extends BackEndController {
                 else
                     $this->changeStatus($cid, 0);
             }
-            YiiMessage::raseSuccess("Successfully saved changes status for tournament(s)");
+            YiiMessage::raseSuccess("Successfully saved changes status for team(s)");
         }
 
 

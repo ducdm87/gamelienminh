@@ -73,7 +73,7 @@ class Location extends CFormModel {
         $filter_search = Request::getVar("filter_search", "");
 
         if (trim($filter_search) != "") {
-            $cond[] = " title like '%$filter_search%' ";
+            $cond[] = " name like '%$filter_search%' ";
         }
 
         if (count($cond))
@@ -111,7 +111,7 @@ class Location extends CFormModel {
             $condition = "(`lft` <" . $main_item->lft . " OR `lft` > " . $main_item->rgt . ")";
         }
 
-        $results = $obj_tblLocation->loads('id value, title text, level', $condition, 'lft ASC', null);
+        $results = $obj_tblLocation->loads('id value, name text, level', $condition, 'lft ASC', null);
         $items = array_merge($items, $results);
         $lists['parentID'] = buildHtml::select($items, $main_item->parentID, "parentID", "", "size=10", "&nbsp;&nbsp;&nbsp;", "-");
 
@@ -119,7 +119,7 @@ class Location extends CFormModel {
         $items = array();
         if ($main_item->id != 0) {
             $condition = "parentID = " . $main_item->parentID;
-            $results = $obj_tblLocation->loads('id value, title text, level', $condition, 'lft ASC', null);
+            $results = $obj_tblLocation->loads('id value, name text, level', $condition, 'lft ASC', null);
             $items = array_merge($items, $results);
             $lists['ordering'] = buildHtml::select($items, $cid, "ordering", "", "size=5");
         } else {
