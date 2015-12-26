@@ -64,7 +64,7 @@ class Tournament extends CFormModel {
     
     public function getTeams($tourID = 0){
         $db = Yii::app()->db;
-        $command = $db->createCommand()->select("A.*, B.cdate joined_day, C.name location_name")
+        $command = $db->createCommand()->select("A.*, B.cdate joined_day, B.table_num, C.name location_name")
                 ->from(TBL_GS_TEAMS . " A")
                 ->rightJoin(TBL_GS_TEAM_REGISTER_TOUR . ' B', 'A.id = B.teamID')
                 ->leftJoin(TBL_LOCATIONS . ' C', 'A.locationID = C.id')
