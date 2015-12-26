@@ -244,3 +244,10 @@ $(function(){
 $(function(){
      
 });
+
+function teamChangeLocation(loc_id, loc_name)
+{
+    $("#location-id").val(loc_id);
+    $("#location-name").html(loc_name);
+    $(".modal-dialog .close").click();
+}
