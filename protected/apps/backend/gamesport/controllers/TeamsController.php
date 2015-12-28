@@ -55,7 +55,7 @@ class TeamsController extends BackEndController {
     public function actionEdit() {
         global $user;
         if (!$user->isSuperAdmin()) {
-            YiiMessage::raseNotice("Your account not have permission to add/edit tournament");
+            YiiMessage::raseNotice("Your account not have permission to add/edit Teams");
             $this->redirect(Router::buildLink("gamesport"));
         }
 

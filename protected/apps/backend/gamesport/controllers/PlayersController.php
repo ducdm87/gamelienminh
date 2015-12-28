@@ -12,11 +12,7 @@ class PlayersController extends BackEndController {
     }
 
     function actionDisplay() {
-        $this->addIconToolbar("Edit", Router::buildLink("users", array("view" => "user", "layout" => "edit")), "edit", 1, 1, "Please select a item from the list to edit");
-        $this->addIconToolbar("New", Router::buildLink("users", array("view" => "user", "layout" => "new")), "new");
-        //        $this->addIconToolbarDelete();
-        $this->addIconToolbar("Delete", Router::buildLink("users", array("view" => "user", "layout" => "remove")), "trash", 1, 1, "Please select a item from the list to Remove");
-        $this->addBarTitle("User <small>[list]</small>", "user");
+        global $mainframe, $user;
 
         $task = Request::getVar('task', "");
         if ($task == "hidden" OR $task == 'publish' OR $task == "unpublish") {
@@ -25,37 +21,26 @@ class PlayersController extends BackEndController {
                 $cid = $cids[$i];
                 if ($task == "publish")
                     $this->changeStatus($cid, 1);
+                else if ($task == "hidden")
+                    $this->changeStatus($cid, 2);
                 else
                     $this->changeStatus($cid, 0);
             }
-            YiiMessage::raseSuccess("Successfully saved changes status for users");
+            YiiMessage::raseSuccess("Successfully saved changes status for players(s)");
         }
-        global $user;
+
+
+        $this->addIconToolbar("Edit", Router::buildLink("gamesport", array("view" => "players", "layout" => "edit")), "edit", 1, 1, "Please select a item from the list to edit");
+        $this->addIconToolbar("New", Router::buildLink("gamesport", array("view" => "players", "layout" => "new")), "new");
+//        $this->addIconToolbarDelete();
+        $this->addIconToolbar("Delete", Router::buildLink("gamesport", array("view" => "players", "layout" => "remove")), "trash", 1, 1, "Please select a item from the list to Remove");
+        $this->addBarTitle("players <small>[manager]</small>", "players");
         addSubMenuGameSport('players');
-        $model = new Users();
-        $modelGroup = new Group();
+        $model = Players::getInstance();
+        $items = $model->getItemspPlayer();
+        $pagination = $model->getPagination();
 
-        $groupID = $user->groupID;
-        $group = $modelGroup->getItem($user->groupID);
-        if ($group->parentID == 1) {
-            $groupID = Request::getVar('filter_group', 0);
-            if ($groupID == 0)
-                $list_user = $model->getUsers(null, null, true);
-            else
-                $list_user = $model->getUsers($groupID);
-        }else {
-            $_groupID = Request::getVar('filter_group', 0);
-
-            if ($_groupID == 0 OR $user->groupChecking($_groupID) == false)
-                $list_user = $model->getUsers($groupID, null, true);
-            else
-                $list_user = $model->getUsers($_groupID);
-        }
-        $lists = $model->getList();
-
-        $arr_group = $model->getGroups();
-
-        $this->render('default', array("list_user" => $list_user, 'arr_group' => $arr_group, "lists" => $lists));
+        $this->render('default', array('items' => $items, 'pagination' => $pagination));
     }
 
     function changeStatus($cid, $value) {
@@ -75,172 +60,81 @@ class PlayersController extends BackEndController {
     }
 
     function actionCancel() {
-        $this->redirect(Router::buildLink("users", array("view" => "user")));
+        $this->redirect(Router::buildLink("gamesport", array("view" => "players")));
     }
 
     function actionNew() {
         $this->actionEdit();
     }
-
-    function actionEdit() {
+     // chi co super admin moi sua duoc 1 group
+    public function actionEdit() {
         global $user;
+        if (!$user->isSuperAdmin()) {
+            YiiMessage::raseNotice("Your account not have permission to add/edit players");
+            $this->redirect(Router::buildLink("gamesport"));
+        }
+
         setSysConfig("sidebar.display", 0);
-        $model = new Users();
+
+        $this->addIconToolbar("Save", Router::buildLink("gamesport", array("view" => "players", "layout" => "save")), "save");
+        $this->addIconToolbar("Apply", Router::buildLink("gamesport", array("view" => "players", "layout" => "apply")), "apply");
+        $items = array();
+
         $cid = Request::getVar("cid", 0);
 
         if (is_array($cid))
             $cid = $cid[0];
 
-        $this->addIconToolbar("Save", Router::buildLink("users", array("view" => "user", 'layout' => 'save')), "save");
-        $this->addIconToolbar("Apply", Router::buildLink("users", array("view" => "user", 'layout' => 'apply')), "apply");
-
         if ($cid == 0) {
-            $this->addIconToolbar("Cancel", Router::buildLink("users", array("view" => "user", 'layout' => 'cancel')), "cancel");
-            $this->addBarTitle("User <small>[New]</small>", "user");
-            $this->pageTitle = "New User";
+            $this->addIconToolbar("Cancel", Router::buildLink("gamesport", array("view" => "players", "layout" => "cancel")), "cancel");
+            $this->addBarTitle("Players <small>[New]</small>", "players");
+            $this->pageTitle = "New Players";
         } else {
-            $this->addIconToolbar("Close", Router::buildLink("users", array("view" => "user", 'layout' => 'cancel')), "cancel");
-            $this->addBarTitle("User <small>[Edit]</small>", "user");
-            $this->pageTitle = "Edit User";
+            $this->addIconToolbar("Close", Router::buildLink("gamesport", array("view" => "players", "layout" => "cancel")), "cancel");
+            $this->addBarTitle("Players <small>[Edit]</small>", "players");
+            $this->pageTitle = "Edit Players";
         }
 
-        $model = new Users();
-        $model_resource = Resource::getInstance();
-
-        $item = $model->getItem($cid);
-
-        if ($item->id != 0) { // account da duoc tao
-            if (!$bool = $user->modifyChecking($item->id)) { // user leader nhom cha
-                if ($item->status != -1) { // user da duoc active thi khong duoc thay doi
-                    YiiMessage::raseNotice("Your account not have permission to modify this account");
-                    $this->redirect(Router::buildLink("cpanel"));
-                }
-            }
-            // => user da active thi chi user do va superadmin moi thay doi thong tin
-        } else {
-            if ($user->leader == 0) {
-                // neu khong phai leader thi khong duoc tao acc moi
-                YiiMessage::raseNotice("Your account not have permission to make account");
-                $this->redirect(Router::buildLink("cpanel"));
-            }
-        }
-
-        $arr_resource = $model_resource->getItems();
-        $all_granted = $model->getGranted();
+        $model = Players::getInstance();
+        $item = $model->getItem();
 
         $lists = $model->getListEdit($item);
-
-        $this->render('edit', array("item" => $item, "lists" => $lists, 'arr_resource' => $arr_resource, "all_granted" => $all_granted));
+//        var_dump($item);die;
+        $this->render('edit', array("item" => $item, "lists" => $lists));
     }
 
     function actionApply() {
-        $userID = $this->store();
-        YiiMessage::raseSuccess("User save succesfully");
-        $this->redirect(Router::buildLink("users", array("view" => "user", 'layout' => 'edit', 'cid' => $userID)));
+        $cid = $this->store();
+        YiiMessage::raseSuccess("Players save succesfully");
+        $this->redirect(Router::buildLink("gamesport", array("view" => "players", "layout" => "edit", 'cid' => $cid)));
     }
 
     function actionSave() {
-        $this->store();
-        YiiMessage::raseSuccess("User save succesfully");
-        $this->redirect(Router::buildLink("users", array("view" => "user")));
+        $cid = $this->store();
+        YiiMessage::raseSuccess("Players save succesfully");
+        $this->redirect(Router::buildLink("gamesport", array('view' => 'players')));
     }
 
+     // chi co super admin moi sua duoc 1 group
     function store() {
-        global $mainframe, $user;
+        global $mainframe, $db, $user;
         $post = $_POST;
+
+        $model = Players::getInstance();
+        global $user;
+        if (!$user->isSuperAdmin()) {
+            YiiMessage::raseNotice("Your account not have permission to add/edit Players");
+            $this->redirect(Router::buildLink("gamesport", array('view' => 'players')));
+        }
+
         $id = Request::getVar("id", 0);
-        $obj_users = YiiUser::getInstance();
-        $item_user = $obj_users->getUser($id);
 
-        if (!isset($_POST['username'])) {
-            YiiMessage::raseWarning("Cannot save the user information");
-            $this->redirect(Router::buildLink("users", array("view" => "user")));
-        }
+        $obj_tblTeam = YiiTables::getInstance(TBL_GS_PLAYERS);
+        $obj_tblTeam->load($id); 
+        $obj_tblTeam->bind($post);
+        $obj_tblTeam->store();
 
-        $bool = true;
-        $item_user->bind($post);
-        $item_by_uname = $item_user->loadRow("*", "username = '$item_user->username'");
-
-
-        if (trim($_POST['username']) == "") {
-            YiiMessage::raseWarning("You must provide an username.");
-            $bool = false;
-        } else if ($_POST["changepassword"] != $_POST["repassword"] AND $_POST["changepassword"] != "") {
-            YiiMessage::raseWarning("Passwords Do Not Match.");
-            $bool = false;
-        } else if (trim($_POST['email']) == "") {
-            YiiMessage::raseWarning("You must provide an e-mail address.");
-            $bool = false;
-        } else if ($item_by_uname and $item_by_uname['id'] != $item_user->id) {
-            YiiMessage::raseWarning("This username is already in use.");
-            $bool = false;
-        }
-
-        if ($bool != false) {
-            if (($_POST["changepassword"] == $_POST["repassword"] AND $_POST["changepassword"] != "")) {
-                $item_user->password = md5($_POST["changepassword"]);
-            }
-
-            // kiem tra xem co duoc tao trong group do khong va gan la leader khong
-            $modelGroup = new Group();
-            $obj_user = YiiUser::getInstance();
-            $group = $modelGroup->getItem($user->groupID);
-
-            // khong phai la super admin
-            if (!$user->isSuperAdmin()) {
-                // neu duoc phep thi check lai xem co cung group khong
-                if ($bool = $user->groupChecking($item_user->groupID)) {
-                    if ($user->groupID == $item_user->groupID) {
-                        if ($item_user->leader == 1) {
-                            YiiMessage::raseNotice("Your account not have permission to creat user is leader in group: $group->name");
-                            $item_user->leader = 0;
-                            $this->redirect(Router::buildLink("users", array("view" => "user")));
-                        }
-                    }
-                } else { // khi tao acc khong nam trong group ma no duoc tao
-                    $group = $modelGroup->getItem($item_user->groupID);
-                    YiiMessage::raseNotice("Your account not have permission to creat user in group: $group->name");
-                    $this->redirect(Router::buildLink("users", array("view" => "user", 'layout' => 'logout')));
-                    return false;
-                }
-                if ((int) $item_user->id == 0) {
-                    $item_user->status = -1;
-                }
-            }
-
-            $item_user->store();
-
-            if ($user->isSuperAdmin()) {
-                $query = "DELETE FROM " . TBL_RSM_RESOURCE_XREF . " WHERE objectID = $item_user->id AND object_type = 1";
-                Yii::app()->db->createCommand($query)->execute();
-                if (isset($_POST['formPsermission'])) {
-                    $list_permission = $_POST['formPsermission'];
-                    $list_permission = json_decode($list_permission);
-
-                    if (count($list_permission)) {
-                        foreach ($list_permission->allow as $rsm_id) {
-                            $query = "INSERT INTO " . TBL_RSM_RESOURCE_XREF . " "
-                                    . "SET objectID = $item_user->id"
-                                    . ", object_type = 1"
-                                    . ", resourceID = $rsm_id"
-                                    . ", value = 1";
-                            Yii::app()->db->createCommand($query)->execute();
-                        }
-                        foreach ($list_permission->deny as $rsm_id) {
-                            $query = "INSERT INTO " . TBL_RSM_RESOURCE_XREF . " "
-                                    . "SET objectID = $item_user->id"
-                                    . ", object_type = 1"
-                                    . ", resourceID = $rsm_id"
-                                    . ", value = 0";
-                            Yii::app()->db->createCommand($query)->execute();
-                        }
-                    }
-                }
-            }
-
-            YiiMessage::raseSuccess("Successfully saved changes to User: " . $item_user->username);
-            return $item_user->id;
-        }
+        return $obj_tblTeam->id;
     }
 
     public function actionLogin() {

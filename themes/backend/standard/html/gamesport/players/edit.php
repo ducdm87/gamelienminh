@@ -11,12 +11,11 @@
                         <div class="col-md-12">
                             <?php echo buildHtml::renderField("text", "name", $item->name, "Name", "form-control title-generate"); ?>
                             <?php echo buildHtml::renderField("text", "alias", $item->alias, "Alias", "form-control alias-generate", "Auto-generate from title"); ?>
+                            <?php echo buildHtml::renderField("text", "idCard", $item->idCard, "idCard", "form-control"); ?>
                             <?php echo buildHtml::renderField("text", "mobile", $item->mobile, "Mobile", "form-control"); ?>
                             <?php echo buildHtml::renderField("calander", "birthday", $item->birthday, "Birthday"); ?>
-                                  
                             <?php echo buildHtml::renderField("text", "address", $item->address, "Address", "form-control"); ?>
-                            <?php echo buildHtml::renderField('textarea', "introtext", $item->introtext, "Description"); ?>
-                            <?php echo buildHtml::renderField('editor', "fulltext", $item->fulltext, "Content"); ?>
+                            
                         </div> 
                     </div>
                 </div>
@@ -35,25 +34,6 @@
                         </div>                       
                         <?php echo buildHtml::renderField("calander", "cdate", $item->cdate, "Created", null, "", 3, 9); ?>
                         <?php echo buildHtml::renderField("calander", "mdate", $item->mdate, "Modified", null, "", 3, 9); ?>
-                        <div class="form-group row">
-                            <label class="control-label col-md-3">Location</label>
-                            <div class="col-md-9">
-                                <span id="location-name"><?php echo $lists['locations'][$item->locationID]['name']; ?></span>
-                                <div class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal-change-location">Change Location</div>
-                                <input type="hidden" name="locationID" id="location-id" value="<?php echo $item->locationID; ?>" />
-                            </div>
-                        </div> 
-                        <?php
-                        if(count($lists['tournaments'])){
-                        ?>
-                            <div class="form-group row">
-                                <label class="control-label col-md-3">Tournament</label>
-                                <div class="col-md-9">
-                                    <a href=""><?php echo $lists['tournaments'][0]['name']; ?></a>
-                                    <div class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal-joined-tour">Joined tour</div>
-                                </div>
-                            </div>
-                        <?php } ?>
                     </div>
                </div>
                     
