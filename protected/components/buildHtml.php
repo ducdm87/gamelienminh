@@ -224,15 +224,16 @@ class buildHtml {
         }
 
         static function select($items, $seleted = 0, $name, $id = "", $attr = " size=1 ", $text_level1 = "", $text_level2 = "") {
-            if (!is_array($items))
-                return "";
-            if (count($items) <= 0)
+            if (!is_array($items) OR count($items) <= 0)
                 return "";
 
             if(!is_array($seleted)) $seleted = array($seleted); 
             
             $html = "<select name='$name' id='$id' $attr >";
             foreach ($items as $item) {
+                if(!is_array($item) AND !is_object($item)){
+                    $item = array('text'=>$item, 'value'=>$item);
+                }
                 $item = (object) $item;
                 if(isset($item->level)){
                     if ($text_level1 != "" and $item->level > 0) {
@@ -274,32 +275,40 @@ class buildHtml {
             return $return;
         }
 
+        /*
+         * text, password, calander, editor
+         */
         static function renderField($type = "text", $name, $value = "", $title, $class = null, $placeholder = "", $w1 = 2, $w2 = 10, $width = "100%", $height = "400px") {
             if ($class == null)
                 $class = "form-control";
             $html = '<div class="form-group row">';
-            $html .= '<label class="control-label left col-md-' . $w1 . '">' . $title . '</label>';
-            $html .= '<div class="col-md-' . $w2 . '">';
-            if ($type == "text")
-                $html .= '<input placeholder="' . $placeholder . '" type="text" name="' . $name . '" class="' . $class . '" value="' . $value . '">';
-            else if ($type == "password")
-                $html .= '<input placeholder="' . $placeholder . '" type="password" name="' . $name . '" class="' . $class . '" value="' . $value . '">';
-            else if ($type == "textarea")
-                $html .= '<textarea rows="3" cols="20" name="' . $name . '" class="' . $class . '">' . $value . '</textarea>';
-            else if ($type == "editor")
-                $html .= buildHtml::editors($name, $value, $width, $height);
-            else if ($type == "label")
-                $html .= $value;
-            else if ($type == "calander"){
-                $html .= ' <div class="input-group date"> '
-                            . '<input placeholder="' . $placeholder . '" type="text" name="' . $name . '" class="' . $class . ' datepicker" value="' . $value . '"> '
-                            .' <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span> '
-                        . '</div>';
+            if ($type == "editor"){
+                $html .= '<label class="control-label">' . $title . '</label>';
+                $html .= '<div class="">';
+                    $html .= buildHtml::editors($name, $value, $width, $height);
+                $html .= '</div>'; 
+            }else{
+                $html .= '<label class="control-label col-md-' . $w1 . '">' . $title . '</label>';
+                $html .= '<div class="col-md-' . $w2 . '">';
+                if ($type == "text")
+                    $html .= '<input placeholder="' . $placeholder . '" type="text" name="' . $name . '" class="' . $class . '" value="' . $value . '">';
+                else if ($type == "password")
+                    $html .= '<input placeholder="' . $placeholder . '" type="password" name="' . $name . '" class="' . $class . '" value="' . $value . '">';
+                else if ($type == "textarea")
+                    $html .= '<textarea rows="3" cols="20" name="' . $name . '" class="' . $class . '">' . $value . '</textarea>';                    
+                else if ($type == "label")
+                    $html .= $value;
+                else if ($type == "select")
+                    $html .= $value;
+                else if ($type == "calander"){
+                    $html .= ' <div class="input-group date"> '
+                                . '<input placeholder="' . $placeholder . '" type="text" name="' . $name . '" class="' . $class . ' datepicker" value="' . $value . '"> '
+                                .' <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span> '
+                            . '</div>';
+                }
+                $html .= '</div>';                
             }
             $html .= '</div>';
-            $html .= '</div>';
-
-
             return $html;
         }
 
@@ -327,18 +336,12 @@ class buildHtml {
             $CKEditor->returnOutput = true;
             $out = $CKEditor->editor($name, $value, $config, $events = null);
 
-            return $out;
-        }
-
-        public static function TruncateText($text, $max_len = 30) {
-            $len = mb_strlen($text, 'UTF-8');
-            if ($len <= $max_len)
-                return $text;
-            else
-                return mb_substr($text, 0, $max_len - 1, 'UTF-8') . '...';
-        }
+            return $out . '<style>.cke_toolbar { height: 28px; line-height: 28px; }</style>';
+        } 
+      
         /*
          * $items: danh sach[value, text]
+         * radio, checkbox(check)
          */
         static function renderList($type = "radio",$title, $name, $items = array(), $value = 0, $class = null, $w1 = 2, $w2 = 10){
              

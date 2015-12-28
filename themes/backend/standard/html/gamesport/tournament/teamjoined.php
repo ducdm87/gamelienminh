@@ -1,4 +1,6 @@
-<?php global $_list_tour_state; ?>
+<?php global $_list_tour_state;  
+
+?>
 <form action="<?php echo Router::buildLink("gamesport", array('view'=>'tournament')); ?>" method="post" name="adminForm" >
     <div class="row">
         <div class="panel">            

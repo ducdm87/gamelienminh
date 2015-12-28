@@ -25,7 +25,7 @@ function addSubMenuGameSportTour($view = "tournaments")
     $mainframe->addIconSubMenu("Matches", Router::buildLink('gamesport', array('view'=>'matches','tourID'=>$tourID)), $view ==  'matches');
 }
 
-global $_list_tour_state;
+global $_list_tour_state, $_list_num_table, $_list_num_teams_DE;
 
 $_list_tour_state = [];
 $_list_tour_state[0] = "Giải mới";
@@ -34,3 +34,21 @@ $_list_tour_state[2] = "Vòng loại";
 $_list_tour_state[3] = "Vòng DE";
 $_list_tour_state[4] = "Chung kết";
 $_list_tour_state[5] = "Kết thúc";
+
+$_list_num_table = [1,2,4,8,16,32]; // a
+$_list_num_teams_DE = [16,32,64];  // b
+// $_list_num_teams    
+
+/*
+ * so doi dang ky la x
+ * so bang la a
+ * so doi vao DE la b 
+ *  => so doi can lay moi bang la c = b/a
+ * so doi vao 1 bang la d = x/a; yeu cau d = 2^n * c
+ *  => x = d * a = (2^n)*c*a = (2^n) *(b/a) * a = (2^n)*b
+ *  do mỗi bảng có thể thiếu từ 1 đến 2 đội cho nên số 
+ *             (2^n)*b >= x >= (2^n)*b - 2*a
+ *              
+ */
+
+

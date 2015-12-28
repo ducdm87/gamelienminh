@@ -15,18 +15,14 @@ class TournamentController extends BackEndController {
      */
     public function actionDisplay() {
         global $mainframe, $user; 
-
-       
-        $this->addBarTitle("Tournament <small>[Detail]</small>", "tournaments"); 
-        addSubMenuGameSportTour('tournament');
-        
         $tourID = Request::getVar('tourID',0);
         $model = Tournament::getInstance();
         $tour_detail = $model->getItem($tourID);
         $lists = $model->getLists($tourID); 
+       
+        $this->addBarTitle("Tournament: <small>$tour_detail->name</small>", "tournaments"); 
+        addSubMenuGameSportTour('tournament');
         
-        var_dump($lists);
-
         $this->render('teamjoined', array('tour_detail'=> $tour_detail,'lists' => $lists));
     }
     
