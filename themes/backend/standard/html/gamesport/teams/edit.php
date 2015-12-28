@@ -38,7 +38,7 @@
                         <div class="form-group row">
                             <label class="control-label col-md-3">Location</label>
                             <div class="col-md-9">
-                                <span id="location-name"><?php echo isset($lists['locations'][$item->locationID])?$lists['locations'][$item->locationID]['name']:""; ?></span>
+                                <span id="location-name"><?php echo $lists['locations'][$item->locationID]['name']; ?></span>
                                 <div class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal-change-location">Change Location</div>
                                 <input type="hidden" name="locationID" id="location-id" value="<?php echo $item->locationID; ?>" />
                             </div>
@@ -98,7 +98,7 @@
 
     <input type="hidden" name="id" value="<?php echo $item->id; ?>">    
     <input type="hidden" name="cid[]" value="<?php echo $item->id; ?>">    
-
+</form>
 
 <div id="myModal-joined-tour" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -107,11 +107,29 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Joined tour</h4>
       </div>
-      <div class="modal-body">
-            <?php
-            var_dump($lists['tournaments']);
-            ?>
-      </div>
+      <div class="modal-body col-xs-12 no-padding">
+        <div class="list-tour-left col-xs-6 no-padding">
+            <ul class="nav nav-pills nav-stacked">            
+                <?php
+                $items_tour = $lists['tournaments'];
+                    foreach ($items_tour as $i => $item) {
+                        $link_edit = Router::buildLink("gamesport", array('view'=>'tournaments', 'layout' => 'edit', "cid" => $item['id']));
+                        $link_items = Router::buildLink('gamesport', array('view'=>'tournaments','filter_cid'=>$item['id'])); 
+                        $link_detail = Router::buildLink('gamesport', array('view'=>'tournament', "tourID" => $item['id'])); 
+                        ?>
+                            <li class="item-tour">
+                                <?php echo '<a onClick="show_team_tourteam('.$item['id'].',\''.$item['name'].'\')">'. $item['name'] . '</a>';?>
+                            </li>   
+                            
+                        <?php
+                    };
+                ?>
+            </ul>
+        </div>
+          <div class="main-show-team col-xs-6 no-padding">
+              <ul class="show_list_team"></ul>
+          </div>
+      </div><div class=" clearfix"></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -127,9 +145,8 @@
         <h4 class="modal-title">Change location</h4>
       </div>
       <div class="modal-body">
-          <div class="panel">  
-            <div class="panel-body">          
-                <ul style="list-style: none;">
+            <div class="panel-body" style="overflow-y: auto; height: 200px;">          
+                <ul style="list-style: none; margin: 0; padding: 0">
                     <?php
                     $items=$lists['locations'];
                     if (isset($items) && $items) {
@@ -151,11 +168,6 @@
                     } ?>
                 </ul>
             </div>
-        </div>
-    </div>
-            <?php
-            //var_dump($lists['locations']);
-            ?>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -163,4 +175,3 @@
     </div>
   </div>      
 </div>
-</form>

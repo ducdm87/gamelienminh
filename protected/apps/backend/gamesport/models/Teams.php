@@ -12,7 +12,11 @@ class Teams extends CFormModel {
     private $command;
     private $connection;
     private $_items = array();
-
+    var $_primary = 'id';
+    var $_tablename = "{{menus}}";
+    var $_message = "";
+    var $_db = null;   
+    
     function __construct() {
         $this->command = Yii::app()->db->createCommand();
         $this->connection = Yii::app()->db;
@@ -98,6 +102,9 @@ class Teams extends CFormModel {
         $command = $db->createCommand()->select("A.id, A.name")
                 ->from(TBL_GS_TOURNAMEMANTS . " A")
                 ->rightJoin(TBL_GS_TEAM_REGISTER_TOUR . ' B', 'A.id = B.tourID')
+                ->rightJoin(TBL_GS_TEAMS . ' C', 'C.id = B.teamID')
+                ->where(" B.teamID= $cid")
+                ->group(" A.id")
                 ->order('A.startDate DESC');
         $lists['tournaments'] = $command->queryAll();
         
@@ -111,6 +118,28 @@ class Teams extends CFormModel {
         $lists['locations'] = $arr_new;
         
         return $lists;
+    }
+    
+    function ListTeam($tourID="0",$field = "*", $conditions = null, $orderBy = "", $limit = 10, $start = 0){
+        
+        if($orderBy == "" OR $orderBy == null){
+            $pname = $this->_primary;
+            if(isset($this->$pname))
+                $orderBy = " $this->_primary DESC ";
+        }
+        $db = Yii::app()->db;
+        $command = $db->createCommand()->select("A.name")
+                ->from( TBL_GS_PLAYERS ." A")
+                ->leftJoin(TBL_GS_PLAYER_REGISTER_TEAM . " B", "A.id = B.playerID ")
+                ->leftJoin(TBL_GS_TOURNAMEMANTS . " C", "C.id = B.tourID ")
+                ->where(" B.tourID = $tourID ")
+                //->group(" A.id ")
+                ;
+        if($orderBy != null AND $orderBy != "") $command->order($orderBy);
+        if($limit != null)$command->limit($limit, $start);
+
+        $results = $command->queryColumn();
+        return $results;
     }
  
 

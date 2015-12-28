@@ -20,7 +20,7 @@
 
     <!-- JavaScript -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/jquery.ui.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/main.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/main2.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/imagePreview.js"></script>
