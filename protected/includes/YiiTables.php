@@ -14,6 +14,8 @@ class YiiTables{
     var $_tablename = "{{menus}}";
     var $_message = "";
     var $_db = null;   
+    var $_L_team = "tbl_gs_teams";  
+    var $_R_tour = "tbl_gs_team_register_tour";  
     
     
     function __construct($tbl_name, $primary = "id", $db) {
@@ -292,4 +294,7 @@ class YiiTables{
         }
         return false;
     }
+    
+    
 }
+

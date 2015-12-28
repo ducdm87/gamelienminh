@@ -84,6 +84,7 @@ class TeamsController extends BackEndController {
         $item = $model->getItem();
 
         $lists = $model->getListEdit($item);
+//        var_dump($item);die;
         $this->render('edit', array("item" => $item, "lists" => $lists));
     }
 
@@ -153,5 +154,18 @@ class TeamsController extends BackEndController {
         YiiMessage::raseSuccess("Successfully remove tournament(s)");
         $this->redirect(Router::buildLink('gamesport', array('view' => 'teams')));
     }
-
+    /**
+     * Function progress get team by tour ID
+     */
+    function actionList($id = 2) {
+        $id = Request::getVar("tour_id",$id);
+        $model = Teams::getInstance();
+        global $user;
+        if (!$user->isSuperAdmin()) {
+            YiiMessage::raseNotice("Your account not have permission to add/edit Team");
+            $this->redirect(Router::buildLink("gamesport", array('view' => 'teams')));
+        }
+        $items = $model->ListTeam($id);
+        echo json_encode($items);
+    }
 }

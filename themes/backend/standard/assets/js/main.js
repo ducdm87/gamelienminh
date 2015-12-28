@@ -242,7 +242,10 @@ $(function(){
 
 
 $(function(){
-     
+     $(".item-tour").click(function(){
+        $(".item-tour").removeClass('active');
+        $(this).addClass('active');
+    });
 });
 
 function teamChangeLocation(loc_id, loc_name)
@@ -250,4 +253,24 @@ function teamChangeLocation(loc_id, loc_name)
     $("#location-id").val(loc_id);
     $("#location-name").html(loc_name);
     $(".modal-dialog .close").click();
+}
+function show_team_tourteam(tour_id, tour_name)
+{
+    $.ajax({
+        type: "get",
+        url: "http://dev.gamesport.com/backend/?app=gamesport&view=teams&layout=List",
+        data:{"tour_id":tour_id},
+        success: function(res){
+            $('.show_list_team').html("");
+            var res = JSON.parse(res);
+            for(i=0;i<res.length;i++)
+            {
+                $('.show_list_team').append("<li>"+ res[i] +"</li>");
+            };
+            
+        }
+    });
+    
+     
+    
 }

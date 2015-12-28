@@ -636,3 +636,13 @@ fieldset.adminform {
     height: 0;
     overflow: hidden;
 }
+#myModal-change-location a:hover{cursor: pointer;}
+#myModal-change-location .modal-body{padding: 0;}
+#myModal-joined-tour a:hover{cursor: pointer;}
+#myModal-joined-tour .main-show-team{float: right; top: 0;}
+#myModal-joined-tour .modal-body ul{list-style: outside none none;}
+#myModal-joined-tour .modal-body ul li{margin: 0; padding: 0;}
+#myModal-joined-tour .list-tour-left ul .item-tour {}
+#myModal-joined-tour .list-tour-left ul li{ z-index: 100;  z-index: 100;}
+#myModal-joined-tour .modal-footer{margin-top: -10px;}
+
