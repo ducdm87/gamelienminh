@@ -19,7 +19,7 @@ class TournamentController extends BackEndController {
         $model = Tournament::getInstance();
         $tour_detail = $model->getItem($tourID);
         $lists = $model->getLists($tourID); 
-       
+        
         $this->addBarTitle("Tournament: <small>$tour_detail->name</small>", "tournaments"); 
         addSubMenuGameSportTour('tournament');
         
@@ -61,7 +61,7 @@ class TournamentController extends BackEndController {
 
         $model = Tournaments::getInstance();
         $item = $model->getItem();
-        
+       
         $lists = $model->getListEdit($item);
         $this->render('edit', array("item" => $item, "lists" => $lists));
     }

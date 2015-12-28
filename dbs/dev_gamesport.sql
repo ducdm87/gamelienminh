@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2015 at 05:43 AM
+-- Generation Time: Dec 28, 2015 at 11:00 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -787,14 +787,14 @@ CREATE TABLE IF NOT EXISTS `tbl_gs_teams` (
   KEY `created_by` (`created_by`),
   KEY `rankID` (`rankID`),
   KEY `locationID` (`locationID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `tbl_gs_teams`
 --
 
 INSERT INTO `tbl_gs_teams` (`id`, `name`, `alias`, `thumbnail`, `birthday`, `rankID`, `address`, `locationID`, `mobile`, `created_by`, `modified_by`, `status`, `introtext`, `fulltext`, `featured`, `ordering`, `metakey`, `metadesc`, `cdate`, `mdate`) VALUES
-(1, 'ha noi', 'ha-noi', '/uploads/images/gamesport/thumbnails/teams/map-location-hi.png', '0000-00-00 00:00:00', 0, '', 4, '', 0, '0000-00-00 00:00:00', 1, '', '', 0, 0, '', '', '2015-12-24 11:03:44', '2015-12-26 05:05:51'),
+(1, 'ha noi', 'ha-noi', '/uploads/images/gamesport/thumbnails/teams/map-location-hi.png', '0000-00-00 00:00:00', 0, '', 22, '', 0, '0000-00-00 00:00:00', 1, '', '', 0, 0, '', '', '2015-12-24 11:03:44', '2015-12-28 07:51:27'),
 (2, 'clan thai binh', 'clan-thai-binh', '/uploads/images/gamesport/thumbnails/teams/map-location-hi.png', '0000-00-00 00:00:00', 0, 'Espoo, Phần Lan', 79, '0979390590', 0, '0000-00-00 00:00:00', 1, 'adsad', '', 0, 0, '', '', '2015-12-26 05:04:34', '2015-12-26 05:05:59'),
 (3, 'clan hải phòng', 'clan-hai-phong', '', '0000-00-00 00:00:00', 0, '31 - 33 Đinh Công Tráng, phường Tân Định, quận 1, TP. Hồ Chí Minh c', 25, '0979390590', 0, '0000-00-00 00:00:00', 1, '', '', 0, 0, '', '', '2015-12-25 11:05:32', '2015-12-26 05:05:40'),
 (4, 'clan hải phòng 2', 'clan-hai-phong-2', '', '0000-00-00 00:00:00', 0, '', 25, '', 0, '0000-00-00 00:00:00', 1, '', '', 0, 0, '', '', '2015-12-26 05:06:30', '2015-12-26 05:06:30'),
@@ -806,7 +806,8 @@ INSERT INTO `tbl_gs_teams` (`id`, `name`, `alias`, `thumbnail`, `birthday`, `ran
 (10, 'clan thai binh 4', 'clan-thai-binh-4', '/uploads/images/gamesport/thumbnails/teams/map-location-hi.png', '0000-00-00 00:00:00', 0, 'Espoo, Phần Lan', 79, '0979390590', 0, '0000-00-00 00:00:00', 1, 'adsad', '', 0, 0, '', '', '2015-12-26 05:08:01', '2015-12-26 05:08:01'),
 (11, 'Hà Nội 2', 'ha-noi-2', '/uploads/images/gamesport/thumbnails/teams/map-location-hi.png', '0000-00-00 00:00:00', 0, 'Espoo, Phần Lan', 22, '0979390590', 0, '0000-00-00 00:00:00', 1, 'adsad', '', 0, 0, '', '', '2015-12-26 05:08:23', '2015-12-26 05:08:23'),
 (12, 'Hà Nội 3', 'ha-noi-3', '/uploads/images/gamesport/thumbnails/teams/map-location-hi.png', '0000-00-00 00:00:00', 0, 'Espoo, Phần Lan', 22, '0979390590', 0, '0000-00-00 00:00:00', 1, 'adsad', '', 0, 0, '', '', '2015-12-26 05:08:41', '2015-12-26 05:08:41'),
-(13, 'Hà Nội 4', 'ha-noi-4', '/uploads/images/gamesport/thumbnails/teams/map-location-hi.png', '0000-00-00 00:00:00', 0, 'Espoo, Phần Lan', 22, '0979390590', 0, '0000-00-00 00:00:00', 1, 'adsad', '', 0, 0, '', '', '2015-12-26 05:08:51', '2015-12-26 05:08:51');
+(13, 'Hà Nội 4', 'ha-noi-4', '/uploads/images/gamesport/thumbnails/teams/map-location-hi.png', '0000-00-00 00:00:00', 0, 'Espoo, Phần Lan', 22, '0979390590', 0, '0000-00-00 00:00:00', 1, 'adsad', '', 0, 0, '', '', '2015-12-26 05:08:51', '2015-12-26 05:08:51'),
+(14, 'Clan Nam Dinh', 'clan-nam-dinh', '', '0000-00-00 00:00:00', 0, '', 73, '', 0, '0000-00-00 00:00:00', 1, '', '', 0, 0, '', '', '2015-12-28 07:50:23', '2015-12-28 07:50:23');
 
 -- --------------------------------------------------------
 
@@ -837,32 +838,32 @@ CREATE TABLE IF NOT EXISTS `tbl_gs_team_register_tour` (
 --
 
 INSERT INTO `tbl_gs_team_register_tour` (`id`, `teamID`, `tourID`, `table_num`, `created_by`, `modified_by`, `cdate`, `mdate`, `status`) VALUES
-(1, 1, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(2, 2, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(3, 2, 4, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(4, 3, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(5, 3, 4, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(6, 4, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(7, 4, 4, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(8, 5, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(9, 5, 4, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(10, 5, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(11, 5, 4, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(12, 6, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(13, 6, 4, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(14, 7, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(15, 7, 4, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(16, 8, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(17, 8, 4, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(18, 9, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(19, 9, 4, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(20, 10, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(21, 10, 4, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(22, 11, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(23, 11, 4, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(24, 12, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(25, 12, 4, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
-(26, 13, 3, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(1, 1, 3, 1, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(2, 2, 3, 2, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(3, 2, 4, 2, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(4, 3, 3, 1, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(5, 3, 4, 3, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(6, 4, 3, 4, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(7, 4, 4, 1, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(8, 5, 3, 2, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(9, 5, 4, 1, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(10, 5, 3, 3, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(11, 5, 4, 4, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(12, 6, 3, 1, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(13, 6, 4, 2, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(14, 7, 3, 1, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(15, 7, 4, 2, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(16, 8, 3, 1, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(17, 8, 4, 3, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(18, 9, 3, 3, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(19, 9, 4, 2, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(20, 10, 3, 2, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(21, 10, 4, 1, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(22, 11, 3, 1, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(23, 11, 4, 3, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(24, 12, 3, 1, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(25, 12, 4, 2, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
+(26, 13, 3, 1, 0, '0000-00-00 00:00:00', NULL, NULL, 1),
 (27, 13, 4, 0, 0, '0000-00-00 00:00:00', NULL, NULL, 1);
 
 -- --------------------------------------------------------
@@ -1447,7 +1448,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `username`, `password`, `email`, `groupID`, `leader`, `mobile`, `home_phone`, `first_name`, `last_name`, `address`, `city`, `province_state`, `zip_code`, `country`, `suppliers`, `cdate`, `mdate`, `template_id`, `status`, `lastvisit`, `isBlock`, `activeCode`, `params`) VALUES
-(28, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ducdm87@gmail.com', 2, 1, '0979390590', '', 'dam manh', 'duc', 'trung kinh', 'bhmedia', '', '', 0, '', '0000-00-00 00:00:00', '2015-11-13 20:38:16', 0, 1, '2015-12-28 11:02:43', 0, '', ''),
+(28, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ducdm87@gmail.com', 2, 1, '0979390590', '', 'dam manh', 'duc', 'trung kinh', 'bhmedia', '', '', 0, '', '0000-00-00 00:00:00', '2015-11-13 20:38:16', 0, 1, '2015-12-28 16:58:59', 0, '', ''),
 (31, 'giamdoc', '23db8f175879817eedc5b488d7b9113b', 'giamdoctrungtam@gmail.com', 39, 1, '0979390590', '', 'giamdoc', 'giamdoc', 'ad', '', '', '', 0, '', '2015-11-13 20:39:30', '2015-11-23 22:04:13', 0, 1, '2015-12-05 23:30:35', 0, '', ''),
 (32, 'phogiamdoc', '23db8f175879817eedc5b488d7b9113b', 'phogiamdoc@gmail.com', 39, 0, '', '', 'pho giamdoc', 'pho giamdoc', '', '', '', '', 0, '', '2015-11-13 20:40:08', '2015-11-13 20:40:11', 0, 1, '0000-00-00 00:00:00', 0, '', ''),
 (33, 'leader1', '2b1e3590458a6e6014c0141b8cd13fe4', 'leader1@gmail.com', 31, 1, '', '', 'leader1', 'leader1', '', '', '', '', 0, '', '2015-11-13 20:41:34', '2015-11-13 20:41:34', 0, 1, '0000-00-00 00:00:00', 0, '', ''),
@@ -1603,6 +1604,7 @@ INSERT INTO `tbl_yiisession` (`id`, `expire`, `data`) VALUES
 ('9ii7keheqkquos2eln2pqus2l3', 1453695183, ''),
 ('a1e588qcm3tkhjlul00gggmfh2', 1453535600, ''),
 ('a65ii1s65gc44q8vv8upp43p31', 1453630866, ''),
+('aqmftpn8tf308n6s82he30sld3', 1453876471, ''),
 ('b0i5458584fubpai835gdlbbl1', 1453602818, ''),
 ('c3vcil8e981sad9gm9omvvhbs2', 1453438336, ''),
 ('c6jvllnm84oe1kbivr9d5bdp32', 1452868350, ''),
@@ -1612,6 +1614,7 @@ INSERT INTO `tbl_yiisession` (`id`, `expire`, `data`) VALUES
 ('k7agkgnll9p5eb30fh8jk32456', 1453364293, ''),
 ('l9c9dcm5glakok05jmci8h1ft7', 1453517291, ''),
 ('lqcu623es9h9vfihgh27ukois3', 1453258403, ''),
+('msp2fapvfnt2cs5ai6fhbb51k5', 1453888740, ''),
 ('n7cn6idgo0u8fnoc8i9ehon9r3', 1453606232, ''),
 ('pm00lnr4emvbaqqfab9kmhlff5', 1453862185, ''),
 ('q3hbchsm7fvgm7ha5mstv65647', 1452056657, ''),
