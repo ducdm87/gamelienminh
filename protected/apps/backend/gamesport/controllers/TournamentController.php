@@ -21,7 +21,7 @@ class TournamentController extends BackEndController {
         $lists = $model->getLists($tourID); 
        
         $this->addBarTitle("Tournament: <small>$tour_detail->name</small>", "tournaments"); 
-        addSubMenuGameSportTour('tournament'); 
+        addSubMenuGameSportTour('tournament');
         
         $this->render('teamjoined', array('tour_detail'=> $tour_detail,'lists' => $lists));
     }

@@ -1,6 +1,8 @@
-
-<form action="<?php echo Router::buildLink("gamesport", array('view'=>'tournaments')) ?>" method="post" name="adminForm" >
-    <div class="row">
+<?php
+global $_list_tour_state, $_list_num_table, $_list_num_teams_DE;
+?>
+<form action="<?php echo Router::buildLink("gamesport", array('view' => 'tournaments')) ?>" method="post" name="adminForm" >
+    <div class="row form-custom-css">
         <div class="col-md-12">
             <div class="col-md-8">
                 <div class="panel panel-primary">
@@ -11,6 +13,26 @@
                         <div class="col-md-12">
                             <?php echo buildHtml::renderField("text", "name", $item->name, "name", "form-control title-generate"); ?>
                             <?php echo buildHtml::renderField("text", "alias", $item->alias, "Alias", "form-control alias-generate", "Auto-generate from title"); ?>
+                            <div class="form-group row">
+                                <label class="control-label col-md-2">Estimated</label>
+
+                                <label class="control-label col-md-2" title="Estimated number of table">Table</label>
+                                <div class="col-md-3"><?php echo buildHtml::select($_list_num_table, $item->number_table, "number_table"); ?></div>
+
+                                <label class="control-label col-md-2" title="Number of teams in round DE">Teams in DE</label>
+                                <div class="col-md-3"><?php echo buildHtml::select($_list_num_teams_DE, $item->number_teams_de, "number_teams_de"); ?></div>
+                            </div>                            
+                            <div class="form-group row">
+                                <label class="control-label left col-md-2">Number teams</label>
+                                <div class="col-md-10">
+                                    <input placeholder="Maximum number of teams" type="text" name="number_teams" class="field-short" value="<?php echo $item->number_teams; ?>">
+                                    <div class="goiy-sodoi">
+                                        Số đội phải đảm bảo = (2^n) X "Teams in DE". <br />
+                                        VD: 1 X 32 = 32 || 2 X 32 = 64 || 4 X 32 =128 || 8 X 32 = 256 || 16 X 32 = 512 v.v...
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-group row">
                                 <label class="control-label left col-md-2">Parent Item</label>
                                 <div class="col-md-10"><?php echo $lists['parentID']; ?></div>
@@ -25,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-4">
                 <div class="panel panel-info"> 
                     <div class="panel-heading">
@@ -42,8 +64,8 @@
                         <?php echo buildHtml::renderField("calander", "cdate", $item->cdate, "Created", null, "", 3, 9); ?>
                         <?php echo buildHtml::renderField("calander", "mdate", $item->mdate, "Modified", null, "", 3, 9); ?>
                     </div>
-               </div>
-                     
+                </div>
+
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <span><b>Image</b></span>
@@ -69,14 +91,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <span><b>Seo info</b></span>
                     </div>
                     <div class="panel-body">
-                        <?php echo buildHtml::renderField('textarea',"metakey", $item->metakey, "Meta Key",null, "", 3, 9); ?>
-                        <?php echo buildHtml::renderField('textarea',"metadesc", $item->metadesc, "Meta Desc",null, "", 3, 9); ?>
+                        <?php echo buildHtml::renderField('textarea', "metakey", $item->metakey, "Meta Key", null, "", 3, 9); ?>
+                        <?php echo buildHtml::renderField('textarea', "metadesc", $item->metadesc, "Meta Desc", null, "", 3, 9); ?>
                     </div>
                 </div>
             </div>
