@@ -38,7 +38,7 @@
                         <div class="form-group row">
                             <label class="control-label col-md-3">Location</label>
                             <div class="col-md-9">
-                                <span id="location-name"><?php echo $lists['locations'][$item->locationID]['name']; ?></span>
+                                <span id="location-name"><?php echo isset($lists['locations'][$item->locationID])?$lists['locations'][$item->locationID]['name']:""; ?></span>
                                 <div class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal-change-location">Change Location</div>
                                 <input type="hidden" name="locationID" id="location-id" value="<?php echo $item->locationID; ?>" />
                             </div>
