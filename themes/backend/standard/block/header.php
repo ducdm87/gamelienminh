@@ -21,8 +21,7 @@
     <!-- JavaScript -->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/main.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/main2.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/main.js"></script>    
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/imagePreview.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/bootstrap.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/jquery.form.js"></script>
@@ -34,4 +33,7 @@
     <!-- Page Specific Plugins -->    
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/tablesorter/jquery.tablesorter.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/tablesorter/tables.js"></script>
+    
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/css/duc-style.css" rel="stylesheet">
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/main2.js"></script>
 </head>

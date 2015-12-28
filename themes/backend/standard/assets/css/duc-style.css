@@ -1,0 +1,31 @@
+.list-location{
+    list-style-type: none;
+    font-weight: bold;
+    padding: 0;
+}
+
+.list-team{
+    font-weight: normal;
+    list-style-type: none;
+    margin: 0 0 0 20px;
+}
+a, a:focus{
+        outline: medium none;
+}
+.remove-team-table, .remove-team-tables{ color: red;  cursor: pointer; }
+
+.form-tournament-teamjoin .tab-content .tab-pane{ margin: 5px 0 0 0; }
+.form-tournament-teamjoin .fa-hand-o-right{ 
+    cursor: pointer;
+    font-size: 20px;
+}
+.form-tournament-teamjoin .fa-hand-o-right.fa-2x{ 
+    font-size: 30px;
+}
+.form-tournament-teamjoin .data-team{
+    cursor: pointer;
+}
+.form-tournament-teamjoin .data-team .fa-hand-o-right:hover,
+.form-tournament-teamjoin .data-team:hover .fa-hand-o-right{
+    color: #1D9D74;    
+} 

@@ -26,8 +26,8 @@ class Tournament extends CFormModel {
         }
         return $instance;
     }
-    
-    public function getItem($cid = null){
+
+    public function getItem($cid = null) {
         if ($cid == null OR $cid == "")
             $cid = Request::getVar("tourID", 0);
 
@@ -41,46 +41,77 @@ class Tournament extends CFormModel {
         $this->_items[$cid] = $item;
         return $item;
     }
-    
-    public function getLists($tourID = 0){
-         $lists = array();
-         $lists['locations'] = $this->getLocations();
-         $lists['teams_joined'] = $this->getTeams($tourID);
-         $lists['table_info'] = $this->getTableInfo($tourID);
-         return $lists;
+
+    public function getLists($tourID = 0) {
+        $lists = array();
+        $lists['locations'] = $this->getLocations();
+        $lists['teams_joined'] = $this->getTeams($tourID);
+        $lists['table_info'] = $this->getTableInfo($tourID);
+        $lists['matches_info'] = $this->getMatchesInfo($tourID);
+        
+        $arr_team_loc = array();
+        if (count($lists['teams_joined'])) {
+            foreach ($lists['teams_joined'] as $team) {
+                $arr_team_loc[$team['locationID']][] = $team;
+            }
+        }
+
+        $lists['teams_joined_loc'] = $arr_team_loc;
+        
+        $arr_team_table = array();
+        if (count($lists['teams_joined'])) {
+            foreach ($lists['teams_joined'] as $team) {
+                $arr_team_table[$team['table_num']][$team['id']] = $team;
+            }
+        }
+        if(!isset($arr_team_table[0]) ) $arr_team_table[0] = array();
+        $lists['arr_team_table'] = $arr_team_table;
+                
+        return $lists;
     }
 
-    public function getLocations(){
+    public function getLocations() {
         $obj_tblLocation = YiiTables::getInstance(TBL_LOCATIONS);
         $locations = $obj_tblLocation->loads("*", 'parentID != 0 ', "lft ASC", null, 0);
-        
+
         $arr_new = array();
-        foreach($locations as $loc){
+        foreach ($locations as $loc) {
             $arr_new[$loc['id']] = $loc;
         }
         $locations = $arr_new;
         return $locations;
     }
-    
-    public function getTeams($tourID = 0){
+
+    public function getTeams($tourID = 0, & $total_team = 0) {
         $db = Yii::app()->db;
         $command = $db->createCommand()->select("A.*, B.cdate joined_day, B.table_num, C.name location_name")
                 ->from(TBL_GS_TEAMS . " A")
                 ->rightJoin(TBL_GS_TEAM_REGISTER_TOUR . ' B', 'A.id = B.teamID')
                 ->leftJoin(TBL_LOCATIONS . ' C', 'A.locationID = C.id')
                 ->where("tourID = $tourID")
-                ;
+        ;
         $items = $command->queryAll();
         $arr_new = array();
-        foreach($items as $item){
+        $total_team = count($items);
+        foreach ($items as $item) {
             $arr_new[$item['id']] = $item;
         }
-        $items = $arr_new; 
+        $items = $arr_new;
         return $items;
     }
-    
-    public function getTableInfo(){
-         
+
+    public function getTableInfo($tourID = 0) {
+        
+    }
+
+    public function getMatchesInfo($tourID = 0) {
+        $db = Yii::app()->db;
+        $command = $db->createCommand()->select("A.*")
+                ->from(TBL_GS_MATCHES . " A")
+                ->where("tourID = $tourID")
+        ;
+        $items = $command->queryAll();
+        return $items;
     }
 
 }
