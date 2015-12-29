@@ -42,7 +42,7 @@ class Tournament extends CFormModel {
         return $item;
     }
 
-    public function getLists($tourID = 0) {
+    public function getLists($tourID = 0, $main_item) {
         $lists = array();
         $lists['locations'] = $this->getLocations();
         $lists['teams_joined'] = $this->getTeams($tourID);
@@ -75,7 +75,10 @@ class Tournament extends CFormModel {
                 }
             }
         }
-        if(!isset($arr_team_table[0]) ) $arr_team_table[0] = array();
+        for($i=0;$i<=$main_item->number_table;$i++){
+            if(!isset($arr_team_table[$i]) ) $arr_team_table[$i] = array();
+        }
+        
         $lists['arr_team_table'] = $arr_team_table;
         
                 

@@ -1,4 +1,25 @@
-<?php global $_list_tour_state; ?>
+<?php global $_list_tour_state; 
+
+$number_team_pass = $tour_detail->number_teams_de/$tour_detail->number_table;
+
+$max_round = count($lists['arr_team_table'][1])/$number_team_pass;
+ $max_round = log($max_round,2);
+ echo $max_round;
+ 
+// $query = "INSERT INTO `dev_gamesport`.`tbl_gs_team_register_tour` (`id`, `teamID`, `tourID`, `table_num`, `ordering`, `created_by`, `modified_by`, `cdate`, `mdate`, `status`) 
+//     VALUES ";
+// $arr_val = [];
+// for($i=1;$i<129;$i++){
+//     $arr_val[] = "(NULL, '$i', '3', '', '', '', '', NULL, NULL, '1')";
+// }
+// 
+// $query = $query . implode(", ", $arr_val);
+// $command = Yii::app()->db->createCommand($query);
+// $command->execute();
+ 
+ 
+ 
+?>
     
 <div class="form-tournament-teamjoin">
     <form action="<?php echo Router::buildLink("gamesport", array('view' => 'tournament')); ?>" method="post" name="adminForm" >
@@ -22,7 +43,9 @@
                                 </ul>
                                 <div class="tab-content">
                                     <div id="tab-round-1" class="tab-pane fade in active">
-                                         noi dung 1
+                                         <?php
+                                         $team_table = $lists['arr_team_table'][1];
+                                         ?>
                                     </div>
                                     <div id="tab-round-2" class="tab-pane fade"> noi dung 2 </div>
                                     <div id="tab-round-3" class="tab-pane fade"> noi dung 3 </div>

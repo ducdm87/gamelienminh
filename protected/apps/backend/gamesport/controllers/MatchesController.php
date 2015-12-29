@@ -16,9 +16,9 @@ class MatchesController extends BackEndController {
     public function actionDisplay() {
         global $mainframe, $user; 
         $tourID = Request::getVar('tourID',0);
-        $model = Tournament::getInstance();
+        $model = Matches::getInstance();
         $tour_detail = $model->getItem($tourID);
-        $lists = $model->getLists($tourID); 
+        $lists = $model->getLists($tourID, $tour_detail); 
         
         $this->addBarTitle("Matches: <small>$tour_detail->name</small>", "tournaments"); 
         $this->addIconToolbar("Apply", Router::buildLink("gamesport", array("view"=>"tournament", "layout" => "save","tourID"=>$tourID)), "apply");
