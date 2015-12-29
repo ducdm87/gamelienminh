@@ -1,5 +1,8 @@
 ALTER TABLE `tbl_gs_tournamemants` ADD `number_teams` SMALLINT NOT NULL COMMENT 'Tối đa số đội tham dự' AFTER `fulltext`;
 ALTER TABLE `tbl_gs_tournamemants` ADD `number_teams_de` SMALLINT NOT NULL COMMENT 'Số đội vào vòng de' AFTER `number_teams`; 
 ALTER TABLE `tbl_gs_tournamemants` ADD `number_table` SMALLINT NOT NULL COMMENT 'Dự kiến số bảng' AFTER `number_teams_de`; 
+
+#29/12/2015
+    ALTER TABLE `tbl_gs_team_register_tour` ADD `ordering` SMALLINT NOT NULL AFTER `table_num`; 
  
  

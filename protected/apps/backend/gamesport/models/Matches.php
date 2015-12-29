@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class Tournament extends CFormModel {
+class Matches extends CFormModel {
 
     private $table = '{{users_group}}';
     private $command;
@@ -22,7 +22,7 @@ class Tournament extends CFormModel {
         static $instance;
 
         if (!is_object($instance)) {
-            $instance = new Tournament();
+            $instance = new Matches();
         }
         return $instance;
     }

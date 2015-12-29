@@ -11,7 +11,6 @@ class Categories extends CFormModel {
     private $table = "{{categories}}";
     private $tbl_menu = '{{menus}}';
     private $primary = 'id';
-    
     private $command;
     private $connection;
 
@@ -30,16 +29,34 @@ class Categories extends CFormModel {
         }
         return $instance;
     }
-    
+
     public function getItems() {
-        $obj_module = YiiCategory::getInstance();
-        $items = $obj_module->loadItems();
+        $obj_category = YiiCategory::getInstance();
+        $items = $obj_category->loadItems();
         return $items;
-    } 
-    
-     function getListEdit($mainitem){
-         
     }
+
+    public function getList() {
+        $obj_category = YiiCategory::getInstance();
+        $lists = array();
+        $items = $obj_category->getScope();
+        $arr_new = array();
+        foreach($items as $item){
+            $arr_new[$item['value']] = $item['text'];
+        }
+        $lists['scopes'] = $arr_new;
+        return $lists;
+    }
+
+    function getListEdit($mainitem) {
+        $obj_category = YiiCategory::getInstance();
+        $lists = array();
+        $items = $obj_category->getScope();
+        
+        $lists['scopes'] = buildHtml::select($items, $mainitem->scope, "scope",  "scope");        
+        return $lists;
+    }
+
 }
 
 ?> 

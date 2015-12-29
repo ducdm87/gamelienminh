@@ -28,7 +28,9 @@
                     <td><a href="<?php echo $link_edit; ?>"><?php echo $item['title']; ?></a></td>                     
                     <td align="center"><?php echo buildHtml::status($i, $item['status']); ?></td>
                     <td align="center"><?php echo buildHtml::changState($i, $item['feature'],"feature."); ?></td>
-                    <td align="center"><?php echo $item['scope'] ?></td>                    
+                    <td align="center">
+                        <?php echo isset($lists['scopes'][$item['scope']])?$lists['scopes'][$item['scope']]:""; ?>
+                    </td>                    
                     <td align="center"><?php echo $item['id'] ?></td>
                 </tr>
                 <?php $k = 1 - $k;

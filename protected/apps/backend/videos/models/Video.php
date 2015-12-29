@@ -99,7 +99,7 @@ class Video extends CFormModel {
         $list = array();
 
         $obj_module = YiiCategory::getInstance();
-        $items = $obj_module->loadItems('id value, title text');
+        $items = $obj_module->loadItems('id value, title text', "scope = 'videos'");
         $list['category'] = buildHtml::select($items, $mainItem->catID, "catID","","size=7");
          
         $items = array();

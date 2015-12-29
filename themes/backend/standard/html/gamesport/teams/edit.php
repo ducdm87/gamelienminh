@@ -34,7 +34,7 @@
                             <div class="col-md-9"><?php echo buildHtml::choseStatus("status", $item->status); ?></div>
                         </div>                       
                         <?php echo buildHtml::renderField("calander", "cdate", $item->cdate, "Created", null, "", 3, 9); ?>
-                        <?php echo buildHtml::renderField("calander", "mdate", $item->mdate, "Modified", null, "", 3, 9); ?>
+                        <?php echo buildHtml::renderField("label", "mdate", $item->mdate, "Modified",null, "",3,9); ?>
                         <div class="form-group row">
                             <label class="control-label col-md-3">Location</label>
                             <div class="col-md-9">

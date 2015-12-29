@@ -2,73 +2,59 @@
     <form action="<?php echo Router::buildLink("categories", array('layout'=>'save')) ?>" method="post" name="adminForm">
         <input type="hidden" name="id"  value="<?php echo $item->id; ?>"/>
         <div class="col-md-8">
-            <div class="panel">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <span>Detail</span>
                 </div>
                 <div class="panel-body">
+                    <?php echo buildHtml::renderField("text", "name", $item->title, "name", "form-control title-generate"); ?>
+                    <?php echo buildHtml::renderField("text", "alias", $item->alias, "Alias", "form-control alias-generate", "Auto-generate from title"); ?>
+                    
                     <div class="form-group row">
-                        <div class="col-md-3">Tên</div>
-                        <div class="col-md-9">
-                            <input type="text" name="title" class="form-control title-generate" value="<?php echo $item->title; ?>">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-3">Alias</div>
-                        <div class="col-md-9">
-                            <input type="text" name="alias" class="form-control alias-generate" placeholder="Auto-generate from title" value="<?php echo $item->alias; ?>">
-                        </div>
-                    </div>
-
-
-                    <div class="form-group row">
-                        <div class="col-md-3">Trạng thái</div>
-                        <div class="col-md-9">
-                            <select name="status" class="">
-                                <option value="1" <?php if ($item->status == 1) echo 'selected=""'; ?> >Enable</option>
-                                <option value="0" <?php if ($item->status == 0) echo 'selected=""'; ?> >Disable</option>                            
-                            </select>
-                        </div>
-                    </div>      
-                    <div class="form-group row">
-                        <div class="col-md-3">Nổi bật</div>
-                        <div class="col-md-9">
+                        <label class="control-label left col-md-2">Feature</label>                        
+                        <div class="col-md-10">
                             <select name="feature" class="">
                                 <option value="1" <?php if ($item->feature == 1) echo 'selected=""'; ?> > On</option>
                                 <option value="0" <?php if ($item->feature == 0) echo 'selected=""'; ?>> Off</option>                            
                             </select>
                         </div>
-                    </div>  
+                    </div>
+                    
                     <div class="form-group row">
-                        <div class="col-md-3">Mô tả</div>
-                        <div class="col-md-9">
-                            <textarea name="description" rows="3" cols="50"><?php echo $item->description; ?></textarea>
+                        <label class="control-label left col-md-2">Scope</label>
+                        <div class="col-md-10">
+                           <?php echo $lists['scopes']; ?>
                         </div>
-                    </div>   
+                    </div>
+                    
+                    <?php echo buildHtml::renderField('textarea', "description", $item->description, "Description"); ?>                       
                 </div>
             </div>
 
         </div> 
 
         <div class="col-md-4">
-            <div class="panel">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <span><b>More info</b></span>
+                </div>
+                <div class="panel-body">                    
+                    <?php echo buildHtml::renderField("calander", "cdate", $item->cdate, "Created",null, "",3,9); ?>
+                    <?php echo buildHtml::renderField("label", "mdate", $item->mdate, "Modified",null, "",3,9); ?>
+                    <div class="form-group row">
+                        <label class="control-label left col-md-3">Status</label>
+                        <div class="col-md-9"><?php echo buildHtml::choseStatus("status", $item->status); ?></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <span>Meta data</span>
                 </div>
                 <div class="panel-body">
-                    <div class="form-group row">
-                        <div class="col-md-3">Meta Key</div>
-                        <div class="col-md-9">
-                            <textarea name="metakey" rows="4" cols="30"><?php echo $item->metakey; ?></textarea>
-                        </div>
-                    </div> 
-                    <div class="form-group row">
-                        <div class="col-md-3">Meta Desc</div>
-                        <div class="col-md-9">
-                            <textarea name="metadesc" rows="4" cols="30"><?php echo $item->metadesc; ?></textarea>
-                        </div>
-                    </div> 
+                    <?php echo buildHtml::renderField('textarea', "metakey", $item->metakey, "Meta Key"); ?> 
+                    <?php echo buildHtml::renderField('textarea', "metadesc", $item->metadesc, "Meta Desc"); ?> 
                 </div> 
             </div> 
         </div> 

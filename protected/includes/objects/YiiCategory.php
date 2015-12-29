@@ -51,4 +51,11 @@ class YiiCategory{
         return $obj_menuitem->loadColumn("menuID", "moduleID = $moduleID", null,null);
     }
     
+    function getScope($fields = " title text, name value ")
+    {
+        $obj_ext = YiiExtensions::getInstance();
+        $list_scope = $obj_ext->loadApps($fields);
+        return $list_scope;
+    }
+    
 }

@@ -91,7 +91,7 @@ class Article extends CFormModel {
         $list = array();
 
         $obj_module = YiiCategory::getInstance();
-        $items = $obj_module->loadItems('id value, title text');
+        $items = $obj_module->loadItems('id value, title text',"scope = 'articles'");
         $list['category'] = buildHtml::select($items, $mainItem->catID, "catID","","size=7");
          
         $items = array();
@@ -103,7 +103,8 @@ class Article extends CFormModel {
         $items = array();
         $items[] = array("value"=>0, "text"=>"Disable");
         $items[] = array("value"=>1, "text"=>"Enable");        
-        $list['feature'] = buildHtml::select($items, $mainItem->feature, "feature");        
+        $list['feature'] = buildHtml::select($items, $mainItem->feature, "feature");
+        
         return $list;
     } 
 

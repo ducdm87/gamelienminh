@@ -45,8 +45,9 @@ class HomeController extends BackEndController {
         
         $model = Categories::getInstance();
         $items = $model->getItems();
+        $lists = $model->getList();
         
-        $this->render('default', array("items" => $items));
+        $this->render('default', array("items" => $items, 'lists'=>$lists));
     } 
 
     public function actionNew() {

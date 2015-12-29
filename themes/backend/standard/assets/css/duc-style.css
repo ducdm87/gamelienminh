@@ -28,4 +28,28 @@ a, a:focus{
 .form-tournament-teamjoin .data-team .fa-hand-o-right:hover,
 .form-tournament-teamjoin .data-team:hover .fa-hand-o-right{
     color: #1D9D74;    
-} 
+}
+.form-tournament-teamjoin .ui-state-default{ margin: 5px 0 0;
+    padding: 3px 15px;
+    width: 60%;
+    cursor: move;
+}
+.form-tournament-teamjoin .ui-state-default{ color: black; }
+.form-tournament-teamjoin .ui-state-default .icon-move
+{
+    color: #1c94c4;
+    margin: 0 5px 0 0;
+}
+.form-tournament-teamjoin .ui-state-default .icon-remove
+{
+    
+}
+.form-tournament-teamjoin .ui-state-default .btn-remove-item{ margin: 0 0 0 5px; color: red; }
+
+.tab-content{
+    border-bottom: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    padding: 5px;
+    border-radius: 0 0 5px 5px;
+}

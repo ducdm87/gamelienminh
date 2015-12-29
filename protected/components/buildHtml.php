@@ -276,7 +276,7 @@ class buildHtml {
         }
 
         /*
-         * text, password, calander, editor
+         * text, password, calander, editor, label
          */
         static function renderField($type = "text", $name, $value = "", $title, $class = null, $placeholder = "", $w1 = 2, $w2 = 10, $width = "100%", $height = "400px") {
             if ($class == null)
@@ -334,6 +334,7 @@ class buildHtml {
             //$events['instanceReady'] = 'function (ev) { }';
             $CKEditor = new CKEditor("$base_url/editors/ckeditor/");
             $CKEditor->returnOutput = true;
+            $CKEditor->config['height'] = '500';
             $out = $CKEditor->editor($name, $value, $config, $events = null);
 
             return $out . '<style>.cke_toolbar { height: 28px; line-height: 28px; }</style>';

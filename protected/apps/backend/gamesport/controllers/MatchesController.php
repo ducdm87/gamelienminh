@@ -1,6 +1,6 @@
 <?php
 
-class TournamentController extends BackEndController {
+class MatchesController extends BackEndController {
 
     var $tablename = '';
     var $primary = 'id';
@@ -20,11 +20,11 @@ class TournamentController extends BackEndController {
         $tour_detail = $model->getItem($tourID);
         $lists = $model->getLists($tourID); 
         
-        $this->addBarTitle("Tournament: <small>$tour_detail->name</small>", "tournaments"); 
+        $this->addBarTitle("Matches: <small>$tour_detail->name</small>", "tournaments"); 
         $this->addIconToolbar("Apply", Router::buildLink("gamesport", array("view"=>"tournament", "layout" => "save","tourID"=>$tourID)), "apply");
-        addSubMenuGameSportTour('tournament');
+        addSubMenuGameSportTour('matches');
         
-        $this->render('teamjoined', array('tour_detail'=> $tour_detail,'lists' => $lists));
+        $this->render('form', array('tour_detail'=> $tour_detail,'lists' => $lists));
     }
        
     function actionSave() {

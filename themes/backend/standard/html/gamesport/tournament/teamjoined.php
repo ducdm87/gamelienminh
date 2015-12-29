@@ -1,12 +1,18 @@
-<?php global $_list_tour_state;
-?>
+<?php global $_list_tour_state; ?>
+  <style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+  #sortable li span { position: absolute; margin-left: -1.3em; }
+  </style>
+ 
+
 <div class="form-tournament-teamjoin">
     <form action="<?php echo Router::buildLink("gamesport", array('view' => 'tournament')); ?>" method="post" name="adminForm" >
         
         <div class="col-md-6">
             <div class="pannel panel-primary">
                 <div class="panel-heading">
-                    <span><b>List team by location <span class="badge"><?php echo count($lists['teams_joined']); ?></span></b></span>
+                    <span><b>List team register <span class="badge"><?php echo count($lists['teams_joined']); ?></span></b></span>
                 </div>
                 <div class="panel-body"> 
                     <?php
@@ -75,8 +81,13 @@
                                 $lass = " ";
                                 if($i == 1) $lass="active ";
                                 $key_table = $i;
-                                $list_team = $lists['arr_team_table'][$key_table];
-                                echo '<li class="tab-head '.$lass.' tab-head-'.$i.'" data-table="'.$i.'"><a data-toggle="tab" href="#tab-table-'.$i.'"><b>Table '.chr(64+$i).'</b>  <span class="badge">'.count($list_team).'</span></a></li>';
+                                $total_teamjoined = 0;
+                                if(isset($lists['arr_team_table'][$key_table])){
+                                    $list_team = $lists['arr_team_table'][$key_table];
+                                    $total_teamjoined = count($list_team);
+                                }
+                                
+                                echo '<li class="tab-head '.$lass.' tab-head-'.$i.'" data-table="'.$i.'"><a data-toggle="tab" href="#tab-table-'.$i.'"><b>Table '.chr(64+$i).'</b>  <span class="badge">'.$total_teamjoined.'</span></a></li>';
                             }
                             ?>
                         </ul>
@@ -87,13 +98,17 @@
                                 if($i == 1) $lass = " in active ";                            
                                 echo '<div id="tab-table-'.$i.'" class="tab-pane fade '.$lass.'">';                            
                                     $key_table = $i;
-                                    $list_team = $lists['arr_team_table'][$key_table];
-                                    echo '<div class="col-md-12 list-team-in-table">';
+                                    $list_team = array();
+                                    if(isset($lists['arr_team_table'][$key_table])){
+                                        $list_team = $lists['arr_team_table'][$key_table];
+                                    }                                    
+                                    echo '<div class="list-team-in-table sortable">';
                                         foreach($list_team as $team){
-                                            echo '<div class="col-md-6 data-team-'.$team['id'].'">';
-                                                echo $team['name'] ."- ". $team['id'];
-                                                echo ' <a class="remove-team-table btn btn-default btn-xs" data-id="'.$team['id'].'" data-table="'.$key_table.'">'
-                                                        . '<i class="fa fa-remove"></i>'
+                                            echo '<div class="ui-state-default item-team data-team-'.$team['id'].'">';
+                                                echo '<i class="fa fa-arrows-alt icon-move"></i>';
+                                                echo $team['name'];
+                                                echo ' <a class="remove-team-table btn btn-default btn-xs btn-remove-item" data-id="'.$team['id'].'" data-table="'.$key_table.'">'
+                                                        . '<i class="fa fa-remove icon-remove"></i>'
                                                      . '</a>';
                                             echo '</div>';
                                         }
@@ -113,11 +128,8 @@
         <script>
             var arr_team_table = <?php echo json_encode($lists['arr_team_table']); ?>;
         </script>
-        <input type="hidden" name="boxchecked" value="0">
-        <input type="hidden" name="filter_order" value="">
-        <input type="hidden" name="page" id="page" value="<?php echo Request::getVar('page', 1); ?>">    
-        <input type="hidden" name="limit" value="<?php echo Request::getVar('limit', 15); ?>">
-        <input type="hidden" name="filter_cid" id="filter_cid" value="<?php echo Request::getVar('filter_cid', ''); ?>">
+        <input type="hidden" id='arr_team_table' name="arr_team_table" value='<?php echo json_encode($lists['arr_team_table']); ?>' />        
+        <input type="hidden" name="tourID" value="<?php echo Request::getVar('tourID',0); ?>">
         <input type="hidden" name="task" value="">
         <input type="hidden" name="filter_order_Dir" value="">
     </form>

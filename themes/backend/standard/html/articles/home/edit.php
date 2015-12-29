@@ -2,7 +2,7 @@
     <form action="<?php echo Router::buildLink("articles"); ?>" method="post" name="adminForm">
         <input type="hidden" name="id" value="<?php echo $item->id ?>"/>        
         <div class="col-md-8">
-            <div class="panel">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <span><b>Main content</b></span>                    
                 </div>
@@ -17,7 +17,7 @@
         </div>
         
         <div class="col-md-4">
-            <div class="panel">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <span><b>More info</b></span>
                 </div>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             
-            <div class="panel">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <span><b>Image</b></span>
                     <div class="caption pull-right">
@@ -54,7 +54,7 @@
                 </div>
             </div>
             
-            <div class="panel">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <span><b>Meta data</b></span>
                 </div>

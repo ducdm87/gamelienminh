@@ -62,7 +62,7 @@ global $_list_tour_state, $_list_num_table, $_list_num_teams_DE;
                         <?php echo buildHtml::renderField("calander", "startDate", $item->startDate, "Start Date", null, "", 3, 9); ?>
                         <?php echo buildHtml::renderField("calander", "endDate", $item->endDate, "End Date", null, "", 3, 9); ?>                                                                        
                         <?php echo buildHtml::renderField("calander", "cdate", $item->cdate, "Created", null, "", 3, 9); ?>
-                        <?php echo buildHtml::renderField("calander", "mdate", $item->mdate, "Modified", null, "", 3, 9); ?>
+                        <?php echo buildHtml::renderField("label", "mdate", $item->mdate, "Modified",null, "",3,9); ?>
                     </div>
                 </div>
 

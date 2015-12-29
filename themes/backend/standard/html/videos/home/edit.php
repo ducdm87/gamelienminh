@@ -3,11 +3,11 @@
         <input type="hidden" name="id" value="<?php echo $item->id ?>"/>
         <input type="hidden" name="linkyoutube" class="form-control" value="<?php echo $item->linkyoutube; ?>">
         <div class="col-md-8">
-            <div class="panel">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <span><b>Info media</b></span>
                     <div class="caption pull-right">
-                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal-fetchyoutube">Fetch Youtube</button>
+                        <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal-fetchyoutube">Fetch Youtube</button>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -20,7 +20,7 @@
                 </div>
             </div>
             
-            <div class="panel panel-video video-control">
+            <div class="panel panel-video video-control panel-primary">
                 <div class="panel-heading">
                     <span><b>Video</b></span>
                     <div class="caption pull-right">Thứ tự hiển thị <b>Video code > Video url</b></div>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="panel">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <span><b>More info</b></span>
                 </div>
@@ -59,7 +59,7 @@
                 </div>
             </div>
             
-            <div class="panel">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <span><b>Meta data</b></span>
                 </div>
@@ -82,7 +82,7 @@
             </div> 
             
             
-            <div class="panel">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <span><b>Image</b></span>
                     <div class="caption pull-right">
@@ -112,7 +112,7 @@
 <div id="myModal-fetchyoutube" class="modal fade" role="dialog">
   <div class="modal-dialog">
         <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header panel-primary">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Youtube</h4>
       </div>
