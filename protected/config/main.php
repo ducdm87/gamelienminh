@@ -68,10 +68,10 @@ return array(
             'allowAutoLogin' => true,
         ),
         'db' => array(
-            'connectionString' => 'mysql:dbname=dev_gamesport;host=localhost',
+            'connectionString' => 'mysql:dbname=dev_gamesport;host=192.168.1.12',
             'emulatePrepare' => true,
-            'username' => 'gamesport',
-            'password' => 'gamesport',
+            'username' => 'dev_gamesport',
+            'password' => 'dev_gamesport',
             'charset' => 'utf8',
             'tablePrefix' => 'tbl_',
         ),
