@@ -15,6 +15,8 @@
                             <?php echo buildHtml::renderField("text", "mobile", $item->mobile, "Mobile", "form-control"); ?>
                             <?php echo buildHtml::renderField("calander", "birthday", $item->birthday, "Birthday"); ?>
                             <?php echo buildHtml::renderField("text", "address", $item->address, "Address", "form-control"); ?>
+                            <?php echo buildHtml::renderField('textarea', "introtext", $item->introtext, "Description"); ?>
+                            <?php echo buildHtml::renderField('editor', "fulltext", $item->fulltext, "Content"); ?>
                             
                         </div> 
                     </div>
