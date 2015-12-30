@@ -52,6 +52,9 @@ class Tournament extends CFormModel {
         $arr_team_loc = array();
         if (count($lists['teams_joined'])) {
             foreach ($lists['teams_joined'] as $team) {
+                $tab_num = $team['table_num'];
+                $tab_num = $tab_num<=$main_item->number_table?$tab_num:0;
+                $team['table_num'] = $tab_num;
                 $arr_team_loc[$team['locationID']][] = $team;
             }
         }
@@ -59,6 +62,7 @@ class Tournament extends CFormModel {
         $lists['teams_joined_loc'] = $arr_team_loc;
         
         $arr_team_table = array();
+        
         if (count($lists['teams_joined'])) {
             foreach ($lists['teams_joined'] as $team) {
                 $new_team = array();
@@ -66,7 +70,9 @@ class Tournament extends CFormModel {
                 $new_team['name'] = $team['name'];
                 $new_team['table_num'] = $team['table_num'];
                 $new_team['ordering'] = $team['ordering'];
-                $arr_team_table[$team['table_num']][$team['id']] = $new_team;
+                $tab_num = $team['table_num'];
+                $tab_num = $tab_num<=$main_item->number_table?$tab_num:0;
+                $arr_team_table[$tab_num][$team['id']] = $new_team;
             }
             foreach($arr_team_table as $table_num => &$team_tables){
                 $arr_new = array();

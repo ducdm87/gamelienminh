@@ -18,14 +18,15 @@ function addSubMenuGameSport($view = "tournaments")
 function addSubMenuGameSportTour($view = "tournaments")
 {
     global $mainframe;
-    $mainframe->addIconSubMenu("Panel", Router::buildLink('gamesport'));
-    $mainframe->addIconSubMenu("Back", Router::buildLink('gamesport', array('view'=>'tournaments')), $view ==  'tournaments');
     $tourID = Request::getVar('tourID',0);
+    $mainframe->addIconSubMenu("Panel", Router::buildLink('gamesport'));
+    $mainframe->addIconSubMenu("Back", Router::buildLink('gamesport', array('view'=>'tournaments')));
+    $mainframe->addIconSubMenu("Edit tournament", Router::buildLink('gamesport', array('view'=>'tournaments','layout'=>'edit','cid'=>$tourID)));
     $mainframe->addIconSubMenu("Teams Joined", Router::buildLink('gamesport', array('view'=>'tournament','tourID'=>$tourID)), $view ==  'tournament');
     $mainframe->addIconSubMenu("Matches", Router::buildLink('gamesport', array('view'=>'matches','tourID'=>$tourID)), $view ==  'matches');
 }
 
-global $_list_tour_state, $_list_num_table, $_list_num_teams_DE;
+global $_list_tour_state, $_list_num_table, $_list_num_teams_DE, $_list_num_teams_table;
 
 $_list_tour_state = [];
 $_list_tour_state[0] = "Giải mới";
@@ -37,6 +38,7 @@ $_list_tour_state[5] = "Kết thúc";
 
 $_list_num_table = [1,2,4,8,16,32]; // a
 $_list_num_teams_DE = [16,32,64];  // b
+$_list_num_teams_table = [8,16,32,64,128,256,512];  // b
 // $_list_num_teams    
 
 /*
@@ -51,4 +53,30 @@ $_list_num_teams_DE = [16,32,64];  // b
  *              
  */
 
+
+if(0){
+    $query = "INSERT INTO `tbl_gs_teams` ( `name`, `alias`, `locationID`, `cdate`, `mdate`, `status`) 
+        VALUES ";
+    $arr_val = [];
+    for($i=32;$i<96;$i++){
+        $arr_val[] = "('Clan Hà Nội $i', 'clan-ha-noi-$i', '22', now(), now(), '1')";
+    }
+
+    $query = $query . implode(", ", $arr_val);
+    $command = Yii::app()->db->createCommand($query);
+    $command->execute(); 
+}
+
+if(0){
+    $query = "INSERT INTO `tbl_gs_team_register_tour` (`teamID`, `tourID`, `table_num`, `cdate`, `mdate`, `status`) 
+        VALUES ";
+    $arr_val = [];
+    for($i=129;$i<=192;$i++){
+        $arr_val[] = "('$i', '3', '0', now(), now(), '1')";
+    }
+
+    $query = $query . implode(", ", $arr_val);
+    $command = Yii::app()->db->createCommand($query);
+    $command->execute();
+}
 

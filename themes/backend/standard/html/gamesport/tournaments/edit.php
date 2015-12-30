@@ -1,5 +1,5 @@
 <?php
-global $_list_tour_state, $_list_num_table, $_list_num_teams_DE;
+global $_list_tour_state, $_list_num_table, $_list_num_teams_DE, $_list_num_teams_table;
 ?>
 <form action="<?php echo Router::buildLink("gamesport", array('view' => 'tournaments')) ?>" method="post" name="adminForm" >
     <div class="row form-custom-css">
@@ -12,16 +12,7 @@ global $_list_tour_state, $_list_num_table, $_list_num_teams_DE;
                     <div class="panel-body">
                         <div class="col-md-12">
                             <?php echo buildHtml::renderField("text", "name", $item->name, "name", "form-control title-generate"); ?>
-                            <?php echo buildHtml::renderField("text", "alias", $item->alias, "Alias", "form-control alias-generate", "Auto-generate from title"); ?>
-                            <div class="form-group row">
-                                <label class="control-label col-md-2">Estimated</label>
-
-                                <label class="control-label col-md-2" title="Estimated number of table">Table</label>
-                                <div class="col-md-3"><?php echo buildHtml::select($_list_num_table, $item->number_table, "number_table"); ?></div>
-
-                                <label class="control-label col-md-2" title="Number of teams in round DE">Teams in DE</label>
-                                <div class="col-md-3"><?php echo buildHtml::select($_list_num_teams_DE, $item->number_teams_de, "number_teams_de"); ?></div>
-                            </div>                            
+                            <?php echo buildHtml::renderField("text", "alias", $item->alias, "Alias", "form-control alias-generate", "Auto-generate from title"); ?>                                                         
                             <div class="form-group row">
                                 <label class="control-label left col-md-2">Number teams</label>
                                 <div class="col-md-10">
@@ -60,7 +51,19 @@ global $_list_tour_state, $_list_num_table, $_list_num_teams_DE;
                             <div class="col-md-9"><?php echo buildHtml::choseStatus("status", $item->status); ?></div>
                         </div>
                         <?php echo buildHtml::renderField("calander", "startDate", $item->startDate, "Start Date", null, "", 3, 9); ?>
-                        <?php echo buildHtml::renderField("calander", "endDate", $item->endDate, "End Date", null, "", 3, 9); ?>                                                                        
+                        <?php echo buildHtml::renderField("calander", "endDate", $item->endDate, "End Date", null, "", 3, 9); ?>
+                        <div class="form-group row" title="Estimated number of table">
+                            <label class="control-label left col-md-4">Table</label>
+                            <div class="col-md-8"><?php echo buildHtml::select($_list_num_table, $item->number_table, "number_table"); ?></div>
+                        </div>
+                        <div class="form-group row" title="Number of teams in round DE">
+                            <label class="control-label left col-md-4" >Teams in DE</label>
+                            <div class="col-md-8"><?php echo buildHtml::select($_list_num_teams_DE, $item->number_teams_de, "number_teams_de"); ?></div>
+                        </div>
+                        <div class="form-group row" title="Number of teams in table">
+                            <label class="control-label left col-md-4" >Teams in table</label>
+                            <div class="col-md-8"><?php echo buildHtml::select($_list_num_teams_table, $item->number_team_table, "number_team_table"); ?></div>
+                        </div>
                         <?php echo buildHtml::renderField("calander", "cdate", $item->cdate, "Created", null, "", 3, 9); ?>
                         <?php echo buildHtml::renderField("label", "mdate", $item->mdate, "Modified",null, "",3,9); ?>
                     </div>

@@ -96,7 +96,7 @@
                             for ($i = 1; $i <= $number_table; $i++) {
                                 $lass = " ";
                                 if($i == 1) $lass = " in active ";                            
-                                echo '<div id="tab-table-'.$i.'" class="tab-pane fade '.$lass.'">';                            
+                                echo '<div id="tab-table-'.$i.'" class="tab-table tab-pane fade '.$lass.'">';                            
                                     $key_table = $i;
                                     $list_team = array();
                                     if(isset($lists['arr_team_table'][$key_table])){
