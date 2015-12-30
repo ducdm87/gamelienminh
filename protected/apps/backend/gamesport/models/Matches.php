@@ -47,7 +47,7 @@ class Matches extends CFormModel {
         $lists['locations'] = $this->getLocations();
         $lists['teams_joined'] = $this->getTeams($tourID);
         $lists['table_info'] = $this->getTableInfo($tourID);
-        $lists['matches_info'] = $this->getMatchesInfo($tourID);
+        $matches_info = $this->getMatchesInfo($tourID);
         
         $arr_team_loc = array();
         if (count($lists['teams_joined'])) {
@@ -81,6 +81,14 @@ class Matches extends CFormModel {
         
         $lists['arr_team_table'] = $arr_team_table;
         
+        if(count($matches_info)){
+            $arr_new = array();
+            foreach($matches_info as $matches){
+                $arr_new[$matches['round']] = $matches;
+            }
+            $matches_info = $matches_info;
+        }
+        $lists['matches_info'] = $matches_info;
                 
         return $lists;
     }
@@ -125,6 +133,7 @@ class Matches extends CFormModel {
         $command = $db->createCommand()->select("A.*")
                 ->from(TBL_GS_MATCHES . " A")
                 ->where("tourID = $tourID")
+                ->order('A.round ASC, A.ordering')
         ;
         $items = $command->queryAll();
         return $items;

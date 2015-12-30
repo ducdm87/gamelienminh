@@ -90,7 +90,7 @@ a, a:focus{
 .roud-standing-matches table tr th:last-child{ border-right: 1px solid #383838; }
 .roud-standing-matches table tr td{ border: none; background: #444444;}
 .begin-left{float: left}
-.item-team-bg{width: 200px; height: 25px; background: #626262;}
+.item-team-bg{width: 200px; height: 25px; background: #626262; position: relative;}
 .boder-item-up{ border-top-left-radius: 5px; border-top-right-radius: 5px}
 .boder-item-dn{ border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; margin-top: 2px;}
 .border-l-top{border-top-left-radius: 5px;}
@@ -111,24 +111,26 @@ a, a:focus{
 .left-ct{width: 30px; background: #888888; height: 100%; text-align: center; color: #000; float: left;padding: 4px}
 .right-ct{color: #fff; padding: 4px 15px; display: block; margin-left: 25px;}
 .head-item-team li{width: 100%;}
-.table-round-2 .main-item{margin: 33px 0 34px -22px}
+.table-round-2 .main-item{margin: 34px 0 34px -22px}
 .table-round-2 .head-item-team{margin: 33px 0 34px }
 .td-boder-lk{max-width: 0;}
 .td-boder-lk .end-item-tem{margin-left: -12px;padding-top: 26px;width: 0;}
 .td-boder-lk .end-item-tem .boder-gom{border-bottom: 1px solid #fff;border-right: 1px solid #fff;border-top: 1px solid #fff;margin-left: -20px;padding: 34px 0;}
 .td-boder-lk .ke-ngang-end{border-top: 1px solid #fff;margin: -36px -6px 6px -13px;}
 
-.table-round-3 .main-item{margin: 103px 0 34px -22px;}
+.table-round-3 .main-item{margin: 106px 0 98px -22px;}
 .table-round-3 .head-item-team{margin: 102px 0 106px;}
-.table-round-3 .td-boder-lk .end-item-tem{padding-top: 59px;}
+.table-round-3 .td-boder-lk .end-item-tem{padding-top: 60px;}
 .table-round-3 .td-boder-lk .end-item-tem .boder-gom{padding: 67px 0;}
 .table-round-3 .td-boder-lk .ke-ngang-end{margin: -67px -6px 6px -13px;}
 
-.table-round-4 .td-boder-lk .main-item{margin: 235px 0 34px -22px;}
-.table-round-4 .td-boder-lk .head-item-team{margin: 235px 0 106px;}
-.table-round-4 .td-boder-lk .end-item-tem{padding-top: 128px;}
+.table-round-4 .main-item{margin: 238px 0 238px -22px;}
+.table-round-4 .head-item-team{margin: 235px 0 106px;}
+.table-round-4 .td-boder-lk .end-item-tem{padding-top: 132px;}
 .table-round-4 .td-boder-lk .end-item-tem .boder-gom{padding: 133px  0;}
 .table-round-4 .td-boder-lk .ke-ngang-end{margin: -134px -6px 6px -13px;}
+
+
 .caret{ border-top: 4px solid #888888; }
 
 .detail-matches{width: 600px; height: auto; z-index: 1000; background: #444444; border-radius: 10px; margin: 0 auto; margin-top: 100px;}
@@ -149,4 +151,13 @@ a, a:focus{
 
 
 
-
+.form-matches .btn-change-team{
+    font-size: 1.5em;
+    position: absolute;
+    right: 5px;
+    top: 3px;
+    cursor: pointer;
+}
+.form-matches .btn-change-team:hover{
+    color: yellow;
+}

@@ -1,11 +1,9 @@
 <?php
 global $_list_tour_state;
-
-$number_team_pass = $tour_detail->number_teams_de / $tour_detail->number_table;
-
+$number_team_pass = $tour_detail->number_teams_de / $tour_detail->number_table; 
 ?>
 
-<div class="form-tournament-teamjoin">
+<div class="form-matches">
     <form action="<?php echo Router::buildLink("gamesport", array('view' => 'tournament')); ?>" method="post" name="adminForm" >
         <div class="col-md-12">
             <div class="pannel panel-info">
@@ -44,26 +42,22 @@ $number_team_pass = $tour_detail->number_teams_de / $tour_detail->number_table;
                                     $arr_level = array_reverse($arr_level);
 
                                     for ($i = 1; $i <= $tour_detail->number_table; $i++) {
-                                        $team_table = $lists['arr_team_table'][$i];
-                                        $class = $i == 1 ? "in active" : "";
-                                        $num_team_table = count($team_table);
+                                        $teams_table = $lists['arr_team_table'][$i];
+                                        $class = $i == 1 ? "in active" : "";                                         
                                         ?>
                                         <div id="tab-round-<?php echo $i; ?>" class="tab-pane fade <?php echo $class; ?>">
-                                            <?php
-                                            $table_type = 1;
-                                            if($num_team_table > $max_level){
-                                                $table_type = 2;                                               
-                                            }
-                                            else if($num_team_table < $max_level) $table_type = 0;
-                                            $start_round = $table_type == 2?0:1;
-                                            $num_team_round = $num_team_table;                              
-                                            $params = array("start_round"=>$start_round);
+                                            <?php                                             
                                             $params['max_round'] = $max_round;
                                             $params['arr_level'] = $arr_level;
-                                            $params['num_team_round'] = $num_team_round;
+                                            $params['max_level'] = $max_level;
+                                            $params['table_num'] = $i;
+                                            $params['teams_joined'] = $lists['teams_joined'];
+                                             
+                                            $params['matches_info'] = null;
+                                            if(isset($lists['matches_info'][1])) $params['matches_info'] = $lists['matches_info'][1];
+                                            $params['teams_table'] = $teams_table;
                                             
                                             echo $this->renderPartial('/html/gamesport/matches/form-table', $params);
-                                            
                                             ?>
                                         </div>
                                     <?php }

@@ -58,8 +58,8 @@ if(0){
     $query = "INSERT INTO `tbl_gs_teams` ( `name`, `alias`, `locationID`, `cdate`, `mdate`, `status`) 
         VALUES ";
     $arr_val = [];
-    for($i=32;$i<96;$i++){
-        $arr_val[] = "('Clan Hà Nội $i', 'clan-ha-noi-$i', '22', now(), now(), '1')";
+    for($i=4;$i<68;$i++){
+        $arr_val[] = "('Clan Sài Gòn $i', 'clan-sai-gon-$i', '21', now(), now(), '1')";
     }
 
     $query = $query . implode(", ", $arr_val);
@@ -71,7 +71,7 @@ if(0){
     $query = "INSERT INTO `tbl_gs_team_register_tour` (`teamID`, `tourID`, `table_num`, `cdate`, `mdate`, `status`) 
         VALUES ";
     $arr_val = [];
-    for($i=129;$i<=192;$i++){
+    for($i=193;$i<=256;$i++){
         $arr_val[] = "('$i', '3', '0', now(), now(), '1')";
     }
 
