@@ -45,18 +45,15 @@ class PlayersController extends BackEndController {
 
     function changeStatus($cid, $value) {
         global $user;
-        $groupID = $user->groupID;
-        $obj_users = YiiUser::getInstance();
-        $item_user = $obj_users->getUser($cid);
-
         if (!$bool = $user->modifyChecking($cid)) {
-            YiiMessage::raseNotice("Your account not have permission to change status of this user: $item_user->username");
+            YiiMessage::raseNotice("Your account not have permission to change status of tteam");
             $this->redirect(Router::buildLink("users", array('view' => 'user')));
             return false;
         }
-
-        $item_user->status = $value;
-        $item_user->store();
+        $obj_tblTeam = YiiTables::getInstance(TBL_GS_PLAYERS);
+        $obj_tblTeam->load($cid); 
+        $obj_tblTeam->status = $value;
+        $obj_tblTeam->store();
     }
 
     function actionCancel() {
@@ -132,6 +129,7 @@ class PlayersController extends BackEndController {
         $obj_tblTeam = YiiTables::getInstance(TBL_GS_PLAYERS);
         $obj_tblTeam->load($id); 
         $obj_tblTeam->bind($post);
+//        var_dump($obj_tblTeam); die;
         $obj_tblTeam->store();
 
         return $obj_tblTeam->id;
@@ -173,30 +171,22 @@ class PlayersController extends BackEndController {
     }
 
     function actionRemove() {
-        global $user;
+       global $mainframe, $user;
+        if (!$user->isSuperAdmin()) {
+            YiiMessage::raseNotice("Your account not have permission remove tournament");
+            $this->redirect(Router::buildLink("cpanel"));
+        }
 
         $cids = Request::getVar("cid", 0);
         if (count($cids) > 0) {
-            $obj_users = YiiUser::getInstance();
             for ($i = 0; $i < count($cids); $i++) {
                 $cid = $cids[$i];
-                $item_user = $obj_users->getUser($cid);
-                if (!$user->isSuperAdmin()) { // neu khong phai super admin
-                    if ($item_user->status != -1) { // neu != -1 thi khong duoc xoa
-                        YiiMessage::raseNotice("Please contact your administrator,\"$item_user->username\" is active");
-                        $this->redirect(Router::buildLink("users", array('view' => 'user')));
-                        return false;
-                    } elseif (!$bool = $user->modifyChecking($cid)) { // neu =-1 thi user leader nhom cha duoc xoa user con
-                        YiiMessage::raseNotice("Your account not have permission to remove user: $item_user->username");
-                        $this->redirect(Router::buildLink("users", array('view' => 'user')));
-                        return false;
-                    }
-                }
-                $obj_users->removeUser($cid);
+                //check item first
+                $item = $this->removeItem($cid,TBL_GS_PLAYERS);
             }
         }
-        YiiMessage::raseSuccess("Successfully delete User(s)");
-        $this->redirect(Router::buildLink("users", array("view" => "user")));
+        YiiMessage::raseSuccess("Successfully remove playist(s)");
+        $this->redirect(Router::buildLink('gamesport', array('view' => 'Players')));
     }
 
     function actionTree() {

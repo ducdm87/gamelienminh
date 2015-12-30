@@ -1,5 +1,6 @@
-<form action="<?php echo Router::buildLink("gamesport", array('view'=>'tournaments')); ?>" method="post" name="adminForm" >
+<form action="<?php echo Router::buildLink("gamesport", array('view'=>'players')); ?>" method="post" name="adminForm" >
     <div class="row">
+        
         <div class="panel">            
             <div class="panel-body">
                 <div class="row">  

@@ -103,21 +103,21 @@ class Players extends CFormModel {
         $command = $db->createCommand()->select("A.id, A.name")
                 ->from(TBL_GS_TOURNAMEMANTS . " A")
                 ->rightJoin(TBL_GS_TEAM_REGISTER_TOUR . ' B', 'A.id = B.tourID')
-                ->rightJoin(TBL_GS_PLAYERS . ' C', 'C.id = B.teamID')
-                ->where(" B.teamID= $cid")
+                ->rightJoin(TBL_GS_TEAMS . ' C', 'C.id = B.teamID')
+                ->where(" B.teamID= 1")
                 ->group(" A.id")
                 ->order('A.startDate DESC');
         $lists['tournaments'] = $command->queryAll();
-        
+
         $obj_tblLocation = YiiTables::getInstance(TBL_LOCATIONS);
         $locations = $obj_tblLocation->loads("*", 'parentID != 0 ', "lft ASC", null, 0);
-        
+
         $arr_new = array();
         foreach($locations as $loc){
             $arr_new[$loc['id']] = $loc;
         }
         $lists['locations'] = $arr_new;
-        
+        //var_dump($lists); die;
         return $lists;
     }
     

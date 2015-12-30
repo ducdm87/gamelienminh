@@ -103,7 +103,7 @@ class Teams extends CFormModel {
                 ->from(TBL_GS_TOURNAMEMANTS . " A")
                 ->rightJoin(TBL_GS_TEAM_REGISTER_TOUR . ' B', 'A.id = B.tourID')
                 ->rightJoin(TBL_GS_TEAMS . ' C', 'C.id = B.teamID')
-                ->where(" B.teamID= $cid")
+                ->where(" B.teamID= 1")
                 ->group(" A.id")
                 ->order('A.startDate DESC');
         $lists['tournaments'] = $command->queryAll();
