@@ -96,7 +96,6 @@ class PlayersController extends BackEndController {
         $item = $model->getItem();
 
         $lists = $model->getListEdit($item);
-//        var_dump($item);die;
         $this->render('edit', array("item" => $item, "lists" => $lists));
     }
 

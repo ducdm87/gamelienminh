@@ -117,7 +117,6 @@ class Players extends CFormModel {
             $arr_new[$loc['id']] = $loc;
         }
         $lists['locations'] = $arr_new;
-        //var_dump($lists); die;
         return $lists;
     }
     
