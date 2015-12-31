@@ -105,11 +105,11 @@
                                     echo '<div class="list-team-in-table sortable">';
                                         foreach($list_team as $team){
                                             echo '<div class="ui-state-default item-team data-team-'.$team['id'].'">';
-                                                echo '<i class="fa fa-arrows-alt icon-move"></i>';
-                                                echo $team['name'];
+                                                echo '<i class="fa fa-arrows-alt icon-move"></i> ';                                                
                                                 echo ' <a class="remove-team-table btn btn-default btn-xs btn-remove-item" data-id="'.$team['id'].'" data-table="'.$key_table.'">'
                                                         . '<i class="fa fa-remove icon-remove"></i>'
-                                                     . '</a>';
+                                                     . '</a> ';
+                                                echo $team['name'];
                                             echo '</div>';
                                         }
                                     echo '</div>';

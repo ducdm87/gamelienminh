@@ -23,6 +23,7 @@ function addSubMenuGameSportTour($view = "tournaments")
     $mainframe->addIconSubMenu("Back", Router::buildLink('gamesport', array('view'=>'tournaments')));
     $mainframe->addIconSubMenu("Edit tournament", Router::buildLink('gamesport', array('view'=>'tournaments','layout'=>'edit','cid'=>$tourID)));
     $mainframe->addIconSubMenu("Teams Joined", Router::buildLink('gamesport', array('view'=>'tournament','tourID'=>$tourID)), $view ==  'tournament');
+    $mainframe->addIconSubMenu("Round Table", Router::buildLink('gamesport', array('view'=>'roundtable','tourID'=>$tourID)), $view ==  'roundtable');
     $mainframe->addIconSubMenu("Matches", Router::buildLink('gamesport', array('view'=>'matches','tourID'=>$tourID)), $view ==  'matches');
 }
 

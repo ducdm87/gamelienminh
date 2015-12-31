@@ -98,15 +98,16 @@ function GS_TOUR_add_team_table(team_id, table_id)
         return;
     }
     var html_obj_team = $('<div />',
-            {html: '<i class="fa fa-arrows-alt icon-move"></i>' + obj_team['name'],
+            {html: '<i class="fa fa-arrows-alt icon-move"> </i> ',
                 class: 'ui-state-default item-team data-team-' + team_id
             });
     html_obj_team.appendTo("#tab-table-" + table_id + " .list-team-in-table");
     $('<a />', {'data-table': table_id, 'data-id': team_id,
         class: 'remove-team-table btn btn-default btn-xs btn-remove-item',
         html: ' <i class="fa fa-remove icon-remove"></i> '
-    })
-            .appendTo(html_obj_team);
+    }).appendTo(html_obj_team);
+
+    $("<span />", {text: " " + obj_team['name']}).appendTo(html_obj_team);
 
     // badge cua panel table (List team in table)
     badge = Object.keys(arr_team_table[table_id]).length;
@@ -157,3 +158,74 @@ function processOrderTable(table_id)
     }
     $("#arr_team_table").val(JSON.stringify(arr_team_table));
 }
+
+
+// thay doi team cho vong bang, round 0,1
+$(function() {
+    $(".btn-change-team").click(function(event) {
+        data_match = $(this).attr('data-matche');
+        data_matchID = $(this).attr('data-matche-id');
+        data_table = $(this).attr('data-table');
+        data_team = $(this).attr('data-team');
+        data_teamID = $(this).attr('data-teamid');        
+        var round_offset = $(".rounds-table").offset();
+
+        console.log(event.pageX, event.pageY);
+        console.log(round_offset);
+
+        pos_left = event.pageX - round_offset.left - (162 - 10);
+        pos_top = event.pageY - round_offset.top - 10;
+
+        $(".list-team-matches-table-" + data_table).show();
+        $(".list-team-matches-table-" + data_table).val(data_teamID);
+        $(".list-team-matches-table-" + data_table).attr({'data-matche': data_match, 'data-matche-id':data_matchID,
+                    'data-table': data_table, 'data-team': data_team,'cur-team':data_teamID});
+        $(".list-team-matches-table-" + data_table).css({top: pos_top + "px", left: pos_left + "px"});
+    });
+
+    $(document).delegate(".list-team-matches", "change", function() {
+        data_match = $(this).attr('data-matche');
+        data_matchID = $(this).attr('data-matche-id');
+        data_table = $(this).attr('data-table');
+        data_team = $(this).attr('data-team');
+        data_oldTeamID = $(this).attr('cur-team');
+        data_teamID = $(this).val();
+        data_team_name = $(this).find("option:selected").text();
+         
+         // xoa text, name cua cai khac bi thay the
+        $(".item-team-"+data_teamID +" .team_id").text('');
+        $(".item-team-"+data_teamID +" .team_name").text('');
+        
+        $(".item-team-"+data_teamID).removeClass("item-team-"+data_teamID);
+         
+        
+       var parent =  $("#rounds-table-"+data_table +" ."+data_match+" .main-item");
+       $(parent).find("."+data_team).addClass("item-team-"+data_teamID);
+       $(parent).find("."+data_team).removeClass("item-team-"+data_oldTeamID);
+       $(parent).find("."+data_team+" .team_id").text(data_teamID);
+       $(parent).find("."+data_team+" .team_name").html(data_team_name);
+       $(parent).find("."+data_team+" .btn-change-team").attr("data-teamID", data_teamID);
+       $(".list-team-matches-table-" + data_table).attr({ 'cur-team':data_teamID});
+       var arr_name = "arr_matches_table_"+data_table;
+       var arr_ = window[arr_name];
+       if(data_team == "item-team-a")
+            arr_[data_matchID]['teamaID'] = data_teamID;
+        else 
+            arr_[data_matchID]['teambID'] = data_teamID;
+       initmatches_data_table();
+    });
+    initmatches_data_table();
+
+});
+
+function initmatches_data_table()
+{
+    var data = [];
+    for(var i=1;i<=number_table;i++){
+        arr_name = "arr_matches_table_"+i;
+        arr_ = window[arr_name];
+        data[i] = arr_;
+    }    
+    $("#matches_data_table").val(JSON.stringify(data));
+}
+

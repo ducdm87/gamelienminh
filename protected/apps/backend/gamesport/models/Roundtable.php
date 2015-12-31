@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class Matches extends CFormModel {
+class Roundtable extends CFormModel {
 
     private $table = '{{users_group}}';
     private $command;
@@ -22,7 +22,7 @@ class Matches extends CFormModel {
         static $instance;
 
         if (!is_object($instance)) {
-            $instance = new Matches();
+            $instance = new Roundtable();
         }
         return $instance;
     }

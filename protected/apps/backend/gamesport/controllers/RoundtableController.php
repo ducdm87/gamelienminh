@@ -1,6 +1,6 @@
 <?php
 
-class MatchesController extends BackEndController {
+class RoundtableController extends BackEndController {
 
     var $tablename = '';
     var $primary = 'id';
@@ -16,13 +16,13 @@ class MatchesController extends BackEndController {
     public function actionDisplay() {
         global $mainframe, $user; 
         $tourID = Request::getVar('tourID',0);
-        $model = Matches::getInstance();
+        $model = Roundtable::getInstance();
         $tour_detail = $model->getItem($tourID);
         $lists = $model->getLists($tourID, $tour_detail); 
         
-        $this->addBarTitle("Matches: <small>$tour_detail->name</small>", "tournaments"); 
-        $this->addIconToolbar("Apply", Router::buildLink("gamesport", array("view"=>"matches", "layout" => "save","tourID"=>$tourID)), "apply");
-        addSubMenuGameSportTour('matches');
+        $this->addBarTitle("Matches: <small>$tour_detail->name - Round table</small>", "tournaments"); 
+        $this->addIconToolbar("Apply", Router::buildLink("gamesport", array("view"=>"roundtable", "layout" => "save","tourID"=>$tourID)), "apply");
+        addSubMenuGameSportTour('roundtable');
         
         $this->render('form', array('tour_detail'=> $tour_detail,'lists' => $lists));
     }
