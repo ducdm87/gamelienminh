@@ -166,4 +166,5 @@ a, a:focus{
     display: none; 
     position: absolute;
     z-index: 99;
+    width: 162px;
 }

@@ -7,4 +7,31 @@ ALTER TABLE `tbl_gs_tournamemants` ADD `number_table` SMALLINT NOT NULL COMMENT 
  
 # 30/12/2015
     ALTER TABLE `tbl_gs_tournamemants` ADD `number_team_table` INT NOT NULL AFTER `number_table`; 
+    
+    
+    
+
+1		2				3						4
+
+	52+16 *2 = 136		52+16 *4 = 272	
+	136 - 16 =120		272 - 16 = 256
+	120 - 52 = 68		256 - 52 = 204
+	68/2 = 34			204 / 2  = 102
+	
+	td-padding-bottom = 8
+	td-padding-top = 8
+	td-padding = td-padding-bottom + td-padding-top
+	margin1 = 0
+	margin2 = 2
+	h1 = h2 = 25	
+	h = (h1+margin1 + h2 + margin2 + td-padding) = 68
+	
+	
+	+ tinh margin main-item: x1 = (h(2^(n-1) - 1)) / 2
+	+ chieu cao noi x2 = (h1 + td-padding-bottom + margin2/2) * 2^n
+	+ noi cach tren = x1 + h1
+		n>=3 => x3 = (h(2^(n-2) - 1)) / 2 + h1
+		n = 2 => x3 = 25
+	
+	 
  
