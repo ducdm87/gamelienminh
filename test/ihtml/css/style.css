@@ -1,4 +1,5 @@
-#page-wrapper{color: #FF0000}
+/* matches */
+ 
 #main-content-backend{background: #444;height: 450px; width: 100%;}
 .main-tab{}
 .main-tab ul{list-style: none; margin: 0; padding: 0; background: #3E3E3E; height: 30px;}
@@ -12,11 +13,16 @@
 .border-table{border: 1px solid #383838;}
 .standings-container table tr th{text-align: center;color: #fff; background: #3C3C3C;border: 1px solid #444444;}
 .standings-container table tr td{border: 1px solid #383838; background: #444444;}
-.roud-standing-matches{width: 2000px;}
-.roud-standing-matches table tr th{font-size: 12px; font-weight: normal; border: 1px solid #383838; background: #3C3C3C;}
+.roud-standing-matches{max-width: 2000px; background: #444444}
+.roud-standing-matches table tr th{
+    font-size: 12px; font-weight: normal; background: #3C3C3C !important;
+    border-bottom: 1px solid #383838;
+    border-right: 1px solid #666;
+}
+.roud-standing-matches table tr th:last-child{ border-right: 1px solid #383838; }
 .roud-standing-matches table tr td{ border: none; background: #444444;}
 .begin-left{float: left}
-.item-team-bg{width: 200px; height: 25px; background: #626262;}
+.item-team-bg{width: 200px; height: 25px; background: #626262; position: relative;}
 .boder-item-up{ border-top-left-radius: 5px; border-top-right-radius: 5px}
 .boder-item-dn{ border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; margin-top: 2px;}
 .border-l-top{border-top-left-radius: 5px;}
@@ -25,7 +31,10 @@
 .td-content-table{background: #444444; width: 60%;}
 .text-center-cbv{text-align: center;}
 .table-item-team-cbv{width: 250px;}
+.table-col-round{width: auto;}
 .table-col-round tr td{width: 200px;}
+.matche-head{ display: block }
+.table-round-1 .matche-head{ display: none; }
 .main-item{font-size: 12px;}
 .head-item-team{margin-right: -22px;padding-top: 12px; }
 .head-item-team a{color: #959595; font-size: 12px}
@@ -34,24 +43,37 @@
 .left-ct{width: 30px; background: #888888; height: 100%; text-align: center; color: #000; float: left;padding: 4px}
 .right-ct{color: #fff; padding: 4px 15px; display: block; margin-left: 25px;}
 .head-item-team li{width: 100%;}
-.table-round-2 .main-item{margin: 33px 0 34px -22px}
+.table-round-2 .main-item{margin: 34px 0 34px -22px}
 .table-round-2 .head-item-team{margin: 33px 0 34px }
 .td-boder-lk{max-width: 0;}
 .td-boder-lk .end-item-tem{margin-left: -12px;padding-top: 26px;width: 0;}
 .td-boder-lk .end-item-tem .boder-gom{border-bottom: 1px solid #fff;border-right: 1px solid #fff;border-top: 1px solid #fff;margin-left: -20px;padding: 34px 0;}
 .td-boder-lk .ke-ngang-end{border-top: 1px solid #fff;margin: -36px -6px 6px -13px;}
 
-.table-round-3 .main-item{margin: 103px 0 34px -22px;}
+.table-round-3 .main-item{margin: 106px 0 98px -22px;}
 .table-round-3 .head-item-team{margin: 102px 0 106px;}
-.td-boder-lk-3 .end-item-tem{padding-top: 59px;}
-.td-boder-lk-3 .end-item-tem .boder-gom{padding: 67px 0;}
-.td-boder-lk-3 .ke-ngang-end{margin: -67px -6px 6px -13px;}
+.table-round-3 .td-boder-lk .end-item-tem{padding-top: 60px;}
+.table-round-3 .td-boder-lk .end-item-tem .boder-gom{padding: 67px 0;}
+.table-round-3 .td-boder-lk .ke-ngang-end{margin: -67px -6px 6px -13px;}
 
-.table-round-4 .main-item{margin: 235px 0 34px -22px;}
-.table-round-4 .head-item-team{margin: 235px 0 106px;}
-.td-boder-lk-4 .end-item-tem{padding-top: 128px;}
-.td-boder-lk-4 .end-item-tem .boder-gom{padding: 133px  0;}
-.td-boder-lk-4 .ke-ngang-end{margin: -134px -6px 6px -13px;}
+.table-round-4 .main-item{margin: 238px 0 238px -22px;}
+.table-round-4 .head-item-team{margin: 243px 0 106px;}
+.table-round-4 .td-boder-lk .end-item-tem{padding-top: 132px;}
+.table-round-4 .td-boder-lk .end-item-tem .boder-gom{padding: 135px  0;}
+.table-round-4 .td-boder-lk .ke-ngang-end{margin: -134px -6px 6px -13px;}
+
+/*team end table*/
+
+.table-round-5 .main-item{margin: 250px 0 238px -22px;}
+.table-round-5 .head-item-team{margin: 235px 0 106px;}
+.table-round-5 .td-boder-lk .ke-ngang-end{margin: 263px 8px 6px -31px;padding-top: 258px;}
+.table-round-5 .head-item-team {padding-top: 13px;}
+.team-end-table{border-radius: 5px;}
+.border-l-top-item-end {border-bottom-left-radius: 5px; border-top-left-radius: 5px;}
+
+/*team end table*/
+
+
 .caret{ border-top: 4px solid #888888; }
 
 .detail-matches{width: 600px; height: auto; z-index: 1000; background: #444444; border-radius: 10px; margin: 0 auto; margin-top: 100px;}

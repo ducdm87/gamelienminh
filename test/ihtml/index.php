@@ -272,17 +272,19 @@
                                                                         <div class="roud-standing-matches">
                                                                             <div id="rounds-cKU3lt3ffl" class="rounds">
                                                                                 <table class="table table-striped table-bordered limited_width  border-table cach-top table-col-round">
-                                                                                    <thead>
+                                                                                 
                                                                                         <tr>
                                                                                             <?php for($j=1;$j<=6;$j++){?>
                                                                                             <th>Round <?php echo $j ?></th>
                                                                                             <?php }?>
                                                                                         </tr>
+                                                                            
+                                                                                   
                                                                                         <tr>
                                                                                             <td>
                                                                                             <table  class="table  table-bordered limited_width  no-border table-item-team-cbv">
                                                                                                 <tbody>
-                                                                                                <?php for($it=1;$it<=8;$it++){?>
+                                                                                                <?php for($it=1;$it<=64;$it++){?>
                                                                                                     <tr>
                                                                                                         <td class="td-head-end-table">
                                                                                                             <div class="head-item-team">
@@ -331,7 +333,7 @@
                                                                                             <td>
                                                                                                 <table  class="table  table-bordered limited_width  no-border table-item-team-cbv table-round-2 ">
                                                                                                 <tbody>
-                                                                                                <?php for($it2=1;$it2<=4;$it2++){?>
+                                                                                                <?php for($it2=1;$it2<=32;$it2++){?>
                                                                                                     
                                                                                                     <tr>
                                                                                                         <td class="td-boder-lk">
@@ -381,7 +383,7 @@
                                                                                             <td>
                                                                                                 <table  class="table  table-bordered limited_width  no-border table-item-team-cbv table-round-3">
                                                                                                 <tbody>
-                                                                                                <?php for($it2=1;$it2<=2;$it2++){?>
+                                                                                                <?php for($it2=1;$it2<=16;$it2++){?>
                                                                                                     
                                                                                                     <tr>
                                                                                                         <td class="td-boder-lk td-boder-lk-3">
@@ -431,6 +433,7 @@
                                                                                             <td>
                                                                                                 <table  class="table  table-bordered limited_width  no-border table-item-team-cbv table-round-4">
                                                                                                 <tbody>
+                                                                                                    <?php for($it2=1;$it2<=8;$it2++){?>
                                                                                                     <tr>
                                                                                                         <td class="td-boder-lk td-boder-lk-4">
                                                                                                             <div class="end-item-tem"><div class="boder-gom"></div></div>
@@ -472,12 +475,54 @@
                                                                                                             </div>
                                                                                                         </td>
                                                                                                     </tr>
+                                                                                                    <?php }?>
                                                                                                 </tbody>
                                                                                                 </table>
                                                                                             </td>
-                                                                                            <td colspan="2"></td>
+                                                                                            <td>
+                                                                                                <table  class="table  table-bordered limited_width  no-border table-item-team-cbv table-round-5">
+                                                                                                <tbody>
+                                                                                                    <?php for($it2=1;$it2<=8;$it2++){?>
+                                                                                                    <tr>
+                                                                                                        <td class="td-boder-lk">
+                                                                                                            <div class="end-item-tem hidden"><div class="boder-gom"></div></div>
+                                                                                                            <div class="ke-ngang-end"></div>
+                                                                                                        </td>
+                                                                                                        <td class="td-head-end-table">
+                                                                                                            <div class="head-item-team">
+                                                                                                                <div class="btn-group">
+                                                                                                                    <a class="btn btn-link match_identifier dropdown-toggle" data-toggle="dropdown">
+                                                                                                                        <?php echo $it2 ?>
+                                                                                                                        <span class="caret"></span>
+                                                                                                                    </a>
+                                                                                                                    <ul class="dropdown-menu enabled">
+                                                                                                                        <li>
+                                                                                                                        <a href="#" data-toggle="modal" data-target="#myModal1">Match Details</a>
+                                                                                                                        </li>
+                                                                                                                    </ul>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </td>
+                                                                                                        <td class="td-content-table">
+                                                                                                            <div class="main-item">
+                                                                                                                <div class="item-team-bg team-end-table">
+                                                                                                                    <div class="left-ct border-l-top-item-end">
+                                                                                                                        1
+                                                                                                                    </div>
+                                                                                                                    <div class="right-ct">
+                                                                                                                        Team 1
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <?php }?>
+                                                                                                </tbody>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td colspan="1"></td>
                                                                                         </tr>
-                                                                                    </thead>
+                                                                               
                                                                                 </table>
                                                                                 
                                                                             </div>
