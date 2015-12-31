@@ -1,5 +1,5 @@
 /* matches */
- 
+
 #main-content-backend{background: #444;height: 450px; width: 100%;}
 .main-tab{}
 .main-tab ul{list-style: none; margin: 0; padding: 0; background: #3E3E3E; height: 30px;}
@@ -62,16 +62,31 @@
 .table-round-4 .td-boder-lk .end-item-tem .boder-gom{padding: 135px  0;}
 .table-round-4 .td-boder-lk .ke-ngang-end{margin: -134px -6px 6px -13px;}
 
-/*team end table*/
+.table-round-5 .main-item{margin: 497px 0 238px -22px;}
+.table-round-5 .head-item-team{margin: 495px 0 106px;}
+.table-round-5 .td-boder-lk .end-item-tem{padding-top: 262px;}
+.table-round-5 .td-boder-lk .end-item-tem .boder-gom{padding: 272px  0;}
+.table-round-5 .td-boder-lk .ke-ngang-end{margin: -288px -6px 6px -13px;}
 
-.table-round-5 .main-item{margin: 250px 0 238px -22px;}
-.table-round-5 .head-item-team{margin: 235px 0 106px;}
-.table-round-5 .td-boder-lk .ke-ngang-end{margin: 263px 8px 6px -31px;padding-top: 258px;}
-.table-round-5 .head-item-team {padding-top: 13px;}
+/*team end table*/
 .team-end-table{border-radius: 5px;}
 .border-l-top-item-end {border-bottom-left-radius: 5px; border-top-left-radius: 5px;}
-
 /*team end table*/
+.table-pass-2 .td-boder-lk .ke-ngang-end{margin: 26px 15px 0 -32px;padding-top: 25px;}
+.table-pass-2 .head-item-team{margin: -3px  12px 0 -20px; padding-top: 13px;}
+.table-pass-2 .main-item{margin: 14px 19px 0 -32px;}
+
+.table-pass-3 .td-boder-lk .ke-ngang-end{margin:  59px 15px 0 -32px;padding-top: 61px;}
+.table-pass-3 .head-item-team{margin: 32px 12px 0 -20px; padding-top: 13px;}
+.table-pass-3 .main-item{margin: 48px 19px 0 -32px;}
+
+.table-pass-4 .td-boder-lk .ke-ngang-end{margin:  131px 15px 0 -32px;padding-top: 124px;}
+.table-pass-4 .head-item-team{margin: 103px 12px 0 -20px; padding-top: 13px;}
+.table-pass-4 .main-item{margin: 119px 19px 0 -32px;}
+
+.table-pass-5 .td-boder-lk .ke-ngang-end{margin:  263px 15px 0 -32px;padding-top: 264px;}
+.table-pass-5 .head-item-team{margin: 235px 12px 0 -20px; padding-top: 13px;}
+.table-pass-5 .main-item{margin: 251px 19px 0 -32px;}
 
 
 .caret{ border-top: 4px solid #888888; }

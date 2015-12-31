@@ -482,6 +482,55 @@
                                                                                             <td>
                                                                                                 <table  class="table  table-bordered limited_width  no-border table-item-team-cbv table-round-5">
                                                                                                 <tbody>
+                                                                                                    <?php for($it2=1;$it2<=4;$it2++){?>
+                                                                                                    <tr>
+                                                                                                        <td class="td-boder-lk">
+                                                                                                            <div class="end-item-tem"><div class="boder-gom"></div></div>
+                                                                                                            <div class="ke-ngang-end"></div>
+                                                                                                        </td>
+                                                                                                        <td class="td-head-end-table">
+                                                                                                            <div class="head-item-team">
+                                                                                                                <div class="btn-group">
+                                                                                                                    <a class="btn btn-link match_identifier dropdown-toggle" data-toggle="dropdown">
+                                                                                                                        <?php echo $it2 ?>
+                                                                                                                        <span class="caret"></span>
+                                                                                                                    </a>
+                                                                                                                    <ul class="dropdown-menu enabled">
+                                                                                                                        <li>
+                                                                                                                        <a href="#" data-toggle="modal" data-target="#myModal1">Match Details</a>
+                                                                                                                        </li>
+                                                                                                                    </ul>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </td>
+                                                                                                        <td class="td-content-table">
+                                                                                                            <div class="main-item">
+                                                                                                                <div class="item-team-bg boder-item-up">
+                                                                                                                    <div class="left-ct border-l-top">
+                                                                                                                        1
+                                                                                                                    </div>
+                                                                                                                    <div class="right-ct">
+                                                                                                                        Team 1
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="item-team-bg boder-item-dn">
+                                                                                                                    <div class="left-ct border-l-bottom">
+                                                                                                                        3
+                                                                                                                    </div>
+                                                                                                                    <div class="right-ct">
+                                                                                                                        Team 3
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <?php }?>
+                                                                                                </tbody>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <table  class="table  table-bordered limited_width  no-border table-item-team-cbv table-round-5 table-pass-5">
+                                                                                                <tbody>
                                                                                                     <?php for($it2=1;$it2<=8;$it2++){?>
                                                                                                     <tr>
                                                                                                         <td class="td-boder-lk">
