@@ -1,8 +1,8 @@
 <?php
 // $max_level so team roi da, vong 1
 // $table_type: 1 ; so team dung bang $max_level
-              //  2: vượt số team, cần tổ chức vòng 0
-              //  0: < số team, se co doi duoc dac cach di tiep
+//  2: vượt số team, cần tổ chức vòng 0
+//  0: < số team, se co doi duoc dac cach di tiep
 $num_team_table = count($teams_table);
 $table_type = 1;
 $start_round = 1;
@@ -17,7 +17,13 @@ $num_team_round = $num_team_table;
     <div class="round-tab matches-main-content">
         <div class="overthrow_bracket overthrow">
             <div class="roud-standing-matches">
-                <div class="rounds">
+                <div class="rounds-table">
+                     <?php                 
+                        echo '<select class="list-team-matches list-team-matches-table-' . $table_num . '">';
+                        foreach ($teams_table as $teamID => $team)
+                            echo '<option value="' . $teamID . '">' . $team['name'] . '</option>';
+                        echo '</select>';
+                    ?>
                     <table class="table table-striped table-bordered limited_width  border-table cach-top table-col-round">
                         <thead>
                             <tr>
@@ -26,6 +32,8 @@ $num_team_round = $num_team_table;
                                 <?php } ?>
                                 <th><b style="color:red;">Team pass</b></th>
                             </tr>
+                        </thead>
+                        <tbody>
                             <tr>
                                 <?php
                                 $table_style = 1;
@@ -43,10 +51,10 @@ $num_team_round = $num_team_table;
                                     $params['matches_info'] = $matches_info;
                                     $params['num_team_round'] = $num_team_round;
                                     $params['teams_joined'] = $teams_joined;
-                                    if($table_style == 1){
+                                    if ($table_style == 1) {
                                         $params['teams_table'] = $teams_table;
                                         echo $this->renderPartial('/html/gamesport/matches/form-table-round-start', $params);
-                                    }else{
+                                    } else {
                                         echo $this->renderPartial('/html/gamesport/matches/form-table-round', $params);
                                     }
                                     echo '</td>';
@@ -56,10 +64,9 @@ $num_team_round = $num_team_table;
                                 ?>
                                 <td>
                                 </td>
-                            </tr>
-                        </thead>
+                            </tr> 
+                        </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

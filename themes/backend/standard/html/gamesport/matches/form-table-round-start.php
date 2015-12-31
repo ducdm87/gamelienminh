@@ -28,6 +28,7 @@
         $params['round_num'] = 1;
         $params['teams_joined'] = $teams_joined;
         $params['teams_table'] = $teams_table;
+        $params['table_num'] = $table_num;
         echo $this->renderPartial('/html/gamesport/matches/form-matches', $params);
         ?>
     </tbody>

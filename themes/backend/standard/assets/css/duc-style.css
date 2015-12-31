@@ -88,7 +88,7 @@ a, a:focus{
     border-right: 1px solid #666;
 }
 .roud-standing-matches table tr th:last-child{ border-right: 1px solid #383838; }
-.roud-standing-matches table tr td{ border: none; background: #444444;}
+.roud-standing-matches table tr td{ border: none; background: #444444 !important;}
 .begin-left{float: left}
 .item-team-bg{width: 200px; height: 25px; background: #626262; position: relative;}
 .boder-item-up{ border-top-left-radius: 5px; border-top-right-radius: 5px}
@@ -160,4 +160,10 @@ a, a:focus{
 }
 .form-matches .btn-change-team:hover{
     color: yellow;
+}
+.rounds-table{ position: relative; }
+.form-matches  .list-team-matches{ 
+    display: none; 
+    position: absolute;
+    z-index: 99;
 }

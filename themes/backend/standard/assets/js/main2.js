@@ -157,3 +157,16 @@ function processOrderTable(table_id)
     }
     $("#arr_team_table").val(JSON.stringify(arr_team_table));
 }
+
+
+// thay doi team cho vong bang, round 0,1
+$(function() {
+    $(".btn-change-team").click(function(){
+        data_match = $(this).attr('data-matche');
+        data_table = $(this).attr('data-table');
+        data_team = $(this).attr('data-team');
+        
+        $(".list-team-matches-table-"+data_table).show();
+    });
+});
+
