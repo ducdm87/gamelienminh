@@ -50,23 +50,29 @@
 .td-boder-lk .end-item-tem .boder-gom{border-bottom: 1px solid #fff;border-right: 1px solid #fff;border-top: 1px solid #fff;margin-left: -20px;padding: 34px 0;}
 .td-boder-lk .ke-ngang-end{border-top: 1px solid #fff;margin: -36px -6px 6px -13px;}
 
-.table-round-3 .main-item{margin: 106px 0 98px -22px;}
-.table-round-3 .head-item-team{margin: 102px 0 106px;}
+.table-round-3 .main-item{margin: 102px 0 102px -22px;}
+.table-round-3 .head-item-team{margin: 102px 0 0;}
 .table-round-3 .td-boder-lk .end-item-tem{padding-top: 60px;}
 .table-round-3 .td-boder-lk .end-item-tem .boder-gom{padding: 67px 0;}
 .table-round-3 .td-boder-lk .ke-ngang-end{margin: -67px -6px 6px -13px;}
 
 .table-round-4 .main-item{margin: 238px 0 238px -22px;}
-.table-round-4 .head-item-team{margin: 243px 0 106px;}
-.table-round-4 .td-boder-lk .end-item-tem{padding-top: 132px;}
+.table-round-4 .head-item-team{margin: 238px 0 0;}
+.table-round-4 .td-boder-lk .end-item-tem{padding-top: 128px;}
 .table-round-4 .td-boder-lk .end-item-tem .boder-gom{padding: 135px  0;}
 .table-round-4 .td-boder-lk .ke-ngang-end{margin: -134px -6px 6px -13px;}
 
-.table-round-5 .main-item{margin: 497px 0 238px -22px;}
-.table-round-5 .head-item-team{margin: 495px 0 106px;}
+.table-round-5 .main-item{margin: 510px 0 510px -22px;}
+.table-round-5 .head-item-team{margin: 510px 0 0;}
 .table-round-5 .td-boder-lk .end-item-tem{padding-top: 262px;}
-.table-round-5 .td-boder-lk .end-item-tem .boder-gom{padding: 272px  0;}
+.table-round-5 .td-boder-lk .end-item-tem .boder-gom{padding: 272px 0;}
 .table-round-5 .td-boder-lk .ke-ngang-end{margin: -288px -6px 6px -13px;}
+
+.table-round-6 .main-item{margin: 1054px 0 1054px -22px}
+.table-round-6 .head-item-team{margin: 1054px 0 0;}
+.table-round-6 .td-boder-lk .end-item-tem{padding-top: 535px;}
+.table-round-6 .td-boder-lk .end-item-tem .boder-gom{padding: 544px  0;}
+.table-round-6 .td-boder-lk .ke-ngang-end{margin: -546px -6px 6px -13px;}
 
 /*team end table*/
 .team-end-table{border-radius: 5px;}
@@ -76,17 +82,25 @@
 .table-pass-2 .head-item-team{margin: -3px  12px 0 -20px; padding-top: 13px;}
 .table-pass-2 .main-item{margin: 14px 19px 0 -32px;}
 
-.table-pass-3 .td-boder-lk .ke-ngang-end{margin:  59px 15px 0 -32px;padding-top: 61px;}
+.table-pass-3 .td-boder-lk .ke-ngang-end{margin:  60px 15px 0 -32px;}
 .table-pass-3 .head-item-team{margin: 32px 12px 0 -20px; padding-top: 13px;}
-.table-pass-3 .main-item{margin: 48px 19px 0 -32px;}
+.table-pass-3 .main-item{margin: 48px 19px 47px -32px;}
 
-.table-pass-4 .td-boder-lk .ke-ngang-end{margin:  131px 15px 0 -32px;padding-top: 124px;}
+.table-pass-4 .td-boder-lk .ke-ngang-end{margin:  128px 14px 0 -32px;}
 .table-pass-4 .head-item-team{margin: 103px 12px 0 -20px; padding-top: 13px;}
-.table-pass-4 .main-item{margin: 119px 19px 0 -32px;}
+.table-pass-4 .main-item{margin: 114px 19px 117px -32px;}
 
-.table-pass-5 .td-boder-lk .ke-ngang-end{margin:  263px 15px 0 -32px;padding-top: 264px;}
-.table-pass-5 .head-item-team{margin: 235px 12px 0 -20px; padding-top: 13px;}
-.table-pass-5 .main-item{margin: 251px 19px 0 -32px;}
+.table-pass-5 .td-boder-lk .ke-ngang-end{margin:  264px 14px 0 -32px;}
+.table-pass-5 .head-item-team{margin: 103px 12px 0 -20px; padding-top: 13px;}
+.table-pass-5 .main-item{margin: 252px 19px 251px -32px;}
+
+.table-pass-6 .td-boder-lk .ke-ngang-end{margin:  535px 15px 0 -32px; }
+.table-pass-6 .head-item-team{margin: 235px 12px 0 -20px; padding-top: 13px;}
+.table-pass-6 .main-item{margin: 522px 19px 525px -79px}
+
+.table-pass-7 .td-boder-lk .ke-ngang-end{margin:  1079px 15px 1080px -32px}
+.table-pass-7 .head-item-team{margin: 235px 12px 0 -20px; padding-top: 13px;}
+.table-pass-7 .main-item{margin: 1067px 19px 1067px -79px}
 
 
 .caret{ border-top: 4px solid #888888; }
