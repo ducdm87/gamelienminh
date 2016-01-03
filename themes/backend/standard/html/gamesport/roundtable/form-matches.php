@@ -7,9 +7,16 @@
  */
 $allow_change;
 foreach ($matches_info as $m_id => $matches) {
-     
     $team_a = $teams_joined[$matches['teamaID']];
-    $team_b = $teams_joined[$matches['teambID']];
+    $classTeamB = "";
+    if($matches['teambID'] != 0 and isset($teams_joined[$matches['teambID']]))
+        $team_b = $teams_joined[$matches['teambID']];
+    else{
+        $team_b = array("id"=>"?", "name"=>"Win of M0.". $matches['ordering']);
+        $classTeamB = "win-of-mb";
+    }
+    
+    
     ?>
     <tr class="<?php echo $matches['m_class']; ?>">
         <td class="td-boder-lk">
@@ -23,13 +30,7 @@ foreach ($matches_info as $m_id => $matches) {
                 <div class="btn-group">
                     <a class="btn btn-link match_identifier dropdown-toggle" data-toggle="dropdown">
                         <?php echo $m_id; ?>
-                        <span class="caret"></span>
                     </a>
-                    <ul class="dropdown-menu enabled">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#myModal1">Match Details</a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </td>
@@ -43,24 +44,30 @@ foreach ($matches_info as $m_id => $matches) {
                         <span class="team_name"> <?php echo $team_a['name']; ?> </span>
                         <i data-matche="<?php echo $matches['m_class']; ?>" 
                            data-matche-id="<?php echo $m_id; ?>" 
-                           data-table="<?php echo $table_num; ?>" 
+                           data-subround="<?php echo $round_num; ?>" 
                            data-team="item-team-a" data-teamID="<?php echo $team_a['id']; ?>" 
                            class="fa fa-caret-down btn-change-team"></i>
                     </div>
                 </div>
-                <div class="item-team-bg boder-item-dn item-team-b item-team-<?php echo $team_b['id']; ?>">
+                <?php if($team_a['id'] != $team_b['id']){ ?>
+                <div class="item-team-bg boder-item-dn item-team-b item-team-<?php echo $team_b['id']; ?> <?php echo $classTeamB; ?>">
                     <div class="left-ct border-l-bottom team_id">
                         <?php echo $team_b['id']; ?>
                     </div>
                     <div class="right-ct">
                         <span class="team_name"> <?php echo $team_b['name']; ?> </span>
+                        <?php
+                        if($classTeamB == ""){
+                        ?>
                         <i data-matche="<?php echo $matches['m_class']; ?>"
                            data-matche-id="<?php echo $m_id; ?>" 
-                           data-table="<?php echo $table_num; ?>" 
+                           data-subround="<?php echo $round_num; ?>" 
                            data-team="item-team-b" data-teamID="<?php echo $team_b['id']; ?>"
                            class="fa fa-caret-down btn-change-team"></i>
+                        <?php } ?>
                     </div>
                 </div>
+                <?php } ?>
             </div>
         </td>
     </tr>

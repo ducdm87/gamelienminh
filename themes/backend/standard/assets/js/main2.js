@@ -12,6 +12,7 @@ $(function() {
             datetext = datetext + " " + d.getHours() + ": " + d.getMinutes() + ": " + d.getSeconds();
             $(this).val(datetext);
         }, });
+     $('[data-toggle="tooltip"]').tooltip(); 
 });
 
 $(function() {
@@ -165,9 +166,9 @@ $(function() {
     $(".btn-change-team").click(function(event) {
         data_match = $(this).attr('data-matche');
         data_matchID = $(this).attr('data-matche-id');
-        data_table = $(this).attr('data-table');
+        data_subround = $(this).attr('data-subround');
         data_team = $(this).attr('data-team');
-        data_teamID = $(this).attr('data-teamid');        
+        data_teamID = $(this).attr('data-teamid');
         var round_offset = $(".rounds-table").offset();
 
         console.log(event.pageX, event.pageY);
@@ -176,56 +177,66 @@ $(function() {
         pos_left = event.pageX - round_offset.left - (162 - 10);
         pos_top = event.pageY - round_offset.top - 10;
 
-        $(".list-team-matches-table-" + data_table).show();
-        $(".list-team-matches-table-" + data_table).val(data_teamID);
-        $(".list-team-matches-table-" + data_table).attr({'data-matche': data_match, 'data-matche-id':data_matchID,
-                    'data-table': data_table, 'data-team': data_team,'cur-team':data_teamID});
-        $(".list-team-matches-table-" + data_table).css({top: pos_top + "px", left: pos_left + "px"});
+        $(".list-team-matches").show();
+        $(".list-team-matches").val(data_teamID);
+        $(".list-team-matches").attr({'data-matche': data_match, 'data-matche-id': data_matchID,
+            'data-subround': data_subround, 'data-team': data_team, 'cur-team': data_teamID});
+        $(".list-team-matches").css({top: pos_top + "px", left: pos_left + "px"});
     });
 
     $(document).delegate(".list-team-matches", "change", function() {
         data_match = $(this).attr('data-matche');
         data_matchID = $(this).attr('data-matche-id');
-        data_table = $(this).attr('data-table');
+        data_subround = $(this).attr('data-subround');
         data_team = $(this).attr('data-team');
         data_oldTeamID = $(this).attr('cur-team');
         data_teamID = $(this).val();
         data_team_name = $(this).find("option:selected").text();
-         
-         // xoa text, name cua cai khac bi thay the
-        $(".item-team-"+data_teamID +" .team_id").text('');
-        $(".item-team-"+data_teamID +" .team_name").text('');
+
+        // xoa text, name cua cai khac bi thay the
+        $(".item-team-" + data_teamID + " .team_id").text('');
+        $(".item-team-" + data_teamID + " .team_name").text('');
+
+        $(".item-team-" + data_teamID).removeClass("item-team-" + data_teamID);
+
+
+        var parent = $(" ." + data_match + " .main-item");
+        $(parent).find("." + data_team).addClass("item-team-" + data_teamID);
+        $(parent).find("." + data_team).removeClass("item-team-" + data_oldTeamID);
+        $(parent).find("." + data_team + " .team_id").text(data_teamID);
+        $(parent).find("." + data_team + " .team_name").html(data_team_name);
+        $(parent).find("." + data_team + " .btn-change-team").attr("data-teamID", data_teamID);
+        $(".list-team-matches").attr({'cur-team': data_teamID});
         
-        $(".item-team-"+data_teamID).removeClass("item-team-"+data_teamID);
-         
-        
-       var parent =  $("#rounds-table-"+data_table +" ."+data_match+" .main-item");
-       $(parent).find("."+data_team).addClass("item-team-"+data_teamID);
-       $(parent).find("."+data_team).removeClass("item-team-"+data_oldTeamID);
-       $(parent).find("."+data_team+" .team_id").text(data_teamID);
-       $(parent).find("."+data_team+" .team_name").html(data_team_name);
-       $(parent).find("."+data_team+" .btn-change-team").attr("data-teamID", data_teamID);
-       $(".list-team-matches-table-" + data_table).attr({ 'cur-team':data_teamID});
-       var arr_name = "arr_matches_table_"+data_table;
-       var arr_ = window[arr_name];
-       if(data_team == "item-team-a")
+        var arr_name = "arr_matches_table_"+data_subround;
+        var arr_ = window[arr_name];
+        if (data_team == "item-team-a")
             arr_[data_matchID]['teamaID'] = data_teamID;
-        else 
+        else
             arr_[data_matchID]['teambID'] = data_teamID;
-       initmatches_data_table();
+        initmatches_data_subround();
     });
-    initmatches_data_table();
+    if(typeof number_subround != "undefined")
+        initmatches_data_subround();
 
 });
 
-function initmatches_data_table()
+function initmatches_data_subround()
 {
     var data = [];
-    for(var i=1;i<=number_table;i++){
-        arr_name = "arr_matches_table_"+i;
+    for (var i = 0; i <= number_subround; i++) {
+        arr_name = "arr_matches_table_" + i;
         arr_ = window[arr_name];
         data[i] = arr_;
-    }    
-    $("#matches_data_table").val(JSON.stringify(data));
+    }
+    $("#matches_data_subround").val(JSON.stringify(data));
 }
+
+$(function() {
+    $(".btn-edit-matches").click(function(){
+        var data_matches;
+        data_matches = $(this).attr("data-matches");
+        console.log(data_matches);
+    });
+});
 

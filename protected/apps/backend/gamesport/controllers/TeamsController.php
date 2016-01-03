@@ -8,7 +8,22 @@ class TeamsController extends BackEndController {
     function init() {
         $this->tablename = TBL_GS_TEAMS;
         include_once dirname(__FILE__) . '/../gamesport.php';
+//        $this->makeData(1,256,4);
         parent::init();
+    }
+
+    function makeData($startTeamID, $toTeamID, $tourID = 3) {
+        $query = "INSERT INTO `tbl_gs_team_register_tour` (`id`, `teamID`, `tourID`, `table_num`, `ordering`, `created_by`, `modified_by`, `cdate`, `mdate`, `status`) 
+            VALUES ";
+        $arr_val = [];
+        for ($i = $startTeamID; $i <= $toTeamID; $i++) {
+            $arr_val[] = "(NULL, '$i', '$tourID', '', '', '', '', NULL, NULL, '1')";
+        }
+
+        $query = $query . implode(", ", $arr_val);
+        $command = Yii::app()->db->createCommand($query);
+        $command->execute();
+        die;
     }
 
     /*
@@ -119,7 +134,7 @@ class TeamsController extends BackEndController {
         $id = Request::getVar("id", 0);
 
         $obj_tblTeam = YiiTables::getInstance(TBL_GS_TEAMS);
-        $obj_tblTeam->load($id); 
+        $obj_tblTeam->load($id);
         $obj_tblTeam->bind($post);
         $obj_tblTeam->store();
 
@@ -154,11 +169,12 @@ class TeamsController extends BackEndController {
         YiiMessage::raseSuccess("Successfully remove tournament(s)");
         $this->redirect(Router::buildLink('gamesport', array('view' => 'teams')));
     }
+
     /**
      * Function progress get team by tour ID
      */
     function actionList($id = 2) {
-        $id = Request::getVar("tour_id",$id);
+        $id = Request::getVar("tour_id", $id);
         $model = Teams::getInstance();
         global $user;
         if (!$user->isSuperAdmin()) {
@@ -168,4 +184,5 @@ class TeamsController extends BackEndController {
         $items = $model->ListTeam($id);
         echo json_encode($items);
     }
+
 }

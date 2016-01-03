@@ -80,7 +80,7 @@ class Matches extends CFormModel {
         }
         
         $lists['arr_team_table'] = $arr_team_table;
-        
+       
         if(count($matches_info)){
             $arr_new = array();
             foreach($matches_info as $matches){

@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<?php global $hideMenu, $mainframe; ?>
+<?php global $hideMenu, $mainframe; 
+$tmpl = Request::getVar('tmpl',null);
+?>
 <html lang="en">
     <?php echo $this->renderPartial('/block/header'); ?>
-    <body>
+    <body class="<?php echo "tmpl-$tmpl"; ?>">
 
         <div id="wrapper" <?php if(getSysConfig("sidebar.display", 1)== 0) echo 'style="padding:0; "'; ?>>
 
             <!-- Sidebar -->
-            <?php echo $this->renderPartial('/block/sidebar'); ?>
-            <?php YiiMessage::showMessage(); ?>
+            <?php if($tmpl !== "app"){ ?>
+                <?php echo $this->renderPartial('/block/sidebar'); ?>
+                <?php YiiMessage::showMessage(); ?>
+            <?php }?>
             <div id="page-wrapper">                
-                <?php $this->showToolbar(); ?>
-                <?php $mainframe->showSubMenu(); ?>
+                <?php if($tmpl !== "app"){ ?>
+                    <?php $this->showToolbar(); ?>
+                    <?php $mainframe->showSubMenu(); ?>
+                <?php }?>
                 <?php echo $content; ?>
             </div><!-- /#page-wrapper -->
 

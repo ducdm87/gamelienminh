@@ -29,9 +29,10 @@ class RoundtableController extends BackEndController {
        
     function actionSave() {
         $tourID = Request::getVar('tourID',0);
+        $cur_table = Request::getVar('cur_table', 1);
         $this->store();
-        YiiMessage::raseSuccess("Tournament save succesfully");
-        $this->redirect(Router::buildLink("gamesport", array('view'=>'matches', "tourID"=>$tourID)));
+        YiiMessage::raseSuccess("Round table save succesfully");
+        $this->redirect(Router::buildLink("gamesport", array('view'=>'roundtable', "tourID"=>$tourID,'cur_table'=>$cur_table)));
     }
 
     // chi co super admin moi sua duoc 1 group
@@ -40,20 +41,20 @@ class RoundtableController extends BackEndController {
         $tourID = Request::getVar('tourID',0);
         $post = $_POST;
           
-        $model = Matches::getInstance();
+        $model = Roundtable::getInstance();
         global $user;
         if (!$user->isSuperAdmin()) {
             YiiMessage::raseNotice("Your account not have permission to change Tournament");
             $this->redirect(Router::buildLink("gamesport", array('view'=>'tournament')));
         }
-
+        
         $tourID = Request::getVar('tourID',0);
         $db = Yii::app()->db;        
-        $matches_data_table = json_decode($post['matches_data_table']);
+        $matches_data_subround = json_decode($post['matches_data_subround']);
         $matches_make_first_data = $post['matches_make_first_data'];
-        if($matches_make_first_data == 1){
-            $model->make_matches($tourID, $matches_data_table);
-        }
+       //if($matches_make_first_data == 1){
+            $model->make_matches($tourID, $matches_data_subround);
+       // }
 
         return true;
     }
