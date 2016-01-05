@@ -1,4 +1,6 @@
-
+<?php
+if($item->id == 0) $item->status = 1;
+?>
 <form action="<?php echo Router::buildLink('menus', array("view"=>"menuitem")) ?>" method="post" name="adminForm" >
     <div class="row">
         <div class="panel panel-primary">             
@@ -20,7 +22,7 @@
                     <div class="form-group row">
                         <label class="control-label left col-md-3">Menu Type</label>
                         <div class="input-group left col-md-9 btn-group-lg">
-                            <input type="text" name="menu_type" class="form-control" placeholder="" value='<?php echo isset($item->params->app)?$item->params->app:""; ?>' >
+                            <input type="text" name="menu_type" readonly="true" class="form-control" placeholder="" value='<?php echo isset($item->params->app)?$item->params->app:""; ?>' >
                             <span class="input-group-btn">
                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changeMenutype">Change Menu Type</button>
                             </span>
@@ -35,7 +37,7 @@
                     <div class="form-group row">
                         <label class="control-label left col-md-3">Link</label>
                         <div class="col-md-9"> 
-                            <input <?php if(isset($item->params->app) AND $item->params->app !== "System") echo 'readonly="true"'; ?> id='field_link' type="text" name="link" class="form-control" value="<?php echo $item->link; ?>">
+                            <input <?php if( ( isset($item->params->app) AND $item->params->app !== "System") OR strtolower($item->type) == "separator") echo 'readonly="true"'; ?> id='field_link' type="text" name="link" class="form-control" value="<?php echo $item->link; ?>">
                         </div>
                     </div>
                     <div class="form-group row">

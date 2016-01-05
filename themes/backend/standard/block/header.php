@@ -32,7 +32,6 @@
 
     <!-- Page Specific Plugins -->    
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/tablesorter/jquery.tablesorter.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/tablesorter/tables.js"></script>
     
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/css/duc-style.css" rel="stylesheet">
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/backend/<?php echo $cur_temp; ?>/assets/js/main2.js"></script>

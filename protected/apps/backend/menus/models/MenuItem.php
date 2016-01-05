@@ -36,26 +36,38 @@ class MenuItem extends CFormModel {
      * @param type $by
      * @param type $query 
      */
-    public function getMenuItems() {
+    public function loadItems() {
+        $menuID = Request::getInt('menu', "");
+        $cond = $this->_buildWhere();
+        $page = Request::getVar("page", 1);
+        $limit = Request::getVar('limit', 15);
+        $start = ($page - 1) * $limit;
+        $obj_menu = YiiMenu::getInstance();         
+        $items = $obj_menu->loadItems($menuID,'*',$cond, " lft ASC ", $limit, $start );         
+        return $items;
+    }
 
-        $where = $this->_buildWhere();
-        $limit = Request::getInt('limit', getSysConfig("pages.limit", 15));
-        $limitstart = Request::getInt('limitstart', 0);
+    function getPagination($cid = null) {
+        $total = $this->getTotal($cid);
+        $page = Request::getVar('page', 1);
+        $limit = Request::getVar('limit', 15);
+        return fnShowPagenationBack($total, $limit, $page);
+    }
 
-        $results = $this->command->select('*')
-                ->from($this->table)
-                ->where($where)
-                ->order("lft ASC")
-                ->queryAll();
-
-        return $results;
+    function getTotal($cid = null) {
+        $cond = $this->_buildWhere($cid);
+        
+        $obj_tblTournament = YiiTables::getInstance(TBL_MENU_ITEM);
+        $total = $obj_tblTournament->getTotal($cond);
+        return $total;
     }
 
     function _buildWhere() {
         $where = array();
         $menuID = Request::getInt('menu', "");
+        
         if ($menuID > 0)
-            $where[] = " menuID = $menuID ";
+            $where[] = "menuID = $menuID ";
 
         $status = Request::getInt('filter_status', -1);
         if ($status != -1) {
@@ -69,6 +81,7 @@ class MenuItem extends CFormModel {
             $w .= " OR `params` like :filter_search  )";
             $where[] = " $w ";
         }
+        
         if (count($where) > 0)
             return "  " . implode(" AND ", $where);
         else
@@ -124,7 +137,7 @@ class MenuItem extends CFormModel {
         $list['apps'] = $obj_ext->loads("*", "type = 'app'", "ordering ASC");
 
         foreach ($list['apps'] as $k => $app) {
-            if(!is_dir(PATH_APPS_FRONT . "/" . $app['folder'])){
+            if (!is_dir(PATH_APPS_FRONT . "/" . $app['folder'])) {
                 unset($list['apps'][$k]);
                 continue;
             }
@@ -169,6 +182,12 @@ class MenuItem extends CFormModel {
         $obj_view->name = "MenuItemAlias";
         $obj_view->title = "Menu Item Alias";
         $obj_view->desc = "Create an alias to another menu item.";
+        $app['views'][] = $obj_view;
+
+        $obj_view = new stdClass();
+        $obj_view->name = "Separator";
+        $obj_view->title = "Separator";
+        $obj_view->desc = "Separator, Only title";
         $app['views'][] = $obj_view;
         $list['apps'][] = $app;
 
@@ -233,17 +252,17 @@ class MenuItem extends CFormModel {
         $tbl_menu->_ordering = isset($post['ordering']) ? $post['ordering'] : null;
         $tbl_menu->_old_parent = $tbl_menu->parentID;
         $tbl_menu->bind($post);
-        
+
+        $params = Request::getVar("params", array());
         if ($_POST['menu_type'] != "System") {
-            $params = Request::getVar("params", array());
             $app_name = $params['app'];
-            $view_name = $params['view']?$params['view']:'home';
+            $view_name = $params['view'] ? $params['view'] : 'home';
             $layout_name = $params['layout'];
             $view_param = $this->getParamView($app_name, $view_name);
             $tbl_menu->link = "/index.php?app=$app_name";
-            if($view_name != "home" AND $view_name != "")
+            if ($view_name != "home" AND $view_name != "")
                 $tbl_menu->link .= "&view=$view_name";
-            if($view_name != "home" AND $view_name != "")
+            if ($view_name != "home" AND $view_name != "")
                 $tbl_menu->link .= "&layout=$layout_name";
             $_params = array();
             if (count($view_param->param->field)) {
@@ -256,13 +275,17 @@ class MenuItem extends CFormModel {
                     $_params[$field_name] = $val;
                     if (empty($val))
                         continue;
-                    if($_request == true){
+                    if ($_request == true) {
                         $tbl_menu->link .= "&$field_name=$val";
                     }
                 }
             }
+        } else {
+            if (strtolower($tbl_menu->type) == "separator") {
+                $tbl_menu->link = "Separator";
+            }
         }
- 
+
         foreach ($params as $k => $v) {
             if (empty($v))
                 unset($params[$k]);
@@ -271,6 +294,23 @@ class MenuItem extends CFormModel {
         $tbl_menu->app = $params['app'];
         $params = json_encode($params);
         $tbl_menu->params = $params;
+        $tbl_menu->store();
+        return array($tbl_menu->menuID, $tbl_menu->id);
+    }
+
+    function copyitem($cid) {
+        global $mainframe, $user;
+        if (!$user->isSuperAdmin()) {
+            YiiMessage::raseNotice("Your account not have permission to modify menu item");
+            return false;
+        }
+
+        $obj_menu = YiiMenu::getInstance();
+        $tbl_menu = $obj_menu->loadItem($cid);
+        $tbl_menu->id = 0;
+        $tbl_menu->title = $tbl_menu->title . " copy";
+        $tbl_menu->alias = $tbl_menu->alias . "-copy";
+        $obj_item->status = 0;
         $tbl_menu->store();
         return array($tbl_menu->menuID, $tbl_menu->id);
     }

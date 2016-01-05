@@ -49,7 +49,7 @@ class Video extends CFormModel {
             $where [] = " A.created_by IN($all_user) ";
         }
         if(count($where) >0) $conditions = implode (" AND ", $where);
-        $field = "A.*, B.title cat_title, B.alias cat_alias, C.username created_name";
+        $field = "A.*, B.name cat_name, B.alias cat_alias, C.username created_name";
         $command = Yii::app()->db->createCommand()->select($field)
                 ->from(TBL_VIDEOS ." A")
                 ->leftJoin(TBL_CATEGORIES ." B", "A.catID = B.id")
@@ -99,7 +99,7 @@ class Video extends CFormModel {
         $list = array();
 
         $obj_module = YiiCategory::getInstance();
-        $items = $obj_module->loadItems('id value, title text', "scope = 'videos'");
+        $items = $obj_module->loadItems('id value, name text', "scope = 'videos'");
         $list['category'] = buildHtml::select($items, $mainItem->catID, "catID","","size=7");
          
         $items = array();

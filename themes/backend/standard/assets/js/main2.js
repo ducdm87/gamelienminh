@@ -13,6 +13,8 @@ $(function() {
             $(this).val(datetext);
         }, });
      $('[data-toggle="tooltip"]').tooltip(); 
+     
+     $('table.tablesorter').tablesorter();
 });
 
 $(function() {

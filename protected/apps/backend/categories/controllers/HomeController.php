@@ -36,7 +36,7 @@ class HomeController extends BackEndController {
         }
         
         
-        $this->addIconToolbar("Creat", Router::buildLink("categories", array("layout"=>"edit")), "new");
+        $this->addIconToolbar("New", Router::buildLink("categories", array("layout"=>"edit")), "new");
         $this->addIconToolbar("Edit", Router::buildLink("categories", array("layout"=>"edit")), "edit", 1, 1, "Please select a item from the list to edit");        
         $this->addIconToolbar("Publish", Router::buildLink("categories", array("layout"=>"publish")), "publish");
         $this->addIconToolbar("Unpublish", Router::buildLink("categories", array("layout"=>"unpublish")), "unpublish");
@@ -46,8 +46,9 @@ class HomeController extends BackEndController {
         $model = Categories::getInstance();
         $items = $model->getItems();
         $lists = $model->getList();
+        $pagination = $model->getPagination();
         
-        $this->render('default', array("items" => $items, 'lists'=>$lists));
+        $this->render('default', array("items" => $items, 'lists'=>$lists, 'pagination'=>$pagination));
     } 
 
     public function actionNew() {
@@ -58,8 +59,10 @@ class HomeController extends BackEndController {
         $cid = Request::getVar('cid', "");        
         setSysConfig("sidebar.display", 0);
         
-        $this->addIconToolbar("Save", Router::buildLink("categories", array("layout"=>"save")), "save");
-        $this->addIconToolbar("Apply", Router::buildLink("categories", array("layout"=>"apply")), "apply");
+        $this->addIconToolbar("Save", Router::buildLink('categories', array('layout' => 'apply')), "apply");
+        $this->addIconToolbar("Save  & Close", Router::buildLink('categories', array('layout' => 'save')), "save");
+        $this->addIconToolbar("Save & New", Router::buildLink('categories', array('layout' => 'savenew')), "plus");
+        $this->addIconToolbar("Save as Copy", Router::buildLink('categories', array('layout' => 'savecopy')), " fa fa-copy");
         
         if ($cid == 0) {
             $this->addBarTitle("Category <small>[New]</small>", "user");        
@@ -87,43 +90,35 @@ class HomeController extends BackEndController {
     }
 
     function actionApply() {
-        $cid = $this->store();
+        $model = Categories::getInstance();
+        $cid = $model->storeItem();
         $this->redirect(Router::buildLink("categories", array("layout"=>"edit",'cid'=>$cid)));
     }
     
     function actionSave() {
-        $cid = $this->store();
+        $model = Categories::getInstance();
+        $cid = $model->storeItem();
         $this->redirect(Router::buildLink("categories"));
+    }
+    
+    function actionSavenew() {
+        $model = Categories::getInstance();
+        $cid = $model->storeItem();
+        $this->redirect(Router::buildLink("categories", array("layout"=>"new")));
+    }
+    
+    function actionSavecopy() {
+        $cid = Request::getVar("id", 0);
+        $model = Categories::getInstance();
+        $cid = $model->copyitem($cid);
+        $this->redirect(Router::buildLink("categories", array("layout"=>"edit",'cid'=>$cid)));
     }
     
     function actionCancel()
     {
         $this->redirect(Router::buildLink("categories"));
     }
-    
-    public function store() {
-        global $mainframe, $user;             
-       if(!$user->isSuperAdmin()){
-           YiiMessage::raseNotice("Your account not have permission to modify category");
-           $this->redirect(Router::buildLink("categories"));
-       }
-       
-        $cid = Request::getVar("id", 0); 
-        
-        $obj_category = YiiCategory::getInstance();        
-        $obj_category = $obj_category->loadItem($cid, "*", false); 
-         
-        $obj_category->bind($_POST);
-        if($obj_category->id == 0){
-            $obj_category->created_by = $user->id;
-        }
-        $obj_category->modified_by = $user->id;
-        $obj_category->store(); 
- 
-        YiiMessage::raseSuccess("Successfully save Category");
-        return $obj_category->id;
-    }
-    
+     
     
     function actionPublish()
     {

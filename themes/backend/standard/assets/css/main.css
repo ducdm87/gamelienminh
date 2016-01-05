@@ -99,16 +99,14 @@ table.toolbar a {
     white-space: nowrap;
 }
 
-table.toolbar span {
+table.toolbar span.icon-32 {
     display: block;
     float: none;
     height: 32px;
     margin: 0 auto;
     width: 32px;
 }
-
-
-
+.toolbar .btn-default .glyphicon{ color: #51a357; }
 
 table.admintable td.key, table.admintable td.paramlist_key {
     background-color: #F6F6F6;

@@ -36,7 +36,7 @@
                 <?php echo showSideBarMenu("menus", "menutype", "Menus", "fa-file"); ?>
 
                 <li class="dropdown <?php
-                if ($app == "categories" OR $app == "articles" OR $app == "gamesport" OR $app == "videos")
+                if ($app == "categories" OR $app == "articles" OR $app == "lichvannien" OR $app == "videos")
                     echo "active ";
                 ?>">
                     <a href="#" class="dropdown-toggle parent" data-toggle="dropdown">
@@ -46,7 +46,7 @@
                         <?php echo showSideBarMenu("categories", "", "Categories"); ?>
                         <?php echo showSideBarMenu("articles", "", "Articles", "fa-file"); ?>
                         <?php echo showSideBarMenu("videos", "", "Videos", "fa-film"); ?>
-                        <?php echo showSideBarMenu("gamesport", "", "Game sport", "fa-folder"); ?>
+                        <?php echo showSideBarMenu("gamesport", "", "Game Sport", "fa-folder"); ?>
                     </ul>
                 </li> 
 

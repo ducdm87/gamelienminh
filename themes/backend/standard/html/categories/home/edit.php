@@ -7,7 +7,7 @@
                     <span>Detail</span>
                 </div>
                 <div class="panel-body">
-                    <?php echo buildHtml::renderField("text", "name", $item->title, "name", "form-control title-generate"); ?>
+                    <?php echo buildHtml::renderField("text", "name", $item->name, "name", "form-control title-generate"); ?>
                     <?php echo buildHtml::renderField("text", "alias", $item->alias, "Alias", "form-control alias-generate", "Auto-generate from title"); ?>
                     
                     <div class="form-group row">

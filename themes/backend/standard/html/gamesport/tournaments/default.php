@@ -1,5 +1,5 @@
 <?php global $_list_tour_state; ?>
-<form action="<?php echo Router::buildLink("gamesport", array('view'=>'tournaments')); ?>" method="post" name="adminForm" >
+<form action="<?php echo Router::buildLink("gamesport", array('view' => 'tournaments')); ?>" method="post" name="adminForm" >
     <div class="row">
         <div class="panel">            
             <div class="panel-body">
@@ -7,10 +7,13 @@
                     <div class="col-lg-7">
                         <input type="text" name="filter_search" value="<?php echo Request::getVar('filter_search', ""); ?>" id="filter_search"  onchange="document.adminForm.submit();" /> 
                         <button type="submit" class="btn btn-primary btn-xs">Go</button>
-                        <button type="reset" class="btn btn-primary btn-xs" onClick="$('#filter_search').val(''); $('#page').val(1); $('#filter_cid').val(''); this.form.submit();" >Reset</button>
+                        <button type="reset" class="btn btn-primary btn-xs" onClick="$('#filter_search').val('');
+                                $('#page').val(1);
+                                $('#filter_cid').val('');
+                                this.form.submit();" >Reset</button>
                     </div>
                     <div class="col-lg-5">
-                        <?php //echo $lists['filrer_menu']; ?>
+                        <?php //echo $lists['filrer_menu'];  ?>
                     </div>
                 </div>
                 <br/>            
@@ -36,10 +39,10 @@
                         $k = 0;
                         if (isset($items) && $items) {
                             foreach ($items as $i => $item) {
-                                $link_edit = Router::buildLink("gamesport", array('view'=>'tournaments', 'layout' => 'edit', "cid" => $item['id']));
-                                $item['name'] = str_repeat("&nbsp; &nbsp; &nbsp; &nbsp; ", $item['level'] -  1 ) . " - " . $item['name'];
-                                $link_items = Router::buildLink('gamesport', array('view'=>'tournaments','filter_cid'=>$item['id'])); 
-                                $link_detail = Router::buildLink('gamesport', array('view'=>'tournament', "tourID" => $item['id'])); 
+                                $link_edit = Router::buildLink("gamesport", array('view' => 'tournaments', 'layout' => 'edit', "cid" => $item['id']));
+                                $item['name'] = str_repeat("&nbsp; &nbsp; &nbsp; &nbsp; ", $item['level'] - 1) . " - " . $item['name'];
+                                $link_items = Router::buildLink('gamesport', array('view' => 'tournaments', 'filter_cid' => $item['id']));
+                                $link_detail = Router::buildLink('gamesport', array('view' => 'tournament', "tourID" => $item['id']));
                                 ?>
                                 <tr>
                                     <td><?php echo $k + 1; ?></td>                                        
@@ -80,19 +83,19 @@
                             </tr>
                         <?php } ?>
                     </tbody>
-                </table
+                </table>
             </div>
-        </div>
-        <div class="panel-footer">                
-            <?php echo $pagination; ?>
-        </div>
+            <div class="panel-footer">                
+                <?php echo $pagination; ?>
+            </div>
+        </div>        
     </div>
 
     <input type="hidden" name="boxchecked" value="0">
     <input type="hidden" name="filter_order" value="">
-    <input type="hidden" name="page" id="page" value="<?php echo Request::getVar('page',1); ?>">    
-    <input type="hidden" name="limit" value="<?php echo Request::getVar('limit',15); ?>">
-    <input type="hidden" name="filter_cid" id="filter_cid" value="<?php echo Request::getVar('filter_cid',''); ?>">
+    <input type="hidden" name="page" id="page" value="<?php echo Request::getVar('page', 1); ?>">    
+    <input type="hidden" name="limit" value="<?php echo Request::getVar('limit', 15); ?>">
+    <input type="hidden" name="filter_cid" id="filter_cid" value="<?php echo Request::getVar('filter_cid', ''); ?>">
     <input type="hidden" name="task" value="">
     <input type="hidden" name="filter_order_Dir" value="">
 </form>

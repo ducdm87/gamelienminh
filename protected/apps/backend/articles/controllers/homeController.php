@@ -40,8 +40,13 @@ class HomeController extends BackendController {
             
         $model = Article::getInstance();
         $items = $model->getItems();
+        
+        $pagination = $model->getPagination();
+        
         $data['lists'] = $model->getList();
         $data['items'] = $items;
+        $data['pagination'] = $pagination;
+        
         $this->render('default', $data);
     }
 
@@ -54,11 +59,21 @@ class HomeController extends BackendController {
         $cid = Request::getVar('cid', "");        
         setSysConfig("sidebar.display", 0);
         
-        $this->addIconToolbar("Save", Router::buildLink("articles",array('layout'=>'save')), "save");
-        $this->addIconToolbar("Apply", Router::buildLink("articles",array('layout'=>'apply')), "apply");
-        $this->addBarTitle("Article <small>[Edit]</small>", "user");
-        $this->addIconToolbar("Close", Router::buildLink("articles",array('layout'=>'cancel')), "cancel");
-        $this->pageTitle = "Edit article";     
+        $this->addIconToolbar("Save", Router::buildLink('articles', array('layout' => 'apply')), "apply");
+        $this->addIconToolbar("Save  & Close", Router::buildLink('articles', array('layout' => 'save')), "save");
+        $this->addIconToolbar("Save & New", Router::buildLink('articles', array('layout' => 'savenew')), "plus");
+        $this->addIconToolbar("Save as Copy", Router::buildLink('articles', array('layout' => 'savecopy')), " fa fa-copy");
+        
+        if ($cid == 0) {
+            $this->pageTitle = "New article";
+            $this->addBarTitle("Article <small>[New]</small>", "user");
+            $this->addIconToolbar("Close", Router::buildLink("articles",array('layout'=>'cancel')), "cancel");
+        }else{
+            $this->addIconToolbar("Cancel", Router::buildLink("articles",array('layout'=>'cancel')), "cancel");
+            $this->pageTitle = "Edit article"; 
+            $this->addBarTitle("Article <small>[Edit]</small>", "user");
+        }
+            
         
         $model = Article::getInstance();
         $item = $model->getItem($cid);
@@ -82,54 +97,37 @@ class HomeController extends BackendController {
     
     
     function actionApply() {
-        $cid = $this->store();
+        $model = Article::getInstance();
+        $cid = $model->storeItem();
         YiiMessage::raseSuccess("Successfully save Article");
         $this->redirect(Router::buildLink("articles",array('layout'=>'edit','cid'=>$cid)));
     }
     
     function actionSave() {
-        $cid = $this->store();
+        $model = Article::getInstance();
+        $cid = $model->storeItem();
         YiiMessage::raseSuccess("Successfully save Article");
         $this->redirect(Router::buildLink("articles"));
+    }
+    
+    function actionSavenew() {
+        $model = Article::getInstance();
+        $cid = $model->storeItem();
+        $this->redirect(Router::buildLink("articles", array("layout"=>"new")));
+    }
+    
+    function actionSavecopy() {
+        $cid = Request::getVar("id", 0);
+        $model = Article::getInstance();
+        $cid = $model->copyitem($cid);
+        $this->redirect(Router::buildLink("articles", array("layout"=>"edit",'cid'=>$cid)));
     }
     
     function actionCancel()
     {
         $this->redirect(Router::buildLink("articles"));
     }
-    
-    public function store() {
-        global $mainframe, $user;
-        
-        $cid = Request::getVar("id", 0); 
-        
-        $obj_table = YiiArticle::getInstance();
-       
-        $obj_table = $obj_table->loadItem($cid); 
-    
-        $obj_table->bind($_POST);
-
-        if($obj_table->id == 0){
-            $obj_table->created_by = $user->id;
-        }else{
-            // check quyen so huu
-            global $user;
-            if(!$bool = $user->modifyChecking($obj_table->created_by)){
-               $obj_users = YiiUser::getInstance();
-               $item_user = $obj_users->getUser($obj_table->created_by);
-               YiiMessage::raseNotice("Your account not have permission to modify resource of: $item_user->username");
-               $this->redirect(Router::buildLink("articles"));
-               return false;
-           }
-        }
-        $obj_table->modified_by = $user->id;
-        
-        $obj_table->store();
  
-        YiiMessage::raseSuccess("Successfully save Article");
-        return $obj_table->id;
-    }    
-    
      function actionPublish()
     {
         $cids = Request::getVar("cid", 0);        

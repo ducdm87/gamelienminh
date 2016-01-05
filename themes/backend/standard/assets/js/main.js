@@ -28,7 +28,8 @@ function submitbutton(pressbutton, type) {
 function submitform(pressbutton, type) {
     // thay doi task
     if (type == 0 || type == undefined)
-        document.adminForm.task.value = pressbutton;
+        if(pressbutton != undefined)
+            document.adminForm.task.value = pressbutton;
 
     // thay doi action form
     if (type == 1)
@@ -78,6 +79,7 @@ function isChecked(isitchecked) {
 }  
 
 $(window).ready(function($) {
+    // danh cho sap xep item
     $(function() {
         $(".JQsortable").sortable({update: successOrder});
         $(".JQsortable").disableSelection();
@@ -184,8 +186,14 @@ function setmenutype(app_name, view_name, layout_name){
     $("#params_layout").val(layout_name);
     document.adminForm.menu_type.value = app_name;
     if(app_name == "System"){
-        $("#field_link").attr('readonly', false)
-        $("#type").val("url");
+        if(view_name == "Separator"){
+            $("#field_link").attr('readonly', true)
+            $("#type").val("Separator");
+            $("#field_link").val("Separator");
+        }else if(view_name == "ExternalURL"){
+            $("#field_link").attr('readonly', false)
+            $("#type").val("url");
+        }
     }else{
         $("#field_link").attr('readonly', true)
         var link = "index.php?app="+app_name+"&view="+view_name;
@@ -199,6 +207,11 @@ function setmenutype(app_name, view_name, layout_name){
 }
 
 function loadConfigFile(app_name, view_name){
+    if(app_name == "System"){
+//        $(".nav-tabs #title-param-custome").html('');
+        $("#param-advance").html('');
+        return true;
+    }
     menuID = document.adminForm.id.value;
     $.ajax({
         type: "POST",

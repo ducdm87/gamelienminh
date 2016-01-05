@@ -48,7 +48,7 @@ class YiiArticle{
     function getItems($field = "*", $condition = "", $orderBy = " A.id DESC ", $limit = 10, $start = 0)
     {
         if($field == null){
-            $field = "A.*, B.title cat_title, B.alias cat_alias, C.username created_name";
+            $field = "A.*, B.name cat_name, B.alias cat_alias, C.username created_name";
         }
         $command = $this->_db->createCommand()->select($field)
                 ->from($this->table ." A")
