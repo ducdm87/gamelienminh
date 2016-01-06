@@ -2,51 +2,27 @@
     <form action="<?php echo $this->createUrl('modules/dopost') ?>" method="post" name="adminForm">
         <input type="hidden" name="id"  value="<?php echo $item->id; ?>"/>
         <div class="col-md-6">
-            <div class="panel">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <span><b>Detail</b></span>
                 </div>
                 <div class="panel-body"> 
+                    <?php echo buildHtml::renderField("text", "title", $item->title, "Title", "form-control", "",3,9); ?>
+                    <?php echo buildHtml::renderField("label", "Module", $item->module, "Module",null, "",3,9) ?>                    
                     <div class="form-group row">
-                        <div class="col-md-3">Tên</div>
-                        <div class="col-md-9">
-                            <input type="text" name="title" class="form-control" value="<?php echo $item->title; ?>">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-3">Module</div>
-                        <div class="col-md-9"><?php echo $item->module; ?></div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-3">Hiển thị tên</div>
+                        <div class="col-md-3"><b>Show Title</b></div>
                         <div class="col-md-9">
                             <input type="radio" value="1" name="showtitle" <?php if ($item->showtitle == 1) echo 'checked=""'; ?>  /> Yes
                             <input type="radio" value="0" name="showtitle" <?php if ($item->showtitle == 0) echo 'checked=""'; ?> /> No
                         </div>
                     </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-3">Vị Trí</div>
-                        <div class="col-md-9">
-                            <?php echo $lists['position']; ?>
-                        </div>
-                    </div> 
-                    <div class="form-group row">
-                        <div class="col-md-3">Trạng thái</div>
-                        <div class="col-md-9">
-                            <select name="status" class="">
-                                <option value="1">Enable</option>
-                                <option value="0">Disable</option>
-                            </select>
-                        </div>
-                    </div>                      
-                    <div class="form-group row">
-                        <div class="col-md-3">Mô tả</div>
-                        <div class="col-md-9"><?php echo $item->description; ?></div>
-                    </div> 
+                    <?php echo buildHtml::renderField("label", "position", $lists['position'], "Position",null, "",3,9) ?>                    
+                    <?php echo buildHtml::renderField("label", "status", $lists['status'], "Status",null, "",3,9) ?>                    
+                    <?php echo buildHtml::renderField('label',"introtext", $item->description, "Description",null, "",3,9); ?>
+                    
                 </div>
             </div>
-            <div class="panel">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <span><b>Menu Assignment</b></span>
                 </div>
@@ -80,7 +56,6 @@
                 }
                 $tabs[$param->title] = $str_tab;
             }
-
 //                    http://www.yiiframework.com/doc/api/1.1/CJuiTabs
             $this->widget('zii.widgets.jui.CJuiTabs', array(
                 'tabs' => $tabs, 'options' => array('collapsible' => true,),));

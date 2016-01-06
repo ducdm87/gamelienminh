@@ -56,6 +56,7 @@ class MenuitemController extends BackEndController {
         $this->addIconToolbar("Edit", Router::buildLink('menus', array("view" => "menuitem", 'menu' => $menuID, 'layout' => 'edit')), "edit", 1, 1, "Please select a item from the list to edit");
         $this->addIconToolbar("Publish", Router::buildLink('menus', array("view" => "menuitem", 'menu' => $menuID, 'layout' => 'publish')), "publish");
         $this->addIconToolbar("Unpublish", Router::buildLink('menus', array("view" => "menuitem", 'menu' => $menuID, 'layout' => 'unpublish')), "unpublish");
+        //$this->addIconToolbar("Move", Router::buildLink('menus', array("view" => "menuitem", 'menu' => $menuID, 'layout' => 'moveItem')), "move");
         $this->addIconToolbar("Delete", Router::buildLink('menus', array("view" => "menuitem", 'menu' => $menuID, 'layout' => 'remove')), "trash", 1, 1, "Please select a item from the list to Remove");
         $this->addBarTitle("Menu items <small>[manager]</small>", "user");
  
@@ -185,6 +186,9 @@ class MenuitemController extends BackEndController {
             YiiMessage::raseSuccess("Successfully save Menu Item");
             $this->redirect(Router::buildLink('menus', array("view" => "menuitem", 'menu' => $menuID, 'layout' => 'edit', 'cid' => $menuItemID)));
         }
+    }
+    function actionMoveItem() {
+       
     }
 
     function actionCancel() {

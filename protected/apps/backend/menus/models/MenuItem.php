@@ -310,7 +310,9 @@ class MenuItem extends CFormModel {
         $tbl_menu->id = 0;
         $tbl_menu->title = $tbl_menu->title . " copy";
         $tbl_menu->alias = $tbl_menu->alias . "-copy";
-        $obj_item->status = 0;
+        $tbl_menu->status = 0;
+        $tbl_menu->_ordering = $tbl_menu->ordering;
+        $tbl_menu->_old_parent = $tbl_menu->parentID;
         $tbl_menu->store();
         return array($tbl_menu->menuID, $tbl_menu->id);
     }

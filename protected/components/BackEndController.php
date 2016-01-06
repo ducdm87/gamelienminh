@@ -181,7 +181,23 @@ class BackEndController extends CController {
     }
      
     function addIconToolbar($title, $task, $class, $type = 1, $checkForm = 0, $alert = "Please select a item from the list to edit") {
-
+        $arr_class=array();
+        $arr_class['new'] = "plus-sign";
+        $arr_class['publish'] = "ok ";
+        $arr_class['unpublish'] = "remove";
+        $arr_class['save'] = "ok";
+        $arr_class['apply'] = "edit";
+        $arr_class['cancel'] = "remove";
+        
+        $arr_class_btn=array();
+        $arr_class_btn['new'] = "btn-success";        
+        $arr_class_btn['apply'] = "btn-success";
+        $arr_class_btn['trash'] = "btn-danger";
+        $arr_class_btn['cancel'] = "btn-danger";
+        
+        $class_icon = isset($arr_class[$class])?$arr_class[$class]:$class;
+        $class_btn = isset($arr_class_btn[$class])?$arr_class_btn[$class]:"btn-default";
+        
         $script = 'submitbutton(\'' . $task . '\',\'' . $type . '\')';
         if ($checkForm == 1) {
             $script = 'if (document.adminForm.boxchecked.value == 0) {
@@ -192,11 +208,11 @@ class BackEndController extends CController {
         }
 
         $this->iconToolbar[] = ' <td id="toolbar-' . $class . '" class="button">
-                                     <a class="toolbar" onclick="javascript:' . $script . '" href="#">
-                                        <span title="' . $title . '" class="icon-32-' . $class . '">
+                                     <button class="btn '.$class_btn.'" onclick="javascript:' . $script . '" href="#">
+                                        <span title="' . $title . '" class="glyphicon glyphicon-' . $class_icon . '">
                                         </span>
                                         ' . $title . '
-                                    </a>
+                                    </button>
                                 </td>';
     }
 

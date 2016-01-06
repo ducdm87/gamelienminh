@@ -69,4 +69,13 @@ class YiiArticle{
         $table = YiiTables::getInstance($this->table);
         $table->remove($id, $condition);
     }
+    
+    function getTotal($conditions = null, $table_alias = "")
+    {
+         $command = $this->_db->createCommand()->select("count(*)")
+                ->from($this->table . " $table_alias ");
+        if($conditions != null) $command->where($conditions);
+        $result = $command->queryScalar();
+        return $result;
+    }
 }

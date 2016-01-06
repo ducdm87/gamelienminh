@@ -92,11 +92,11 @@ class MenutypeController extends BackEndController {
     }
 
     function actionApply() {
-        $this->store();
-        $this->redirect(Router::buildLink('menus', array("view"=>"menutype", 'layout'=>'edit','cid'=>$this->item["id"])));
+        $cid = $this->store();
+        $this->redirect(Router::buildLink('menus', array("view"=>"menutype", 'layout'=>'edit','cid'=>$cid)));
     }
     
-    function actionSave() {
+    function actionSave() {        
         $this->store();
         $this->redirect(Router::buildLink('menus', array("view"=>"menutype")));
     }
@@ -113,19 +113,16 @@ class MenutypeController extends BackEndController {
             YiiMessage::raseNotice("Your account not have permission to modify menu");
             $this->redirect(Router::buildLink("cpanel"));
         }
-        
+         
         $post = $_POST;
        
         $id = Request::getInt("id", 0);
-        $bool = true;
-        $this->item = $this->loadItem($id); 
-        
-        $this->item = $mainframe->bind($this->item, $post); 
-        if($this->item['title'] == "" AND $this->item['alias'] == "") return false;
-        $this->item["id"] = $id;
-        
-        YiiMessage::raseSuccess("Successfully saved changes to menu: " . $this->item['title']);
-        $this->item["id"] = $this->storeItem();
+        $obj_menu = YiiMenu::getInstance();
+        $tbl_menu = $obj_menu->loadMenu($id);
+         $tbl_menu->bind($post);
+         $tbl_menu->store(); 
+        YiiMessage::raseSuccess("Successfully saved changes to menu: " . $tbl_menu->title);
+        return $tbl_menu->id;
     }
     
     function actionRemove() {
@@ -153,12 +150,8 @@ class MenutypeController extends BackEndController {
         $cids = Request::getVar("cid", 0);
         
         if(count($cids) >0){
-            for($i=0;$i<count($cids);$i++){
-                $cid = $cids[$i];
-                //check item first
-                $this->item = $this->loadItem($cid);            
-                $this->item['status'] = 1;
-                $this->item["id"] = $this->storeItem();
+            foreach($cids as $cid){
+                $this->changeStatus($cid,1);
             }
         }
         YiiMessage::raseSuccess("Successfully publish Menutype(s)");
@@ -170,12 +163,8 @@ class MenutypeController extends BackEndController {
         $cids = Request::getVar("cid", 0);
         
         if(count($cids) >0){
-            for($i=0;$i<count($cids);$i++){
-                $cid = $cids[$i];
-                //check item first
-                $this->item = $this->loadItem($cid);            
-                $this->item['status'] = 0;
-                $this->item["id"] = $this->storeItem();
+            foreach($cids as $cid){
+               $this->changeStatus($cid,0);
             }
         }
         YiiMessage::raseSuccess("Successfully unpublish Menutype(s)");
