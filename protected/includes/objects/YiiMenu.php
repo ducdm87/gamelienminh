@@ -170,7 +170,7 @@ class YiiMenu {
      *      neu khong chuyen vao thi lay tat ca menu item cua tat ca menu
      */
 
-    function loadItems($menuID = null, $field = "*", $condition = "", $oderby = " lft ASC ") {
+    function loadItems($menuID = null, $field = "*", $condition = "", $oderby = " lft ASC ", $limit = null, $start = null) {
         $conds = array();
         if ($menuID != null) {
             $conds[] = "menuID = $menuID";
@@ -182,7 +182,7 @@ class YiiMenu {
         $condition = implode(" AND ", $conds);
 
         $table_menu_item = YiiTables::getInstance(TBL_MENU_ITEM);
-        $items = $table_menu_item->loads($field, $condition, $oderby, null, null);
+        $items = $table_menu_item->loads($field, $condition, $oderby, $limit, $start);
         return $items;
     }
 
