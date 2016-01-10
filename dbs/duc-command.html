@@ -36,3 +36,7 @@ ALTER TABLE `tbl_gs_tournamemants` ADD `number_table` SMALLINT NOT NULL COMMENT 
 	 
  ALTER TABLE `tbl_gs_matches` CHANGE `teamaID` `teamaID` INT(10) NOT NULL; 
  ALTER TABLE `tbl_gs_matches` CHANGE `teambID` `teambID` INT(10) NOT NULL; 
+ 
+ # 10/1/2016
+ ALTER TABLE `tbl_modules` ADD `url` VARCHAR(255) NOT NULL AFTER `alias`;  
+ ALTER TABLE `tbl_modules` ADD `target` VARCHAR(16) NOT NULL AFTER `url`;
